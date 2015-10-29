@@ -20,15 +20,12 @@ class CreateVendors < ActiveRecord::Migration
       t.integer :address_zip
       t.string :phone
       t.string :fax
-      t.string :email
       t.boolean :authorize_sig
       t.string :authorize_title
       t.date :authorize_date
       t.boolean :inovice_sent
       t.boolean :bill_paid
       t.boolean :confirmation_sent
-      t.string :username
-      t.string :password
       t.integer :vendor_id
       t.boolean :session_state
       t.boolean :admin
