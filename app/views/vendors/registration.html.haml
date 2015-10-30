@@ -1,0 +1,101 @@
+%h1 Vender Contact Information
+%form#vendor{:action => "booth", :method => "post"}
+  %p
+    %i Please complete the form. Mandatory fields are marked with a
+    %em *
+  %fieldset
+    %label{:for => "companyName"}
+      Company Name
+      %em *
+    %input#company_name{:autofocus => "", :name => "companyName", :placeholder => "", :required => ""}
+      %br
+        %label{:for => "product"}
+          Company Product
+          %em *
+        %input#product{:autofocus => "", :name => "product", :placeholder => "", :required => ""}
+          %br
+            %label{:for => "contactName"}
+              Contact Name
+              %em *
+            %input#contact_name{:autofocus => "", :name => "contactName", :placeholder => "", :required => ""}
+              %br
+                %label{:for => "city"}
+                  City
+                  %em *
+                %input#address_city{:autofocus => "", :name => "city", :placeholder => "", :required => ""}
+                  %br
+                    %label{:for => "address_state"} State
+                    %em *
+                    %select#address_state{:name => "state", :required => ""}
+                      %option{:style => "display:none;", :value => ""}
+                      %option{:value => "AL"} Alabama
+                      %option{:value => "AK"} Alaska
+                      %option{:value => "AZ"} Arizona
+                      %option{:value => "AR"} Arkansas
+                      %option{:value => "CA"} California
+                      %option{:value => "CO"} Colorado
+                      %option{:value => "CT"} Connecticut
+                      %option{:value => "DE"} Delaware
+                      %option{:value => "DC"} District Of Columbia
+                      %option{:value => "FL"} Florida
+                      %option{:value => "GA"} Georgia
+                      %option{:value => "HI"} Hawaii
+                      %option{:value => "ID"} Idaho
+                      %option{:value => "IL"} Illinois
+                      %option{:value => "IN"} Indiana
+                      %option{:value => "IA"} Iowa
+                      %option{:value => "KS"} Kansas
+                      %option{:value => "KY"} Kentucky
+                      %option{:value => "LA"} Louisiana
+                      %option{:value => "ME"} Maine
+                      %option{:value => "MD"} Maryland
+                      %option{:value => "MA"} Massachusetts
+                      %option{:value => "MI"} Michigan
+                      %option{:value => "MN"} Minnesota
+                      %option{:value => "MS"} Mississippi
+                      %option{:value => "MO"} Missouri
+                      %option{:value => "MT"} Montana
+                      %option{:value => "NE"} Nebraska
+                      %option{:value => "NV"} Nevada
+                      %option{:value => "NH"} New Hampshire
+                      %option{:value => "NJ"} New Jersey
+                      %option{:value => "NM"} New Mexico
+                      %option{:value => "NY"} New York
+                      %option{:value => "NC"} North Carolina
+                      %option{:value => "ND"} North Dakota
+                      %option{:value => "OH"} Ohio
+                      %option{:value => "OK"} Oklahoma
+                      %option{:value => "OR"} Oregon
+                      %option{:value => "PA"} Pennsylvania
+                      %option{:value => "RI"} Rhode Island
+                      %option{:value => "SC"} South Carolina
+                      %option{:value => "SD"} South Dakota
+                      %option{:value => "TN"} Tennessee
+                      %option{:value => "TX"} Texas
+                      %option{:value => "UT"} Utah
+                      %option{:value => "VT"} Vermont
+                      %option{:value => "VA"} Virginia
+                      %option{:value => "WA"} Washington
+                      %option{:value => "WV"} West Virginia
+                      %option{:value => "WI"} Wisconsin
+                      %option{:value => "WY"} Wyoming
+                    %br
+                    %label{:for => "zip"}
+                      Zip code
+                      %em *
+                    %input#address_zip{:name => "zip", :pattern => "^[0-9]{5}$", :required => "", :title => "Must contain 5 numbers"}
+                    %br
+                    %label{:for => "phone"} Phone
+                    %em *
+                    %input#phone{:name => "phone", :pattern => "^[(]{0,1}[0-9]{3}[)]{0,1}[-\\s\\.]{0,1}[0-9]{3}[-\\s\\.]{0,1}[0-9]{4}$", :placeholder => "(xxx) xxx-xxxx", :required => "", :title => "Phone number must contain 10 digits"}
+                      %br
+                        %label{:for => "fax"} Fax
+                        %input#fax{:name => "fax", :pattern => "^[(]{0,1}[0-9]{3}[)]{0,1}[-\\s\\.]{0,1}[0-9]{3}[-\\s\\.]{0,1}[0-9]{4}$", :placeholder => "(xxx) xxx-xxxx", :title => "Phone number must contain 10 digits"}
+                          %br
+                            %label{:for => "email"}
+                              Email
+                              %em *
+                            %input#email{:name => "email", :pattern => "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$", :required => "", :title => "Email must contain mailbox/username@domain.domain", :type => "email"}
+                             
+  %p
+    %input{:type => "submit", :value => "Submit Application"}/
