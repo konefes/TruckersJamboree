@@ -44,7 +44,7 @@ end
 
 group :test do
   gem 'rspec-expectations'
-  gem 'cucumber-rails' 
+  gem 'cucumber-rails'
 end
 
 group :production do

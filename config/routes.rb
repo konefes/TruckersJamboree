@@ -18,8 +18,15 @@ Rails.application.routes.draw do
   get "vendors/booth"
   get "vendors/summary"
   resources :vendors
+
   resources :admins
   resources :users
+
+  
+  match '/login', to: 'sessions#new', via: :get
+  match '/login_create', to: 'sessions#create', via: :post  
+  match '/logout', to: 'sessions#destroy', via: :delete
+
   
   # Example resource route with options:
   #   resources :products do

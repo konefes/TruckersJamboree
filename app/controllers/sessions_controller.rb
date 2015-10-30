@@ -11,14 +11,16 @@ class SessionsController < ApplicationController
 
   def create
 
-      if User.where(user_id: login_params[:username]).empty?
+      if User.where(username: login_params[:username]).empty?
           flash[:notice] = "Invalid username/password combination"
           redirect_to login_path
           
         else
           @user = User.find_by_username(login_params[:username])
           session[:session_token] = @user.session_token
-          #redirect_to home_path Redirect to home page 
+          flash[:notice] = "#{@user.session_token} was session created."
+          set_current_user()
+          redirect_to login_path
       end
 
   end
@@ -37,7 +39,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:session_token] = nil
-    redirect_to movies_path
+    redirect_to login_path
   end
 
 

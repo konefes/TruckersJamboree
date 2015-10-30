@@ -1,10 +1,11 @@
 %h1 Sign Up
 %hr
 
+
 = form_tag users_path do
 
-  = label :user, :user_id, 'Username'
-  = text_field :user, 'user_id' , :id => 'signup_id'
+  = label :user, :username, 'Username'
+  = text_field :user, 'username' , :id => 'signup_id'
 
   %hr
 
@@ -18,10 +19,10 @@
   
   %hr
  
-  = label :user, :type, 'User Type'
-  = select :user, :type, ['Vendor','Admin(Authorized Personel Only)'], class: 'required'
+  = label :user, :role, 'User Type'
+  = select :user, :role, ['Vendor','Admin(Authorized Personel Only)'], class: 'required'
   
   %hr
-
-= submit_tag 'Create my account' , :id => 'signup_submit'
+  
+  = submit_tag 'Create my account' , :id => 'signup_submit'
 

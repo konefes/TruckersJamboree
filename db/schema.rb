@@ -20,7 +20,8 @@ ActiveRecord::Schema.define(version: 20151029183526) do
     t.string "username"
     t.string "password"
     t.string "email"
-    t.string "type"
+    t.string "role"
+    t.string "session_token"
   end
 
   create_table "vendors", force: :cascade do |t|
