@@ -1,0 +1,22 @@
+
+%h1 Vendor Registraion
+
+= form_tag vendors_path do
+  %fieldset 
+    %h1 Booth Preferences
+    
+    = check_box_tag "Covered"
+    
+    = check_box_tag "Uncoverd" 
+    
+    = check_box_tag "No Preference" 
+          
+    %h1 Number of Indoor Booths 
+        
+    %h1 Number of Outdoor Booths  
+        
+    %h1 Custoom Outdoor space
+          
+    %h1 Cost of Selected Booths
+
+  = submit_tag 'Submit Vendors Registration'

@@ -1,12 +1,5 @@
 class VendorsController < ApplicationController
-    
-    def index
-    end
-    
     def show
+        @vendors = Vendor.all
     end
-    
-    def booth
-    end
-    
 end
