@@ -37,10 +37,18 @@ class VendorsController < ApplicationController
         # on submit go to add_booth_info
     end
     
-    def add_booth_info
+    def enter_booth_info
         # vendor id is passed in always
         # vendors have selected their booth space 
         # add booth information to the vendor
+        # !!!!!code!!!!!
+        # redirect to services
+    end
+    
+    def enter_custom_booth_info
+        # vendor id is passed in always
+        # vendors have selected their custom booth space 
+        # add custom booth information to the vendor
         # !!!!!code!!!!!
         # redirect to services
     end
@@ -51,7 +59,7 @@ class VendorsController < ApplicationController
         # on submit go to services_entry
     end
     
-    def services_entry
+    def enter_services
         # vendor id is passed in always
         # a vendor has now selected their booth and services options
         # attach that information to the vendors id
@@ -59,7 +67,7 @@ class VendorsController < ApplicationController
         # redirect to summary
     end
     
-    def sumamry
+    def summary
         # render the summary view for the customer to verify data 
         # also this is where the vender will sign off on the input
         # also do a minimal check that the user is a human not a robot
@@ -72,18 +80,18 @@ class VendorsController < ApplicationController
         # on input create a hash[:id][:new value]
     end
     
-    def edit_entry
+    def enter_edit
         # the hash passed in from the edit view is parsed 
         # !!!!!code!!!!!
         # the vendor is redirected back to summary
     end
     
-    def conformation
+    def confirmation
         # the completed vendor profile should be eastablished by now
         # render a invoice sent to the attched email in the registration
         # !!!!!code!!!!!
         # pritn all the entered field for the vendor to see one last time
         # display a message in large text showing the vendor their submission has been recieved
     end
-    
+
 end
