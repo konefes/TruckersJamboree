@@ -1,0 +1,17 @@
+%h1 Login
+%hr
+
+= form_tag login_create_path do
+
+  = label :user, :username, 'Username'
+  = text_field :user, 'username' , :id => 'login_id'
+  
+  %hr
+  
+  = label :user, :password, 'Password'
+  = text_field :user, 'password' , :id => 'login_password'
+  
+  %hr
+  
+  = button_to 'Login to my account', login_create_path , method: :post, :id => 'login_submit'
+  = link_to 'Sign-up	for	an	account' , new_user_path , :id => 'signup'

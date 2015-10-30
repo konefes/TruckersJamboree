@@ -9,8 +9,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
+<div id="main">
+  <% if !@current_user %>
+    <%= button_to 'Sign Up/Login', login_path , method: :get, :id => 'login' %>
+  <% else %>
+    <p class="flash_message">You are logged in as #{@current_user.username} </p>
+    <%= button_to 'Logout', logout_path , method: :delete, :id => 'logout' %>
+  <% end %>
+  <% if flash[:notice] %>
+    <div class="flash_message" id="notice">
+      <%= flash[:notice] %>
+    </div>
+  <% elsif flash[:warning] %>
+    <div class="flash_message" id="warning">
+      <%= flash[:warning] %>
+    </div>
+  <% end %>
+  <%= yield %>
+</div>
 
-<%= yield %>
 
 </body>
 </html>
