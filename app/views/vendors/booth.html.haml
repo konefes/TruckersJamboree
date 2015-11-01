@@ -1,22 +1,32 @@
 
 %h1 Vendor Registraion
 
-= form_tag vendors_path do
+= form_tag vendors_path, :oninput => "calcObooth()" do
   %fieldset 
-    %h1 Booth Preferences
-    
-    = check_box_tag "Covered"
-    
-    = check_box_tag "Uncoverd" 
-    
-    = check_box_tag "No Preference" 
           
     %h1 Number of Indoor Booths 
+    =label :vendor, :number_i_booth, 'Booths'
+    =number_field :number_i_booth, :in => 0..10, :type => 'int' 
+    %h1 Cost of Indoor Booths
+    =label :vendor, :cost_i_booth, '$' 
         
     %h1 Number of Outdoor Booths  
-        
-    %h1 Custoom Outdoor space
+    =label :vendor, :number_o_booth, 'Booths'
+    =number_field :number_o_booth, :in => 0..10, :type => 'int', :oninput => "calcObooth()"
+    
+    %h1 Cost of Outdoor Booths
+    =label :vendor, :cost_o_booth, '$'     
           
     %h1 Cost of Selected Booths
 
-  = submit_tag 'Submit Vendors Registration'
+  = submit_tag 'Submit Booth Information'
+  
+:javascript
+  calcObooth()
+  {
+    var cost = document.getElementById("cost_o_booth");
+    var cost_o = document.getElementById("number_o_booth").value ;
+    cost_o = parseInt(cost_o);
+    cost_o = cost_o * 200;
+    cost.value = cost_o;
+  }
