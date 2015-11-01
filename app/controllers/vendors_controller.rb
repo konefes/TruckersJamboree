@@ -11,7 +11,9 @@ class VendorsController < ApplicationController
     def registration
         # called when a user identifies they want to register for a spot
         # a contact form is then displayed after this function
-        # on submit got to enter_registration
+        
+        # on submit goes to enter_registration
+        
     end
     
     def enter_registration
@@ -19,6 +21,7 @@ class VendorsController < ApplicationController
         # a vendor can be created from the data 
         # !!!!!code!!!!!!
         # redirect to booth
+        redirect_to '/vendors/booth'
     end
     
     def booth
@@ -43,6 +46,7 @@ class VendorsController < ApplicationController
         # add booth information to the vendor
         # !!!!!code!!!!!
         # redirect to services
+        redirect_to '/vendors/services'
     end
     
     def enter_custom_booth_info
@@ -51,6 +55,7 @@ class VendorsController < ApplicationController
         # add custom booth information to the vendor
         # !!!!!code!!!!!
         # redirect to services
+        redirect_to '/vendors/services'
     end
     
     def services
@@ -65,6 +70,7 @@ class VendorsController < ApplicationController
         # attach that information to the vendors id
         # !!!!!code!!!!!
         # redirect to summary
+        redirect_to '/vendors/summary'
     end
     
     def summary

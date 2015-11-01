@@ -16,8 +16,15 @@ Rails.application.routes.draw do
 
   get "vendors/index"
   get "vendors/registration"
+  post "vendors/enter_registration"
   get "vendors/booth"
+  post "vendors/enter_booth_info"
+  get "vendors/custom_booth"
+  post "vendors/enter_custom_booth_info"
+  get "vendors/services"
+  post "vendors/enter_services"
   get "vendors/summary"
+  post "vendors/enter_custom_booth_info"
   resources :vendors
 
   resources :admins
