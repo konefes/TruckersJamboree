@@ -2,28 +2,28 @@
 
 %table#Vendors
  %thead
-    %tr
-      %th Vendor
-      - @vendors.each do |vendor|
-      .panel-group{:id => "accordian"}
-        .panel.panel-default
-          .panel-heading
-            %h4.panel-title
-              %a.accordion-toggle{"data-toggle" => "collapse", "data-parent" => "#accordian", :href => "#{vendor.company_name}"}
-                = vendor.company_name
-          .panel-collapse.collapse.in{:id => "#{vendor.company_name}"}
-            .panel-body
-              = vendor.company_name
-              = vendor.product
-              = vendor.contact_name
-              = vendor.address_street
-              = vendor.address_city
-              = vendor.address_state
-              = vendor.address_zip
-              = vendor.phone
-              = vendor.fax
-        .panel.panel-default
-          .panel-heading
-            %h4.panel-title
-              %a.accordion-toggle{"data-toggle" => "collapse", "data-parent" => "#accordian", :href => "#{vendor.company_name}"}
+  %tr
+   %th Vendor
+   - @vendors.each do |vendor|
+    .panel-group{:id => "accordian"}
+     .panel.panel-default
+      .panel-heading
+       %h4.panel-title
+        %a.accordion-toggle{"data-toggle" => "collapse", "data-parent" => "#accordian", :href => "#{vendor.company_name}"}
+        = vendor.company_name
+       .panel-collapse.collapse.in{:id => "#{vendor.company_name}"}
+        .panel-body
+        = vendor.company_name
+        = vendor.product
+        = vendor.contact_name
+        = vendor.address_street
+        = vendor.address_city
+        = vendor.address_state
+        = vendor.address_zip
+        = vendor.phone
+        = vendor.fax
+     .panel.panel-default
+      .panel-heading
+      %h4.panel-title
+      %a.accordion-toggle{"data-toggle" => "collapse", "data-parent" => "#accordian", :href => "#{vendor.company_name}"}
 

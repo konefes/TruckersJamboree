@@ -24,7 +24,11 @@ Rails.application.routes.draw do
   get "vendors/services"
   post "vendors/enter_services"
   get "vendors/summary"
+
   post "vendors/enter_custom_booth_info"
+
+  get "vendors/show_vendor"
+
   resources :vendors
 
   resources :admins

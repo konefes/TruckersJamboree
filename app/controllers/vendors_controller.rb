@@ -8,6 +8,11 @@ class VendorsController < ApplicationController
         #
     end
     
+    def show_vendor
+        #vendorid = params[:id]
+        @vendors = Vendor.all
+    end
+    
     def registration
         # called when a user identifies they want to register for a spot
         # a contact form is then displayed after this function
