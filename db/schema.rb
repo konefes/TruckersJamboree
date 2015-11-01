@@ -17,11 +17,10 @@ ActiveRecord::Schema.define(version: 20151029183526) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password"
-    t.string "email"
-    t.string "role"
-    t.string "session_token"
+    t.string  "username"
+    t.string  "password"
+    t.string  "email"
+    t.integer "type"
   end
 
   create_table "vendors", force: :cascade do |t|

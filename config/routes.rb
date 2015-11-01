@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get "vendors/registration"
   get "vendors/booth"
   get "vendors/summary"
+  get "vendors/show_vendor"
   resources :vendors
 
   resources :admins
