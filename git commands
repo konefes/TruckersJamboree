@@ -1,0 +1,11 @@
+using branches:
+git pull
+git branch <branchname>
+git checkout <branchname>
+----work
+git push origin <branchname>
+
+git checkout master
+git pull
+git merge <branchname>
+git push

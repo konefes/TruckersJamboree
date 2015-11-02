@@ -1,32 +1,98 @@
 
-%h1 Vendor Registraion
+%html
 
-= form_tag vendors_path, :oninput => "calcObooth()" do
-  %fieldset 
-          
-    %h1 Number of Indoor Booths 
-    =label :vendor, :number_i_booth, 'Booths'
-    =number_field :number_i_booth, :in => 0..10, :type => 'int' 
-    %h1 Cost of Indoor Booths
-    =label :vendor, :cost_i_booth, '$' 
-        
-    %h1 Number of Outdoor Booths  
-    =label :vendor, :number_o_booth, 'Booths'
-    =number_field :number_o_booth, :in => 0..10, :type => 'int', :oninput => "calcObooth()"
-    
-    %h1 Cost of Outdoor Booths
-    =label :vendor, :cost_o_booth, '$'     
-          
-    %h1 Cost of Selected Booths
-
-  = submit_tag 'Submit Booth Information'
+  %body
   
-:javascript
-  calcObooth()
-  {
-    var cost = document.getElementById("cost_o_booth");
-    var cost_o = document.getElementById("number_o_booth").value ;
-    cost_o = parseInt(cost_o);
-    cost_o = cost_o * 200;
-    cost.value = cost_o;
-  }
+    %form#vendor_booth{:action => "enter_booth_info", :method => "post"}
+    
+      %h1 Booth Information
+      %h2 Indoor Booths
+      %label{:for => "number_i_booth"}
+        Number of Inside Booths
+        %em *
+      %input#number_i_booth{:max => "10", :min => "0", :name => "number_i_booth", :oninput => "calcIbooths()", :required => "", :step => "1", :type => "number"}
+        %label{:for => "booth_i_cost"} Cost of Inside Booths $
+        %input#booth_i_cost{:name => "booth_i_cost", :onchange => "calcCost()", :required => "", :value => "0"}
+          %br
+          
+            %h2 Outdoor Booths
+            %label{:for => "number_o_booth"} Number of Outside Booths
+            %em *
+            %input#number_o_booth{:max => "10", :min => "0", :name => "number_o_booth", :oninput => "calcObooths()", :required => "", :step => "1", :type => "number"}
+              %label{:for => "booth_o_cost"} Cost of Outside Booths $
+              %input#booth_o_cost{:name => "booth_o_cost", :onchange => "calcCost()", :required => "", :value => "0"}
+                %br
+                
+                  %h2 Cost of Booths
+                  %label{:for => "booth_cost"} Cost of Booths $
+                  %input#booth_cost{:name => "booth_cost", :required => "", :value => "0"}
+                    %br
+                    
+                      %input{:type => "submit", :value => "Submit Booth Information"}
+  %p If a custom outdoor space is required follow the link below:
+  = link_to 'Custom Outdoor Space', vendors_custom_booth_path 
+  
+  :javascript
+    function calcIbooths()
+    {
+      var input = document.getElementById("number_i_booth");
+      var cost = document.getElementById("booth_i_cost");
+      var floatI = 0;
+      if(input.value == "0")
+      {
+        floatI = 0;
+        cost.value = 0;
+      }
+      else if(input.value == "1")
+      {
+        floatI = 500;
+        cost.value = 500;
+      }
+      else if(input.value == "2")
+      {
+        floatI = 900;
+        cost.value = 900;
+      }
+      else if(input.value == "3")
+      {
+        floatI = 1300;
+        cost.value = 1300.00;
+      }
+      else if(input.value == "4")
+      {
+        floatI = 1700;
+        cost.value = 1700;
+      }
+      else
+      {
+        var number = parseInt(input.value);
+    	//alert(number);
+    	var booths = number - 4;
+    	//alert(booths);
+    	var total = booths * 200 + 1700;
+    	//alert(total);
+    	floatI = parseFloat(total);
+    	cost.value = floatI;
+      } 
+      calcCost(floatI);
+    }
+  :javascript
+    function calcObooths()
+    {
+      var outside = document.getElementById("number_o_booth").value;
+      var cost = document.getElementById("booth_o_cost");
+      outside = outside * 200;
+      cost.value = outside;
+      calcCost();
+    }
+  :javascript
+    function calcCost()
+    {
+      var costF = document.getElementById("booth_cost");
+      var costI = document.getElementById("booth_i_cost").value;
+      var costO = document.getElementById("booth_o_cost").value;
+      var costi = parseFloat(costI);
+      var costo = parseFloat(costO);
+      var totalF = costi + costo;
+      costF.value = totalF;
+    }
