@@ -1,7 +1,7 @@
 !!!
 %html
   %body
-    %form
+    %form#custom_vendor_booth{:action => "enter_custom_booth_info", :method => "post"}
       %h1 Booth Information
       Custom Tractor trailer Booth
       %h2
@@ -118,4 +118,9 @@
                                             	totalF = trailerF + customF;
                                             	costF.value = totalF;
                                               }
-    %input{:type => "submit", :value => "Submit Booth Information"}
+                                        %label{:for => "custom_description"}Short description of space and displays with dimensions
+                                        %em *
+                                        %br
+                                        %textarea#custom_description{:name => "custom_description", :pattern =>"^[A-Za-z0-9]{15,250}$", :title => "Must contain 15 characters", :required => ""}
+                                        %br
+                                        %input{:type => "submit", :value => "Submit Booth Information"}
