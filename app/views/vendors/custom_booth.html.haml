@@ -1,0 +1,121 @@
+!!!
+%html
+  %body
+    %form
+      %h1 Booth Information
+      Custom Tractor trailer Booth
+      %h2
+        %label{:for => "tractoronly"}
+          Tractor only w/ table and two chairs (15' X 40')
+          %em *
+        %input#tractoronly{:max => "1", :min => "0", :name => "tractoronly", :oninput => "calcbooths()", :required => "", :step => "1", :type => "number"}
+          %br
+            %label{:for => "tractortrailer"}
+              Tractor-Trailer w/ table and two chairs (15' X 80')
+              %em *
+            %input#tractortrailer{:max => "1", :min => "0", :name => "tractortrailer", :oninput => "calcbooths()", :required => "", :step => "1", :type => "number"}
+              %br
+                %label{:for => "tractoronlyW"}
+                  Tractor only w/ table and two chairs (20' X 40')
+                  %em *
+                %input#tractoronlyW{:max => "1", :min => "0", :name => "tractoronlyW", :oninput => "calcbooths()", :required => "", :step => "1", :type => "number"}
+                  %br
+                    %label{:for => "tractortrailerW"}
+                      Tractor-Trailer w/ table and two chairs (20' X 80')
+                      %em *
+                    %input#tractortrailerW{:max => "1", :min => "0", :name => "tractortrailerW", :oninput => "calcbooths()", :required => "", :step => "1", :type => "number"}
+                      %br
+                        %h2 Cost of Tractor/Tractor-Trailer Booths
+                        %label{:for => "booth_tractor_cost"} Cost of Tractor/Tractor-Trailer Booths $
+                        %input#booth_tractor_cost{:name => "booth_tractor_cost", :required => "", :value => "0"}
+                          %br
+                            :javascript
+                              function calcbooths()
+                              {
+                                var tractoronly = document.getElementById("tractoronly").value;
+                                var tractortrailer = document.getElementById("tractortrailer").value;
+                                var tractoronlyw = document.getElementById("tractoronlyW").value;
+                                var tractortrailerw = document.getElementById("tractortrailerW").value;
+                                var total = 0;
+                                if(tractoronly == "1")
+                                {
+                                  total = total + 1875;
+                                }
+                                if(tractoronlyw == "1")
+                                {
+                                  total = total + 3750;
+                                }
+                                if(tractortrailer == "1")
+                                {
+                                  total = total + 2600;
+                                }
+                                if(tractortrailerw == "1")
+                                {
+                                  total = total + 5050;
+                                }
+                                var cost = document.getElementById("booth_tractor_cost");
+                                cost.value = total;
+                                calcTot();
+                              }
+                            %h2 Need additional space? Complete this section.
+                            %p
+                              100-200 sq. ft.	 	$3.75 per sq. ft.
+                              %br
+                                201-399 sq. ft.	 	$3.50 per sq. ft.
+                                %br
+                                  400 sq. ft. and up	 	$3.25 per sq. ft.
+                                  %br
+                            %input#width{:name => "width", :oninput => "calcSquare()", :required => "", :value => "0"}
+                              ft. x
+                              %input#length{:name => "length", :oninput => "calcSquare()", :required => "", :value => "0"}
+                                ft. =
+                                %input#square{:name => "square", :required => "", :value => "0"}
+                                  sq. ft.
+                                  %h2 Cost of Custom Space
+                                  %label{:for => "custom_cost"} Cost of Custom Booth $
+                                  %input#custom_cost{:name => "custom_cost", :required => "", :value => "0"}
+                                    %br
+                                      :javascript
+                                        function calcSquare()
+                                        {
+                                          var width = document.getElementById("width").value;
+                                          var length = document.getElementById("length").value;
+                                          var square = document.getElementById("square");
+                                          width = parseFloat(width);
+                                          length = parseFloat(length);
+                                          var total = 0;
+                                          total = width * length;
+                                          square.value = total;
+                                          if(total < 200)
+                                          {
+                                            total = total * 3.75;
+                                          }
+                                          else if (total < 300)
+                                          {
+                                            total = total * 3.5;
+                                          }
+                                          else 
+                                          {
+                                            total = total * 3.25;
+                                          }
+                                          var cost = document.getElementById("custom_cost");
+                                          cost.value = total;
+                                          calcTot();
+                                        }
+                                      %h2 Cost of Custom Spaces
+                                      %label{:for => "booth_total_cost"} Cost of Booths $
+                                      %input#booth_total_cost{:name => "booth_total_cost", :required => "", :value => "0"}
+                                        %br
+                                          :javascript
+                                              function calcTot()
+                                              {
+                                                var trailerf = document.getElementById("booth_tractor_cost").value;
+                                                var customf = document.getElementById("custom_cost").value;
+                                                var costF = document.getElementById("booth_total_cost");
+                                            	var trailerF = parseFloat(trailerf);
+                                            	var customF = parseFloat(customf);
+                                            	var totalF = 0;
+                                            	totalF = trailerF + customF;
+                                            	costF.value = totalF;
+                                              }
+    %input{:type => "submit", :value => "Submit Booth Information"}
