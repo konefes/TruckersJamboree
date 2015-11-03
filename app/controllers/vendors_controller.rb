@@ -61,10 +61,9 @@ class VendorsController < ApplicationController
         # vendor id is passed in always
         # vendors have selected their booth space 
         # add booth information to the vendor
-        Vendor.update(number_i_booth: params["number_i_booth"],
-                        number_o_booth: params["number_o_booth"],
-                        booth_pref: params["booth_pref"],
-                        booth_cost: params["booth_cost"])
+        Vendor.find_by(vendor_id: session[:user_id]).update(number_i_booth: params["number_i_booth"],
+                                                            number_o_booth: params["number_o_booth"],
+                                                            booth_cost: params["booth_cost"])
         # redirect to services
         redirect_to '/vendors/services'
     end
@@ -87,12 +86,12 @@ class VendorsController < ApplicationController
     def enter_services
         # a vendor has now selected their booth and services options
         # attach that information to the vendors id
-        Vendor.update(electric: params["electric"],
-                        internet: params["internet"],
-                        forklift: params["forklift"],
-                        ext_chairs: params["ext_chairs"],
-                        ext_tables: params["ext_tables"],
-                        service_cost: params["service_cost"])
+        Vendor.find_by(vendor_id: session[:user_id]).update(electric: params["electric"],
+                                                            internet: params["internet"],
+                                                            forklift: params["forklift"],
+                                                            ext_chairs: params["ext_chairs"],
+                                                            ext_tables: params["ext_tables"],
+                                                            service_cost: params["service_cost"])
         # redirect to summary
         redirect_to '/vendors/summary'
     end
@@ -102,8 +101,8 @@ class VendorsController < ApplicationController
         # also this is where the vender will sign off on the input
         # also do a minimal check that the user is a human not a robot
         # there also needs to be an edit button 
-        #@user = User.find_by(id: session[:user_id])
-        #@vendor = Vendor.find_by(vendor_id: session[:user_id])
+        @user = User.find_by(id: session[:user_id])
+        @vendor = Vendor.find_by(vendor_id: session[:user_id])
     end
     
     def edit 

@@ -1,4 +1,4 @@
-Feature: Registration of a new vendor - entering contact information
+Feature: Registration of a new vendor 
   
 Scenario: Vendor enters contact info and clicks "Submit Contact Information" button
 
