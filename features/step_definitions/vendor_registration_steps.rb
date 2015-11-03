@@ -13,7 +13,9 @@ When /I have filled out my information with:/ do |contact_info_table|
             fill_in info_line[:field], :with => info_line[:info] 
         end
     end
-    
-    
-    
+end
+
+Then /^I should see the summary page with "(.*?)", "(.*?)"$/ do |arg1, arg2|
+   expect(page).to have_content(arg1)
+   expect(page).to have_content(arg2)
 end
