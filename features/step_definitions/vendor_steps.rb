@@ -1,7 +1,7 @@
 # Place all tests on views here
 
 Given /^I am on the Vendors home page$/ do
-  visit vendors_path
+  visit vendors_index_path
  end
 
 When(/^I clicked "(.*?)" link$/) do |arg1|
