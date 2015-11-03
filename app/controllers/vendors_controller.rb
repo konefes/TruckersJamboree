@@ -43,13 +43,13 @@ class VendorsController < ApplicationController
     end
     
     def booth 
-        @company_name = Vendor.find_by(vendor_id: session[:user_id]).company_name
+        #@company_name = Vendor.find_by(vendor_id: session[:user_id]).company_name
         # on this screen a vendor can select to enter custom booth information
         # on submit go to add_booth_info
     end
     
     def custom_booth 
-        @company_name = Vendor.find_by(vendor_id: session[:user_id]).company_name
+        #@company_name = Vendor.find_by(vendor_id: session[:user_id]).company_name
         # if a vendor selected a custom space they will be redirected to custom_booth path
         # vendor still needs to be passed to this page
         # a user requires a custom booth instead of the pre displayed ones
@@ -81,7 +81,7 @@ class VendorsController < ApplicationController
     def services
         # here they can select any required services that they might need
         # on submit go to services_entry
-        @company_name = Vendor.find_by(vendor_id: session[:user_id]).company_name
+        #@company_name = Vendor.find_by(vendor_id: session[:user_id]).company_name
     end
     
     def enter_services
@@ -102,15 +102,15 @@ class VendorsController < ApplicationController
         # also this is where the vender will sign off on the input
         # also do a minimal check that the user is a human not a robot
         # there also needs to be an edit button 
-        @user = User.find_by(id: session[:user_id])
-        @vendor = Vendor.find_by(vendor_id: session[:user_id])
+        #@user = User.find_by(id: session[:user_id])
+        #@vendor = Vendor.find_by(vendor_id: session[:user_id])
     end
     
     def edit 
         # vendor id sent in with all current information
         # this will have to be a form with all vendor editable data fields
-        @user = User.find_by(id: session[:user_id])
-        @vendor = Vendor.find_by(vendor_id: session[:user_id])
+        #@user = User.find_by(id: session[:user_id])
+        #@vendor = Vendor.find_by(vendor_id: session[:user_id])
     end
     
     def enter_edit
@@ -123,8 +123,8 @@ class VendorsController < ApplicationController
         
         # the completed vendor profile should be eastablished by now
         # render a invoice sent to the attched email in the registration
-        @user = User.find_by(id: session[:user_id])
-        @vendor = Vendor.find_by(vendor_id: session[:user_id])
+        #@user = User.find_by(id: session[:user_id])
+        #@vendor = Vendor.find_by(vendor_id: session[:user_id])
         # pritn all the entered field for the vendor to see one last time
         # display a message in large text showing the vendor their submission has been recieved
     end
