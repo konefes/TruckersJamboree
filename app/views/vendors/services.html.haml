@@ -1,0 +1,61 @@
+!!!
+%html
+  %body
+    %form
+      %h1 Additional Service Request
+      %h2 Booth Services
+      %label{:for => "forklift"}
+        Forklift Service in 15 min intervals($100 per hour. $25 mininum)
+        %em *
+      %input#forklift{:max => "8", :min => "0", :name => "forklift", :oninput => "calcService()", :required => "", :step => "1", :type => "number", :value => "0"}
+        %br
+          %br
+            %label{:for => "electric"}
+              Electric services ($50 per 20 amp circuit; 2400 watts max)
+              %em *
+            %input#electric{:max => "4", :min => "0", :name => "electric", :oninput => "calcService()", :required => "", :step => "1", :type => "number", :value => "0"}
+              %br
+                %br
+                  %label{:for => "internet"}
+                    Internet Service provided for Big Top tent ONLY ($50 per ethernet line)
+                    %em *
+                  %input#internet{:max => "1", :min => "0", :name => "internet", :oninput => "calcService()", :required => "", :step => "1", :type => "number", :value => "0"}
+                    %br
+                      %br
+                        %h2 Extra booth furnishings
+                        %label{:for => "ext_chairs"}
+                          Folding chairs @ $4 each
+                          %em *
+                        %input#ext_chairs{:max => "8", :min => "0", :name => "ext_chairs", :oninput => "calcService()", :required => "", :step => "1", :type => "number", :value => "0"}
+                          %br
+                            %br
+                              %label{:for => "ext_tables"}
+                                8 ft. skirted table(s) @ $25 each
+                                %em *
+                              %input#ext_tables{:max => "4", :min => "0", :name => "ext_tables", :oninput => "calcService()", :required => "", :step => "1", :type => "number", :value => "0"}
+                                %br
+                                  %br
+                                    %h2 Cost of Services
+                                    %label{:for => "service_cost"} Cost of Services $
+                                    %input#service_cost{:name => "service_cost", :required => "", :value => "0"}
+                                      %br
+                                        %br
+                                          %input{:type => "submit", :value => "Submit Service Information"}
+                                            :javascript
+                                              function calcService()
+                                              {
+                                                var electric = document.getElementById("electric").value;
+                                                var internet = document.getElementById("internet").value; 
+                                                var forklift = document.getElementById("forklift").value; 
+                                                var table = document.getElementById("ext_tables").value; 
+                                                var chair = document.getElementById("ext_chairs").value; 
+                                                electric = parseFloat(electric);
+                                                internet = parseFloat(internet);
+                                                forklift = parseFloat(forklift);
+                                                table = parseFloat(table);
+                                                chair = parseFloat(chair);
+                                                var total = 0;
+                                                total = electric * 50 + internet * 50 + forklift * 25 + table * 25 + chair * 4;
+                                                var serviceCost = document.getElementById("service_cost");
+                                                serviceCost.value = total;
+                                              }

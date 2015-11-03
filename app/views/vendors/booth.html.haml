@@ -9,6 +9,7 @@
     
       %h1 Booth Information
       %h2 Indoor Booths
+      %p Indoor Booth(s): 10' x 10' (Quantity is limited)<br>(Two Chairs, Table Cloth and Skirt are available included.)
       %label{:for => "number_i_booth"}
         Number of Inside Booths
         %em *
@@ -18,9 +19,8 @@
           %br
           
             %h2 Outdoor Booths
-            %p Outdoor Tent(s): 10' x 10' (Quantity is limited)
-                Includes tent & display space ($500/unit)
-                (Two Chairs, Table Cloth and Skirt are available upon request.)
+            %p Outdoor Tent(s): 10' x 10' (Quantity is limited)<br>Includes tent & display space ($500/unit)<br>(Two Chairs, Table Cloth and Skirt are included.)
+            %br
             %label{:for => "number_o_booth"} Number of Outside Booths
             %em *
             %input#number_o_booth{:max => "10", :min => "0", :name => "number_o_booth", :oninput => "calcObooths()", :required => "", :step => "1", :type => "number"}
