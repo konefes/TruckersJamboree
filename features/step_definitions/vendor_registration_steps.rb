@@ -15,6 +15,5 @@ When /I have filled out my information with:/ do |contact_info_table|
     end
     
     
-    #click_button 'Submit Contact Information'
     
 end
