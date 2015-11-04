@@ -1,9 +1,9 @@
-Feature: Allow admins to view all vendors when "show all vendors" is clicked
+Feature: View of all vendors 
 
 Scenario:  View all Vendors by clicking the "Show all vendors" link
 
-Given I am on the "vendors" home page
+Given I am on the vendors page
 
-When I have visited "Show all vendors" link
+When I have clicked "show all vendors" link
 
-Then I should see "All Vendors"
+Then I should see "Billy Bob Buford"
