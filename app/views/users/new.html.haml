@@ -2,7 +2,7 @@
 %hr
 
 
-= form_tag users_path do
+= form_tag users_path, :method => :post do
 
   = label :user, :username, 'Username'
   = text_field :user, 'username' , :id => 'signup_id'
@@ -24,5 +24,5 @@
   
   %hr
   
-  = submit_tag 'Create my account' , :id => 'signup_submit'
+  = submit_tag 'Create my account', :method => :post , :id => 'signup_submit'
 

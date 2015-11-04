@@ -1,7 +1,7 @@
 %h1 Login
 %hr
 
-= form_tag login_create_path do
+= form_tag login_create_path, method: :post do
 
   = label :user, :username, 'Username'
   = text_field :user, 'username' , :id => 'login_id'

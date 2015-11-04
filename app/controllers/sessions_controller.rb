@@ -18,9 +18,7 @@ class SessionsController < ApplicationController
         else
           @user = User.find_by_username(login_params[:username])
           session[:session_token] = @user.session_token
-          flash[:notice] = "#{@user.session_token} was session created."
-          set_current_user()
-          redirect_to login_path
+          redirect_to vendors_registration_path
       end
 
   end
