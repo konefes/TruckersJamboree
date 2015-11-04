@@ -27,7 +27,7 @@
                       %br
                         %h2 Cost of Tractor/Tractor-Trailer Booths
                         %label{:for => "booth_tractor_cost"} Cost of Tractor/Tractor-Trailer Booths $
-                        %input#booth_tractor_cost{:name => "booth_tractor_cost", :required => "", :value => "0"}
+                        %input#booth_tractor_cost{:name => "booth_tractor_cost", :required => "", :value => "0",:readonly => ""}
                           %br
                             :javascript
                               function calcbooths()
@@ -73,7 +73,7 @@
                                   sq. ft.
                                   %h2 Cost of Custom Space
                                   %label{:for => "custom_cost"} Cost of Custom Booth $
-                                  %input#custom_cost{:name => "custom_cost", :required => "", :value => "0"}
+                                  %input#custom_cost{:name => "custom_cost", :required => "", :value => "0", :readonly => ""}
                                     %br
                                       :javascript
                                         function calcSquare()
@@ -104,7 +104,7 @@
                                         }
                                       %h2 Cost of Custom Spaces
                                       %label{:for => "booth_total_cost"} Cost of Booths $
-                                      %input#booth_total_cost{:name => "booth_total_cost", :required => "", :value => "0"}
+                                      %input#booth_total_cost{:name => "booth_total_cost", :required => "", :value => "0", :readonly => ""}
                                         %br
                                           :javascript
                                               function calcTot()
