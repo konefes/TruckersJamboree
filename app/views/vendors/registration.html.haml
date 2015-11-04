@@ -1,4 +1,3 @@
-
 %form#vendor{:action => "enter_registration", :method => "post"}
   .panel.panel-info
     .panel-heading
@@ -6,112 +5,112 @@
       %p
         %i Please complete the form. Mandatory fields are marked with a
         %em *
-    .panel.panel-default
-      .panel-body
-        %label{:for => "company_name"}
-          Company Name
-          *
-        %input#company_name{:autofocus => "", :name => "company_name", :placeholder => "", :type => "text", :required =>""}
-        %br
-        %label{:for => "product"}
-          Company Product
-          %em *
-        %input#product{:autofocus => "", :name => "product", :placeholder => "", :type => "text", :required =>""}
-        %br
-        %label{:for => "contact_name"}
-          Contact Name
-          %em *
-        %input#contact_name{:autofocus => "", :name => "contact_name", :placeholder => "", :type => "text", :required =>""}
-        %br
-    .panel.panel-default
-      .panel-body
-        %label{:for => "address_street", :required =>""}
-          Street
-          %em *
-        %input#address_street{:autofocus => "", :name => "address_street", :placeholder => "", :type => "text", :required =>""}
-        %br
-        %label{:for => "address_city"}
-          City
-          %em *
-        %input#address_city{:autofocus => "", :name => "address_city", :placeholder => "", :type => "text", :required =>""}
-        %br
-        %label{:for => "address_state"} 
-          State
-          %em *
-        %select#address_state{:name => "address_state", :required =>""}
-          %option{:style => "display:none;", :value => ""}
-          %option{:value => "AL"} Alabama
-          %option{:value => "AK"} Alaska
-          %option{:value => "AZ"} Arizona
-          %option{:value => "AR"} Arkansas
-          %option{:value => "CA"} California
-          %option{:value => "CO"} Colorado
-          %option{:value => "CT"} Connecticut
-          %option{:value => "DE"} Delaware
-          %option{:value => "DC"} District Of Columbia
-          %option{:value => "FL"} Florida
-          %option{:value => "GA"} Georgia
-          %option{:value => "HI"} Hawaii
-          %option{:value => "ID"} Idaho
-          %option{:value => "IL"} Illinois
-          %option{:value => "IN"} Indiana
-          %option{:value => "IA"} Iowa
-          %option{:value => "KS"} Kansas
-          %option{:value => "KY"} Kentucky
-          %option{:value => "LA"} Louisiana
-          %option{:value => "ME"} Maine
-          %option{:value => "MD"} Maryland
-          %option{:value => "MA"} Massachusetts
-          %option{:value => "MI"} Michigan
-          %option{:value => "MN"} Minnesota
-          %option{:value => "MS"} Mississippi
-          %option{:value => "MO"} Missouri
-          %option{:value => "MT"} Montana
-          %option{:value => "NE"} Nebraska
-          %option{:value => "NV"} Nevada
-          %option{:value => "NH"} New Hampshire
-          %option{:value => "NJ"} New Jersey
-          %option{:value => "NM"} New Mexico
-          %option{:value => "NY"} New York
-          %option{:value => "NC"} North Carolina
-          %option{:value => "ND"} North Dakota
-          %option{:value => "OH"} Ohio
-          %option{:value => "OK"} Oklahoma
-          %option{:value => "OR"} Oregon
-          %option{:value => "PA"} Pennsylvania
-          %option{:value => "RI"} Rhode Island
-          %option{:value => "SC"} South Carolina
-          %option{:value => "SD"} South Dakota
-          %option{:value => "TN"} Tennessee
-          %option{:value => "TX"} Texas
-          %option{:value => "UT"} Utah
-          %option{:value => "VT"} Vermont
-          %option{:value => "VA"} Virginia
-          %option{:value => "WA"} Washington
-          %option{:value => "WV"} West Virginia
-          %option{:value => "WI"} Wisconsin
-          %option{:value => "WY"} Wyoming
-        %br
-        %label{:for => "address_zip"}
-          Zip code
-          %em *
-        %input#address_zip{:name => "address_zip", :pattern => "^[0-9]{5}$",  :title => "Must contain 5 numbers", :type => "text", :required =>""}
-        %br
-    .panel.panel-default
-      .panel-body
-        %label{:for => "phone"} 
-          Phone
-          %em *
-        %input#phone{:name => "phone", :pattern => "^[(]{0,1}[0-9]{3}[)]{0,1}[-\\s\\.]{0,1}[0-9]{3}[-\\s\\.]{0,1}[0-9]{4}$", :placeholder => "(xxx) xxx-xxxx",  :title => "Phone number must contain 10 digits", :type => "text", :required =>""}
-        %br
-        %label{:for => "fax"} 
-          Fax
-        %input#fax{:name => "fax", :pattern => "^[(]{0,1}[0-9]{3}[)]{0,1}[-\\s\\.]{0,1}[0-9]{3}[-\\s\\.]{0,1}[0-9]{4}$", :placeholder => "(xxx) xxx-xxxx", :title => "Phone number must contain 10 digits", :type => "text"}
-        %br
-        %label{:for => "email"}
-          Email
-          %em *
-        %input#email{:name => "email", :pattern => "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$",  :title => "Email must contain mailbox/username@domain.domain", :type => "email", :required =>""}
-                                 
-    %p
-      %input#submit{:type => "submit", :value => "Submit Contact Information"}/
+    .panel-body
+      %label{:for => "company_name"}
+        Company Name
+        *
+      %input#company_name{:autofocus => "", :name => "company_name", :placeholder => "", :type => "text"}
+      %br
+      %label{:for => "product"}
+        Company Product
+        %em *
+      %input#product{:autofocus => "", :name => "product", :placeholder => "", :type => "text"}
+      %br
+      %label{:for => "contact_name"}
+        Contact Name
+        %em *
+      %input#contact_name{:autofocus => "", :name => "contact_name", :placeholder => "", :type => "text"}
+      
+  .panel.panel-default
+    .panel-body
+      %label{:for => "address_street"}
+        Street
+        %em *
+      %input#address_street{:autofocus => "", :name => "address_street", :placeholder => "", :type => "text"}
+      %br
+      %label{:for => "address_city"}
+        City
+        %em *
+      %input#address_city{:autofocus => "", :name => "address_city", :placeholder => "", :type => "text"}
+      %br
+      %label{:for => "address_state"} 
+        State
+        %em *
+      %select#address_state{:name => "address_state"}
+        %option{:style => "display:none;", :value => ""}
+        %option{:value => "AL"} Alabama
+        %option{:value => "AK"} Alaska
+        %option{:value => "AZ"} Arizona
+        %option{:value => "AR"} Arkansas
+        %option{:value => "CA"} California
+        %option{:value => "CO"} Colorado
+        %option{:value => "CT"} Connecticut
+        %option{:value => "DE"} Delaware
+        %option{:value => "DC"} District Of Columbia
+        %option{:value => "FL"} Florida
+        %option{:value => "GA"} Georgia
+        %option{:value => "HI"} Hawaii
+        %option{:value => "ID"} Idaho
+        %option{:value => "IL"} Illinois
+        %option{:value => "IN"} Indiana
+        %option{:value => "IA"} Iowa
+        %option{:value => "KS"} Kansas
+        %option{:value => "KY"} Kentucky
+        %option{:value => "LA"} Louisiana
+        %option{:value => "ME"} Maine
+        %option{:value => "MD"} Maryland
+        %option{:value => "MA"} Massachusetts
+        %option{:value => "MI"} Michigan
+        %option{:value => "MN"} Minnesota
+        %option{:value => "MS"} Mississippi
+        %option{:value => "MO"} Missouri
+        %option{:value => "MT"} Montana
+        %option{:value => "NE"} Nebraska
+        %option{:value => "NV"} Nevada
+        %option{:value => "NH"} New Hampshire
+        %option{:value => "NJ"} New Jersey
+        %option{:value => "NM"} New Mexico
+        %option{:value => "NY"} New York
+        %option{:value => "NC"} North Carolina
+        %option{:value => "ND"} North Dakota
+        %option{:value => "OH"} Ohio
+        %option{:value => "OK"} Oklahoma
+        %option{:value => "OR"} Oregon
+        %option{:value => "PA"} Pennsylvania
+        %option{:value => "RI"} Rhode Island
+        %option{:value => "SC"} South Carolina
+        %option{:value => "SD"} South Dakota
+        %option{:value => "TN"} Tennessee
+        %option{:value => "TX"} Texas
+        %option{:value => "UT"} Utah
+        %option{:value => "VT"} Vermont
+        %option{:value => "VA"} Virginia
+        %option{:value => "WA"} Washington
+        %option{:value => "WV"} West Virginia
+        %option{:value => "WI"} Wisconsin
+        %option{:value => "WY"} Wyoming
+      %br
+      %label{:for => "address_zip"}
+        Zip code
+        %em *
+      %input#address_zip{:name => "address_zip", :pattern => "^[0-9]{5}$",  :title => "Must contain 5 numbers", :type => "number"}
+      %br
+  .panel.panel-default
+    .panel-body
+      %label{:for => "phone"} 
+        Phone
+        %em *
+      %input#phone{:name => "phone", :pattern => "^[(]{0,1}[0-9]{3}[)]{0,1}[-\\s\\.]{0,1}[0-9]{3}[-\\s\\.]{0,1}[0-9]{4}$", :placeholder => "(xxx) xxx-xxxx",  :title => "Phone number must contain 10 digits", :type => "text"}
+      %br
+      %label{:for => "fax"} 
+        Fax
+      %input#fax{:name => "fax", :pattern => "^[(]{0,1}[0-9]{3}[)]{0,1}[-\\s\\.]{0,1}[0-9]{3}[-\\s\\.]{0,1}[0-9]{4}$", :placeholder => "(xxx) xxx-xxxx", :title => "Phone number must contain 10 digits", :type => "text"}
+      %br
+      %label{:for => "email"}
+        Email
+        %em *
+      %input#email{:name => "email", :pattern => "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$",  :title => "Email must contain mailbox/username@domain.domain", :type => "email"}
+                               
+  %p
+    %input#submit{:type => "submit", :value => "Submit Contact Information", :class => "btn-info"}
+>>>>>>> registration_tests3

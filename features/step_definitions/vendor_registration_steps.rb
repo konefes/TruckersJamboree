@@ -15,6 +15,10 @@ When /I have filled out my information with:/ do |contact_info_table|
     end
 end
 
+When /^I have opted to use custom booth information$/ do
+   click_link("Custom Outdoor Space") 
+end
+
 Then /^I should see the summary page with "(.*?)", "(.*?)"$/ do |arg1, arg2|
    expect(page).to have_content(arg1)
    expect(page).to have_content(arg2)
