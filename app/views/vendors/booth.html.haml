@@ -27,10 +27,10 @@
       
   %h5 Cost of Booths
   %label{:for => "booth_cost"} Cost of Booths $
-  %input#booth_cost{:name => "booth_cost", :required => "", :value => "0"}
+  %input#booth_cost{:name => "booth_cost", :required => "", :value => "0", :readonly => ""}
   %br
           
-  %input#submit{:type => "submit", :value => "Submit Booth Information"}
+  %input#submit{:type => "submit", :value => "Submit Booth Information", :class => "btn-info"}
   %p If a custom outdoor space is required follow the link below:
   = link_to 'Custom Outdoor Space', vendors_custom_booth_path 
 

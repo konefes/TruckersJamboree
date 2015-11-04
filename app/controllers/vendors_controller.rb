@@ -72,7 +72,7 @@ class VendorsController < ApplicationController
         # vendor id is passed in always
         # vendors have selected their custom booth space 
         # add custom booth information to the vendor
-        # !!!!!code!!!!!
+        Vendor.find_by(vendor_id: session[:user_id]).update(booth_cost: params["booth_cost"])
         # redirect to services
         redirect_to '/vendors/services'
     end

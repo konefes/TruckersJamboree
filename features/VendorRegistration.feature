@@ -19,7 +19,6 @@ Scenario: Vendor goes through normal registration
         | field             | info              |
         | number_i_booth    | 2                 |
         | number_o_booth    | 3                 |
-        | booth_cost        | 1234              |
         | submit            | Submit Booth Information|
     And I have filled out my information with:
         | field             | info              |
@@ -28,7 +27,6 @@ Scenario: Vendor goes through normal registration
         | forklift          | 3                 |
         | ext_chairs        | 5                 |
         | ext_tables        | 3                 |
-        | service_cost      | 2345              |
         | submit            | Submit Service Information|
     Then I should see the summary page with "company1", "product1"
 
@@ -48,4 +46,19 @@ Scenario: Vendor goes through registration with custom booth info
         | fax               | 1231231234        |
         | email             | test@test.com     |
         | submit            | Submit Contact Information|
-    
+    And I have opted to use custom booth information
+    And I have filled out my information with:
+        | field             | info              |
+        | tractoronly       | 1                 |
+        | width             | 30                |
+        | length            | 25                |
+        | submit            | Submit Booth Information|
+    And I have filled out my information with:
+        | field             | info              |
+        | electric          | 1                 |
+        | internet          | 1                 |
+        | forklift          | 3                 |
+        | ext_chairs        | 5                 |
+        | ext_tables        | 3                 |
+        | submit            | Submit Service Information|
+    Then I should see the summary page with "company1", "product1"
