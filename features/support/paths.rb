@@ -8,7 +8,7 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the (Vendors )?home\s?page$/ then '/vendors'
+    when /^the (Vendors)?home\s?page$/ then '/vendors'
     when /^the vendors page$/ then '/vendors'
 
     # Add more mappings here.
