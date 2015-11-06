@@ -97,7 +97,7 @@ class VendorsController < ApplicationController
         redirect_to '/vendors/summary'
     end
     
-    def summary 
+    def summary
         # render the summary view for the customer to verify data 
         # also this is where the vender will sign off on the input
         # also do a minimal check that the user is a human not a robot

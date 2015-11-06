@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  
+  root 'vendors#index'
 
   get "vendors/index"
   get "vendors/registration"
