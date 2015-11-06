@@ -8,9 +8,9 @@
 
  
  
- vendors = Vendor.create({"company_name"=>"Billy Bob Buford",
- "product"=>"General Milling",
- "contact_name"=>"Buford E. Buford",
+ vendors = Vendor.create({"company_name"=>"Mrs. Fields",
+ "product"=>"Birch wood",
+ "contact_name"=>"Clementine",
  "address_city"=>"Iowa",
  "address_state"=>"IA",
  "address_zip"=>"52241",
