@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
         User.create!(user_params)
     end
     
+    def email_with_role
+        "#{self.email} (#{self.role})"
+    end
+    
 end
