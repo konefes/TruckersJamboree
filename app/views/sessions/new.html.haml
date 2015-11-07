@@ -1,17 +1,21 @@
-%h1 Login
+%h2 Login
 %hr
 
 = form_tag login_create_path, method: :post do
-
-  = label :user, :username, 'Username'
-  = text_field :user, 'username' , :id => 'login_id'
+ .container
+  .mainbox.col-md-4.col-md-offset-3.col-sm-10.col-sm-offset-2
+   .panel.panel-info
+    .panel-heading 
+     %h4 Login
+    .panel-body
+     .form-group
+     = label :user, :username, 'Username'
+     = text_field :user, 'username' , :id => 'login_id', class: 'form-control'
   
-  %hr
-  
-  = label :user, :password, 'Password'
-  = text_field :user, 'password' , :id => 'login_password'
-  
-  %hr
-  
-  = button_to 'Login to my account', login_create_path , method: :post, :id => 'login_submit'
-  = link_to 'Sign-up	for	an	account' , new_user_path , :id => 'signup'
+     %hr
+     = label :user, :password, 'Password'
+     = text_field :user, 'password' , :id => 'login_password', class: 'form-control'
+ 
+     %hr
+     = button_to 'Login to my account', login_create_path , method: :post, :id => 'login_submit', class: 'btn btn-primary'
+     = link_to 'Sign-up	for	an	account' , new_user_path , :id => 'signup'
