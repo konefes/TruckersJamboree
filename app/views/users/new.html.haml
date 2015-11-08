@@ -1,28 +1,34 @@
-%h1 Sign Up
+%h2 Sign Up
 %hr
 
 
 = form_tag users_path, :method => :post do
+ .container
+  .mainbox.col-md-4.col-md-offset-3.col-sm-10.col-sm-offset-2
+   .panel.panel-info
+    .panel-heading 
+     %h4 Sign up
+    .panel-body
+     .form-group
+     = label :user, :username, 'Username'
+     = text_field :user, 'username' , :id => 'signup_id', class: 'form-control'
 
-  = label :user, :username, 'Username'
-  = text_field :user, 'username' , :id => 'signup_id'
+     %hr
 
-  %hr
-
-  = label :user, :password, 'Password'
-  = text_field :user, 'password' , :id => 'signup_password'
+     = label :user, :password, 'Password'
+     = text_field :user, 'password' , :id => 'signup_password',class: 'form-control'
   
-  %hr
+     %hr
   
-  = label :user, :email, 'E-Mail'
-  = text_field :user, 'email' , :id => 'signup_email'
+     = label :user, :email, 'E-Mail'
+     = text_field :user, 'email' , :id => 'signup_email',class: 'form-control'
   
-  %hr
+     %hr
  
-  = label :user, :role, 'User Type'
-  = select :user, :role, ['Vendor','Admin(Authorized Personel Only)'], class: 'required'
+     = label :user, :role, 'User Type'
+     = select :user, :role, ['Vendor','Admin(Authorized Personel Only)'], class: 'required', class: 'form-control'
   
-  %hr
+     %hr
   
-  = submit_tag 'Create my account', :method => :post , :id => 'signup_submit'
+     = submit_tag 'Create my account', :method => :post , :id => 'signup_submit', class: 'btn btn-primary'
 
