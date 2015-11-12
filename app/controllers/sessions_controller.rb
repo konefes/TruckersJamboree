@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-
+  skip_before_filter	:set_current_user
+  
   def login_params
     params.require(:user).permit(:username, :password)
   end
@@ -11,16 +12,16 @@ class SessionsController < ApplicationController
 
   def create
 
-      if User.where(username: login_params[:username]).empty?
-          flash[:notice] = "Invalid username/password combination"
-          redirect_to login_path
-          
-        else
-          @user = User.find_by_username(login_params[:username])
-          session[:session_token] = @user.session_token
-          redirect_to vendors_registration_path
-      end
-
+    user	=	User.find_by_username(login_params[:username])	
+		if	user	&&	user.authenticate(login_params[:password])	
+				session[:session_token]=	user.session_token
+				@current_user	=	user	
+				redirect_to	vendors_registration_path	
+		else	
+				flash[:notice]	=	'Invalid	username/password	combination'	
+				redirect_to	login_path	
+		end			
+		
   end
 
   def show
@@ -36,7 +37,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:session_token] = nil
+  	session[:session_token]=nil		
+  	@current_user=nil
+		flash[:notice]=	'You have logged out'
     redirect_to login_path
   end
 

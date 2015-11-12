@@ -14,7 +14,7 @@
   
      %hr
      = label :user, :password, 'Password'
-     = text_field :user, 'password' , :id => 'login_password', class: 'form-control'
+     = password_field :user, 'password' , :id => 'login_password', class: 'form-control'
  
      %hr
      = button_to 'Login to my account', login_create_path , method: :post, :id => 'login_submit', class: 'btn btn-primary'
