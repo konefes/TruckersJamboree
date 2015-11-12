@@ -19,3 +19,13 @@
 @import 'bootstrap';
 
  
+ 
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    .logo {
+        width: 100px;
+        margin-right: 10px;
+    }
+}

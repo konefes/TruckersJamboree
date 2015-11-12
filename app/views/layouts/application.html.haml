@@ -1,26 +1,28 @@
 !!!
 %html
-  %head
-    %title Truckers Jamboree
-    = javascript_include_tag 'https://code.jquery.com/jquery-2.1.4.min.js'
-    = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'
-    = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = csrf_meta_tags
+ %head
+  %title Truckers Jamboree
+  -#= javascript_include_tag 'https://code.jquery.com/jquery-2.1.4.min.js'
+  = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'
+  = stylesheet_link_tag 'application', 'media' => 'all'
+  -#'data-turbolinks-track' => true
+  -#= javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
 
   %body
-    %h1.title Truckers Jamboree
-    #main
-      .center
-        - if !@current_user					
-          = link_to 'Sign Up/Login', login_path , method: :get, :id => 'login'
-        - else
-          %p.flash_message You are logged in as #{@current_user.username} 
-          = link_to 'Logout', logout_path , method: :delete, :id => 'logout'
+   .navbar.navbar-default.navbar-static-top
+    .container
+     .navbar-collapse.collapse.navbar-responsive-collapse
+      %h1.title Truckers Jamboree
+     - if !@current_user					
+      = link_to 'Sign Up/Login', login_path , method: :get, :id => 'login'
+     - else
+      %p.flash_message You are logged in as #{@current_user.username} 
+      = link_to 'Logout', logout_path , method: :delete, :id => 'logout'
       
-        - if flash[:notice]
-          #notice.message= flash[:notice]
-        - elsif flash[:warning]
-          #warning.message= flash[:warning]
+     - if flash[:notice]
+      #notice.message= flash[:notice]
+     - elsif flash[:warning]
+      #warning.message= flash[:warning]
 
-      = yield
+    = yield
