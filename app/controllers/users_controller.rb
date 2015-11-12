@@ -14,8 +14,10 @@ class UsersController < ApplicationController
     
       @user=User.new(user_params)
       @user.valid?
-      if !@user.errors[:username].empty?
-        message+="User name has already been taken\n"
+      if !@user.errors[:username].grep(/^can't be blank/).empty?
+        message+="User name field cannot be left blank\n"
+      elsif !@user.errors[:username].grep(/^has already been taken/).empty?
+        message+="User name has already been takent\n"
       end
       
       if !@user.errors[:email].grep(/^can't be blank/).empty?

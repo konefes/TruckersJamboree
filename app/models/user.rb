@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
     validates_uniqueness_of :username
-    #validates :username, presence: true
+    validates :username, presence: true
     
     VALID_EMAIL_REGEX	=	/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates	:email,	presence:	true,	
