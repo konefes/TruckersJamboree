@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter	:set_current_user,	:only=>	['show',	'edit',	'update',	'delete']	
 
   def user_params
     params.require(:user).permit(:username, :password, :email, :role)
@@ -19,6 +20,14 @@ class UsersController < ApplicationController
       elsif !@user.errors[:username].grep(/^has already been taken/).empty?
         message+="User name has already been taken. \n"
       end
+      
+      
+      if !@user.errors[:password].grep(/^can't be blank/).empty?
+        message+="Password field cannot be left blank. \n"
+      elsif !@user.errors[:password].grep(/^is too short/).empty?
+        message+="Password is too short, minimum is 6 characters. \n"
+      end
+      
       
       if !@user.errors[:email].grep(/^can't be blank/).empty?
         message+="Email field cannot be left blank. \n"
