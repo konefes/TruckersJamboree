@@ -18,9 +18,15 @@ class UsersController < ApplicationController
         message+="User name has already been taken\n"
       end
       
+      if !@user.errors[:email].grep(/^can't be blank/).empty?
+        message+="Email field cannot be left blank\n"
+      elsif !@user.errors[:email].grep(/^is invalid/).empty?
+        message+="Email is not in correct format\n"
+      end
+      
       
       if message.empty?
-        @user.save
+        @user = User.create_user!(user_params)
         flash[:notice] = "New user #{@user.username} was successfully created."
         redirect_to login_path
       else
