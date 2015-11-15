@@ -14,11 +14,14 @@
  *
  *= require_tree .
  *= require_self
- @import 'bootstrap';
+ *= require dataTables/jquery.dataTables
  */
 @import 'bootstrap';
 
  
+body {
+    margin-top: 2%
+} 
  
   .title {
     font-size: 28px;

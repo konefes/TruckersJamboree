@@ -41,8 +41,26 @@
         = button_to 'Test', :class => 'btn.btn-primary' 
         %span.glyphicon.glyphicon.heart Add
 
+.container
+ .row
+  .col-md-3
+   %table#Vendors
+    %thead
+     %tr
+      %th Company Name
+      %th Contact Person
+      %th Product
+      %th Contact Number
+    %tbody
+     - @vendors.each do |vendor|
+      %tr
+      %td= vendor.company_name 
+      %td= vendor.contact_name
+      %td= vendor.product
+      %td= vendor.phone
 
-
+   = link_to 'Home', vendors_index_path, 'method' => 'get'
+   #loop for now based //will change based on logic
 
 
 

@@ -2,16 +2,19 @@ class VendorsController < ApplicationController
     before_filter :set_current_user
     
     def index
-        #
+      @vendors = Vendor.all 
+      #test view in index. Will remove later
     end
     
     def show
-        #
+      @vendors = Vendor.all 
+      #test view in index. Will remove later
     end
     
     def show_vendor
         #vendorid = params[:id]
         @vendors = Vendor.all
+        #will remove depending on option jquery
     end
     
     def registration

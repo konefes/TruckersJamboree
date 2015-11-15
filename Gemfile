@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass', '~> 3.3.5'
 
+gem 'jquery-datatables-rails', '~> 1.12.2'
+
 #added bootstrap for javascript
 
 # Use ActiveModel has_secure_password

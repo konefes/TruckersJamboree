@@ -94,6 +94,8 @@ GEM
     jbuilder (2.2.16)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
+    jquery-datatables-rails (1.12.2)
+      jquery-rails
     jquery-rails (4.0.3)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -211,6 +213,7 @@ DEPENDENCIES
   factory_girl_rails
   haml
   jbuilder (~> 2.0)
+  jquery-datatables-rails (~> 1.12.2)
   jquery-rails
   launchy
   pg
