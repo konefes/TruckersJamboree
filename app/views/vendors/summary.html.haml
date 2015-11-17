@@ -32,6 +32,7 @@
                         Email:
                         =session[:email]
                         %br
+                        =link_to "Edit Contact Info", vendors_summary_change_path(:page => "contact")
                     
                     .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
                         %h2 Booth Information
@@ -44,6 +45,7 @@
                         Booth Cost: 
                         =session[:booth_cost]
                         %br
+                        =link_to "Edit Booth Info", vendors_summary_change_path(:page => "booth")
                     
                     .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
                         %h2 Services Requested
@@ -64,6 +66,8 @@
                         %br
                         Service Cost:
                         =session[:service_cost]
+                        %br
+                        =link_to "Edit Services Info", vendors_summary_change_path(:page => "services")
                     .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
                         .col-md-offset-3.col-md-6
                             %input#submit{:type => "submit", :value => "Approve Summary", :class => "btn btn-info btn-block"}
