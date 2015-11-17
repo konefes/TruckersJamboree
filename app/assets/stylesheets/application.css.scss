@@ -29,3 +29,22 @@
         margin-right: 10px;
     }
 }
+
+.panel-info {
+    border-color: #BB182D;
+}
+
+.panel-info > .panel-heading {
+  background-color: #BB182D;
+  color: white;
+}
+
+.form-control:focus {
+  border-color: #BB182D;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+.btn-info {
+    background-color: #BB182D;
+    border-color: #BB182D;
+}
