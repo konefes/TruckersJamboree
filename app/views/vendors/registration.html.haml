@@ -51,6 +51,7 @@
             .col-md-9
               %select#address_state{:name => "address_state", :class => "form-control", :required => ""}
                 %option{:style => "display:none;", :value => ""}
+                %option{:disabled => ""} --United States--
                 %option{:value => "AL"} Alabama
                 %option{:value => "AK"} Alaska
                 %option{:value => "AZ"} Arizona
@@ -102,13 +103,24 @@
                 %option{:value => "WV"} West Virginia
                 %option{:value => "WI"} Wisconsin
                 %option{:value => "WY"} Wyoming
+                %option{:disabled => ""} --Canada--
+                %option{:value => "ON"} Ontario 
+                %option{:value => "QC"} Quebec 
+                %option{:value => "NS"} Nova Scotia
+                %option{:value => "NB"} New Brunswick 
+                %option{:value => "MB"} Manitoba 
+                %option{:value => "BC"} British Columbia
+                %option{:value => "PE"} Prince Edward Island 
+                %option{:value => "SK"} Saskatchewan 
+                %option{:value => "AB"} Alberta 
+                %option{:value => "NL"} Newfoundland and Labrador 
           
           .form-group
             %label{:for => "address_zip", :class => "col-md-3 control-label"}
               Zip code
               %em *
             .col-md-9
-              %input#address_zip{:name => "address_zip", :pattern => "^[0-9]{5}$",  :title => "Must contain 5 numbers", :type => "text", :class => "form-control", :required => ""}
+              %input#address_zip{:name => "address_zip", :pattern => "^[0-9]{5}|[0-9a-zA-Z]{6}$",  :title => "Must contain 5 numbers", :type => "text", :class => "form-control", :required => ""}
             
           .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}
             %label{:for => "phone", :class => "col-md-3 control-label"} 
@@ -116,12 +128,6 @@
               %em *
             .col-md-9
               %input#phone{:name => "phone", :pattern => "^[(]{0,1}[0-9]{3}[)]{0,1}[-\\s\\.]{0,1}[0-9]{3}[-\\s\\.]{0,1}[0-9]{4}$", :placeholder => "(xxx) xxx-xxxx",  :title => "Phone number must contain 10 digits", :type => "text", :class => "form-control", :required => ""}
-            
-          .form-group
-            %label{:for => "fax", :class => "col-md-3 control-label"} 
-              Fax
-            .col-md-9
-              %input#fax{:name => "fax", :pattern => "^[(]{0,1}[0-9]{3}[)]{0,1}[-\\s\\.]{0,1}[0-9]{3}[-\\s\\.]{0,1}[0-9]{4}$", :placeholder => "(xxx) xxx-xxxx", :title => "Phone number must contain 10 digits", :type => "text", :class => "form-control"}
             
           .form-group
             %label{:for => "email", :class => "col-md-3 control-label"}
