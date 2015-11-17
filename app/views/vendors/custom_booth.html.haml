@@ -8,66 +8,66 @@
           %h2 Custom Tractor-Trailer Booths
     
           .form-group
-            %label{:for => "tractoronly", :class => "col-md-8 control-label"}
-              Tractor only w/ table and two chairs (15' X 40')
-            .col-md-4
-              %input#tractoronly.form-control{:max => "1", :min => "0", :name => "tractoronly", :value => "0", :oninput => "calcbooths()", :required => "", :placeholder =>"0", :step => "1", :type => "number"}
-          
-          .form-group  
-            %label{:for => "tractortrailer", :class => "col-md-8 control-label"}
-              Tractor-Trailer w/ table and two chairs (15' X 80')
-            .col-md-4
-              %input#tractortrailer.form-control{:max => "1", :min => "0", :name => "tractortrailer", :value => "0", :oninput => "calcbooths()", :required => "", :placeholder =>"0", :step => "1", :type => "number"}
-          
-          .form-group  
-            %label{:for => "tractoronlyW", :class => "col-md-8 control-label"}
-              Tractor only w/ table and two chairs (20' X 40')
-            .col-md-4
-              %input#tractoronlyW.form-control{:max => "1", :min => "0", :name => "tractoronlyW", :value => "0", :oninput => "calcbooths()", :required => "", :placeholder =>"0", :step => "1", :type => "number"}
-            
-          .form-group
-            %label{:for => "tractortrailerW", :class => "col-md-8 control-label"}
-              Tractor-Trailer w/ table and two chairs (20' X 80')
-            .col-md-4
-              %input#tractortrailerW.form-control{:max => "1", :min => "0", :name => "tractortrailerW", :value => "0", :oninput => "calcbooths()", :required => "", :placeholder =>"0", :step => "1", :type => "number"}
-          
+            %label{:for => "trailer_select", :class => "col-md-3 control-label"} 
+              Tractor/Tractor-Trailer Booth
+            .col-md-9
+              %select#trailer_select{:name => "trailer_select", :onchange => "calc()", :class => "form-control"}
+                %option{:style => "display:none;", :value => ""}
+                %option{:value => ""}
+                %option{:value => "T"} Tractor only w/ table and two chairs 15x40
+                %option{:value => "Tw"} Tractor Trailer w/ table and two chairs 15x80
+                %option{:value => "TT"} Tractor only w/ table and two chairs 20x40
+                %option{:value => "TTw"} Tractor Trailer w/ table and two chairs 20x80
+                
           .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"} 
             %label{:for => "booth_tractor_cost", :class => "col-md-7 control-label"} 
               Cost of Tractor/Tractor-Trailer Booths $
             .col-md-4
-              %input#booth_tractor_cost.form-control{:name => "booth_tractor_cost", :required => "", :value => "0", :readonly => ""}
-            
+              %input#booth_tractor_cost.form-control{:name => "booth_tractor_cost", :value => "0", :readonly => ""}
             :javascript
-              function calcbooths()
+              function calc()
               {
-                var tractoronly = document.getElementById("tractoronly").value;
-                var tractortrailer = document.getElementById("tractortrailer").value;
-                var tractoronlyw = document.getElementById("tractoronlyW").value;
-                var tractortrailerw = document.getElementById("tractortrailerW").value;
-                var total = 0;
-                if(tractoronly == "1")
+                var tractorspot = document.getElementById("trailer_select").value;
+                var lengthTr = document.getElementById("length");
+                var widthTr = document.getElementById("width");
+                var totalT = 0;
+                if(tractorspot == "")
                 {
-                  total = total + 1875;
+                  totalT = 0;
+                  lengthTr.value = "0";
+                  widthTr.value = "0";
                 }
-                if(tractoronlyw == "1")
+                if(tractorspot == "T")
                 {
-                  total = total + 3750;
+                  totalT = 1875;
+                  lengthTr.value = "40";
+                  widthTr.value = "15";
                 }
-                if(tractortrailer == "1")
+                if(tractorspot == "Tw")
                 {
-                  total = total + 2600;
+                  totalT = 3750;
+                  lengthTr.value = "40";
+                  widthTr.value = "20";
                 }
-                if(tractortrailerw == "1")
+                if(tractorspot == "TT")
                 {
-                  total = total + 5050;
+                  totalT = 2600;
+                  lengthTr.value = "80";
+                  widthTr.value = "15";
+                }
+                if(tractorspot == "TTw")
+                {
+                  totalT = 5050;
+                  lengthTr.value = "80";
+                  widthTr.value = "20";
                 }
                 var cost = document.getElementById("booth_tractor_cost");
-                cost.value = total;
+                cost.value = totalT;
                 calcTot();
               }
               
           .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
-            %h2 Need additional space? Complete this section.
+            %h2 Need a Custom Spot? Complete this section.
             .center
               %p
                 100-200 sq. ft.	 	$3.75 per sq. ft.
@@ -79,11 +79,11 @@
           .form-group
             
             .col-md-4
-              %input#width.form-control{:name => "width", :oninput => "calcSquare()", :required => "", :value => "0", :placeholder => "0"}
-            %label.col-md-2.control-label{:for => "width"}ft. x
+              %input#widthT.form-control{:name => "widthT", :oninput => "calcSquare()", :required => "", :value => "0", :placeholder => "0"}
+            %label.col-md-2.control-label{:for => "widthT"}ft. x
             .col-md-4
-              %input#length.form-control{:name => "length", :oninput => "calcSquare()", :required => "", :value => "0", :placeholder => "0"}
-            %label.col-md-2.control-label{:for => "length"}ft. =
+              %input#lengthT.form-control{:name => "lengthT", :oninput => "calcSquare()", :required => "", :value => "0", :placeholder => "0"}
+            %label.col-md-2.control-label{:for => "lengthT"}ft. =
           .form-group
             .col-md-offset-2.col-md-6
               %input#square.form-control{:name => "square", :required => "", :value => "0", :readonly => ""}
@@ -98,13 +98,20 @@
           :javascript
             function calcSquare()
             {
-              var width = document.getElementById("width").value;
-              var length = document.getElementById("length").value;
+              var widthT = document.getElementById("widthT").value;
+              var lengthT = document.getElementById("lengthT").value;
               var square = document.getElementById("square");
-              width = parseFloat(width);
-              length = parseFloat(length);
+              var lengthC = document.getElementById("length");
+              var widthC = document.getElementById("width");
+              widthT = parseFloat(widthT);
+              lengthT = parseFloat(lengthT);
               var total = 0;
-              total = width * length;
+              total = widthT * lengthT;
+              total = parseFloat(total);
+              if(isNaN(total))
+              {
+                total = 0;
+              }
               square.value = total;
               if(total < 200)
               {
@@ -118,6 +125,17 @@
               {
                 total = total * 3.25;
               }
+              
+              if(total > 0)
+              {
+                lengthC.value = lengthT;
+                widthC.value = widthT;
+              }
+              else
+              {
+                lengthC.value = 0;
+                widthC.value = 0;
+              }
               var cost = document.getElementById("custom_cost");
               cost.value = total;
               calcTot();
@@ -126,6 +144,16 @@
           .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
             %h2 Total Custom Booth Costs
             
+          .form-group
+            %label{:for => "length", :class => "col-md-offset-3 col-md-1 control-label"} Booth length
+            .col-md-6
+              %input#length.form-control{:name => "length", :required => "", :value => "0", :readonly => ""}
+          
+          .form-group
+            %label{:for => "width", :class => "col-md-offset-3 col-md-1 control-label"} Booth width
+            .col-md-6
+              %input#width.form-control{:name => "width", :required => "", :value => "0", :readonly => ""}
+          
           .form-group
             %label{:for => "booth_cost", :class => "col-md-offset-3 col-md-1 control-label"} $
             .col-md-6
@@ -137,11 +165,31 @@
                 var trailerf = document.getElementById("booth_tractor_cost").value;
                 var customf = document.getElementById("custom_cost").value;
                 var costF = document.getElementById("booth_cost");
-            	var trailerF = parseFloat(trailerf);
-            	var customF = parseFloat(customf);
-            	var totalF = 0;
-            	totalF = trailerF + customF;
-            	costF.value = totalF;
+              	var trailerF = parseFloat(trailerf);
+              	if(trailerF > 0)
+              	{
+              	  document.getElementById("widthT").style.visibility = "hidden"
+              	  document.getElementById("lengthT").style.visibility = "hidden"
+              	  document.getElementById("square").style.visibility = "hidden"
+              	}
+              	if(trailerF == 0)
+              	{
+              	  document.getElementById("widthT").style.visibility = "visible"
+              	  document.getElementById("lengthT").style.visibility = "visible"
+              	  document.getElementById("square").style.visibility = "visible"
+              	}
+              	var customF = parseFloat(customf);
+              	if(customF > 0)
+              	{
+              	  document.getElementById("trailer_select").style.visibility = "hidden";
+              	}
+              	if(customF == 0)
+              	{
+              	  document.getElementById("trailer_select").style.visibility = "visible";
+              	}
+              	var totalF = 0;
+              	totalF = trailerF + customF;
+              	costF.value = totalF;
               }
           .form-group    
             %label{:for => "custom_description", :class => "col-md-6 control-label"}

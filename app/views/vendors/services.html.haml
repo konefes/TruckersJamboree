@@ -7,12 +7,6 @@
         .panel-body
           %h2 Booth Services
           
-          .form-group
-            %label{:for => "forklift", :class => "col-md-8 control-label"}
-              Forklift Service in 15 min intervals($100 per hour. $25 mininum)
-            .col-md-4
-              %input#forklift.form-control{:max => "8", :min => "0", :name => "forklift", :oninput => "calcService()", :required => "", :step => "1", :type => "number", :value => "0"}
-          
           .form-group  
             %label{:for => "electric", :class => "col-md-8 control-label"}
               Electric services ($50 per 20 amp circuit; 2400 watts max)
@@ -20,10 +14,10 @@
               %input#electric.form-control{:max => "4", :min => "0", :name => "electric", :oninput => "calcService()", :required => "", :step => "1", :type => "number", :value => "0"}
           
           .form-group  
-            %label{:for => "internet", :class => "col-md-8 control-label"}
-              Internet Service provided for Big Top tent ONLY ($50 per ethernet line)
+            %label{:for => "electric_cost", :class => "col-md-8 control-label"} Total Cost of electricity $
             .col-md-4
-              %input#internet.form-control{:max => "1", :min => "0", :name => "internet", :oninput => "calcService()", :required => "", :step => "1", :type => "number", :value => "0"}
+              %input#electric_cost.form-control{:name => "electric_cost", :required => "", :value => "0", :readonly => ""}
+          
           
           .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
           %h2 Extra booth furnishings
@@ -32,13 +26,23 @@
             %label{:for => "ext_chairs", :class => "col-md-8 control-label"}
               Folding chairs @ $4 each
             .col-md-4
-              %input#ext_chairs.form-control{:max => "8", :min => "0", :name => "ext_chairs", :oninput => "calcService()", :required => "", :step => "1", :type => "number", :value => "0"}
+              %input#ext_chairs.form-control{:max => "20", :min => "0", :name => "ext_chairs", :oninput => "calcService()", :required => "", :step => "1", :type => "number", :value => "0"}
+          
+          .form-group  
+            %label{:for => "chair_cost", :class => "col-md-8 control-label"} Total Cost of chairs $
+            .col-md-4
+              %input#chair_cost.form-control{:name => "chair_cost", :required => "", :value => "0", :readonly => ""}
           
           .form-group  
             %label{:for => "ext_tables", :class => "col-md-8 control-label"}
               8 ft. skirted table(s) @ $25 each
             .col-md-4
-              %input#ext_tables.form-control{:max => "4", :min => "0", :name => "ext_tables", :oninput => "calcService()", :required => "", :step => "1", :type => "number", :value => "0"}
+              %input#ext_tables.form-control{:max => "10", :min => "0", :name => "ext_tables", :oninput => "calcService()", :required => "", :step => "1", :type => "number", :value => "0"}
+          
+          .form-group  
+            %label{:for => "table_cost", :class => "col-md-8 control-label"} Total Cost of tables $
+            .col-md-4
+              %input#table_cost.form-control{:name => "table_cost", :required => "", :value => "0", :readonly => ""}
           
           .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
           
@@ -46,6 +50,12 @@
             %label{:for => "service_cost", :class => "col-md-8 control-label"} Total Cost of Services $
             .col-md-4
               %input#service_cost.form-control{:name => "service_cost", :required => "", :value => "0", :readonly => ""}
+          
+          .form-group    
+            %label{:for => "service_description", :class => "col-md-6 control-label"}
+              Short Description of Any Special Services Requested*
+            .col-md-6
+              %textarea#service_description.form-control{:name => "service_description", :pattern =>"^[A-Za-z0-9]{15,250}$", :title => "Must contain 15 characters"}
           
           .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
             .col-md-offset-3.col-md-6 
@@ -55,17 +65,22 @@
             function calcService()
             {
               var electric = document.getElementById("electric").value;
-              var internet = document.getElementById("internet").value; 
-              var forklift = document.getElementById("forklift").value; 
               var table = document.getElementById("ext_tables").value; 
               var chair = document.getElementById("ext_chairs").value; 
               electric = parseFloat(electric);
-              internet = parseFloat(internet);
-              forklift = parseFloat(forklift);
+              electric = electric * 50;
               table = parseFloat(table);
+              table = table * 25;
               chair = parseFloat(chair);
+              chair = chair * 4;
               var total = 0;
-              total = electric * 50 + internet * 50 + forklift * 25 + table * 25 + chair * 4;
+              var elecC = document.getElementById("electric_cost");
+              elecC.value = electric;
+              var tableC = document.getElementById("table_cost");
+              tableC.value = table;
+              var chairC = document.getElementById("chair_cost");
+              chairC.value = chair;
+              total = electric + table + chair;
               var serviceCost = document.getElementById("service_cost");
               serviceCost.value = total;
             }
