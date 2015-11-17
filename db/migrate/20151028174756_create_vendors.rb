@@ -29,6 +29,7 @@ class CreateVendors < ActiveRecord::Migration
       t.integer :vendor_id
       t.boolean :session_state
       t.boolean :admin
+      t.string :email
     end
   end
 end

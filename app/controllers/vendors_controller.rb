@@ -19,94 +19,91 @@ class VendorsController < ApplicationController
     
     def registration
         # called when a user identifies they want to register for a spot
-        # a contact form is then displayed after this function
-        
-        # on submit goes to enter_registration
-        
     end
     
     def enter_registration
-        # a vendor has entered their contact information
-        # a vendor can be created from the data 
-        @user = User.create!(username: params["email"], role: "vendor", email: params["email"])
-        Vendor.create(company_name: params["company_name"],
-                        product: params["product"],
-                        contact_name: params["contact_name"],
-                        address_street: params["address_street"],
-                        address_city: params["address_city"],
-                        address_state: params["address_state"],
-                        address_zip: params["address_zip"],
-                        phone: params["phone"],
-                        fax: params["fax"],
-                        vendor_id: @user.id)
-        # redirect to booth
-        session[:user_id] = @user.id
+            
+        #Vendor.create(company_name: params["company_name"],
+        #                product: params["product"],
+        #                contact_name: params["contact_name"],
+        #                address_street: params["address_street"],
+        #                address_city: params["address_city"],
+        #                address_state: params["address_state"],
+        #                address_zip: params["address_zip"],
+        #                phone: params["phone"],
+        #                fax: params["fax"],
+        #                vendor_id: @user.id)
+            
+        session[:company_name] = params["company_name"]
+        session[:product] = params["product"]
+        session[:contact_name] = params["contact_name"]
+        session[:address_street] = params["address_street"]
+        session[:address_city] = params["address_city"]
+        session[:address_state] = params["address_state"]
+        session[:address_zip] = params["address_zip"]
+        session[:phone] = params["phone"]
+        session[:fax] = params["fax"]
+        session[:email] = params["email"] 
         
         redirect_to '/vendors/booth'
         #redirect_to controller: 'vendors', action: 'booth', id: @user.id
     end
     
     def booth 
-        #@company_name = Vendor.find_by(vendor_id: session[:user_id]).company_name
         # on this screen a vendor can select to enter custom booth information
-        # on submit go to add_booth_info
     end
     
     def custom_booth 
-        #@company_name = Vendor.find_by(vendor_id: session[:user_id]).company_name
         # if a vendor selected a custom space they will be redirected to custom_booth path
-        # vendor still needs to be passed to this page
-        # a user requires a custom booth instead of the pre displayed ones
-        # a different form is generated to do custom booth displays
-        # on submit go to add_booth_info
     end
     
-    def enter_booth_info
-        # vendor id is passed in always
-        # vendors have selected their booth space 
+    def enter_booth_info 
         # add booth information to the vendor
-        Vendor.find_by(vendor_id: session[:user_id]).update(number_i_booth: params["number_i_booth"],
-                                                            number_o_booth: params["number_o_booth"],
-                                                            booth_cost: params["booth_cost"])
-        # redirect to services
+        #Vendor.find_by(vendor_id: session[:user_id]).update(number_i_booth: params["number_i_booth"],
+        #                                                    number_o_booth: params["number_o_booth"],
+        #                                                    booth_cost: params["booth_cost"])
+        session[:number_i_booth] = params["number_i_booth"]
+        session[:number_o_booth] = params["number_o_booth"]
+        session[:booth_cost] = params["booth_cost"]
+
         redirect_to '/vendors/services'
     end
     
     def enter_custom_booth_info
-        # vendor id is passed in always
         # vendors have selected their custom booth space 
-        # add custom booth information to the vendor
-        Vendor.find_by(vendor_id: session[:user_id]).update(booth_cost: params["booth_cost"])
-        # redirect to services
+        #Vendor.find_by(vendor_id: session[:user_id]).update(booth_cost: params["booth_cost"])
+        session[:booth_cost] = params["booth_cost"]
         redirect_to '/vendors/services'
     end
     
     def services
         # here they can select any required services that they might need
-        # on submit go to services_entry
-        #@company_name = Vendor.find_by(vendor_id: session[:user_id]).company_name
     end
     
     def enter_services
         # a vendor has now selected their booth and services options
-        # attach that information to the vendors id
-        Vendor.find_by(vendor_id: session[:user_id]).update(electric: params["electric"],
-                                                            internet: params["internet"],
-                                                            forklift: params["forklift"],
-                                                            ext_chairs: params["ext_chairs"],
-                                                            ext_tables: params["ext_tables"],
-                                                            service_cost: params["service_cost"])
-        # redirect to summary
+        #Vendor.find_by(vendor_id: session[:user_id]).update(electric: params["electric"],
+        #                                                    internet: params["internet"],
+        #                                                    forklift: params["forklift"],
+        #                                                    ext_chairs: params["ext_chairs"],
+        #                                                    ext_tables: params["ext_tables"],
+        #                                                    service_cost: params["service_cost"])
+        
+        session[:electric] = params["electric"]
+        session[:internet] = params["internet"]
+        session[:forklift] = params["forklift"]
+        session[:ext_chairs] = params["ext_chairs"]
+        session[:ext_tables] = params["ext_tables"]
+        session[:service_cost] = params["service_cost"]
+        
         redirect_to '/vendors/summary'
     end
     
     def summary
         # render the summary view for the customer to verify data 
         # also this is where the vender will sign off on the input
-        # also do a minimal check that the user is a human not a robot
         # there also needs to be an edit button 
-        @user = User.find_by(id: session[:user_id])
-        @vendor = Vendor.find_by(vendor_id: session[:user_id])
+        #@vendor = session[:new_vendor]
     end
     
     def edit 
@@ -123,12 +120,28 @@ class VendorsController < ApplicationController
     end
     
     def confirmation 
-        
         # the completed vendor profile should be eastablished by now
-        # render a invoice sent to the attched email in the registration
-        #@user = User.find_by(id: session[:user_id])
-        #@vendor = Vendor.find_by(vendor_id: session[:user_id])
-        # pritn all the entered field for the vendor to see one last time
+        # print all the entered field for the vendor to see one last time
         # display a message in large text showing the vendor their submission has been recieved
+        Vendor.create(company_name: session[:company_name],
+                        product: session[:product],
+                        contact_name: session[:contact_name],
+                        address_street: session[:address_street],
+                        address_city: session[:address_city],
+                        address_state: session[:address_state],
+                        address_zip: session[:address_zip],
+                        phone: session[:phone],
+                        fax: session[:fax],
+                        number_i_booth: session[:number_i_booth],
+                        number_o_booth: session[:number_o_booth],
+                        booth_cost: session[:booth_cost],
+                        electric: session[:electric],
+                        internet: session[:internet],
+                        forklift: session[:forklift],
+                        ext_chairs: session[:ext_chairs],
+                        ext_tables: session[:ext_tables],
+                        service_cost: session[:service_cost]
+                        )
+        # send email with registration information
     end
 end
