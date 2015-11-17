@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get "vendors/services"
   post "vendors/enter_services"
   get "vendors/summary"
+  post "vendors/confirmation"
+  get "vendors/summary_change"
 
   post "vendors/enter_custom_booth_info"
   

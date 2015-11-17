@@ -33,7 +33,7 @@ class VendorsController < ApplicationController
         #                phone: params["phone"],
         #                fax: params["fax"],
         #                vendor_id: @user.id)
-            
+        
         session[:company_name] = params["company_name"]
         session[:product] = params["product"]
         session[:contact_name] = params["contact_name"]
@@ -45,7 +45,11 @@ class VendorsController < ApplicationController
         session[:fax] = params["fax"]
         session[:email] = params["email"] 
         
-        redirect_to '/vendors/booth'
+        if session[:edit] == 1
+            redirect_to '/vendors/summary'
+        else
+            redirect_to '/vendors/booth'
+        end
         #redirect_to controller: 'vendors', action: 'booth', id: @user.id
     end
     
@@ -66,14 +70,23 @@ class VendorsController < ApplicationController
         session[:number_o_booth] = params["number_o_booth"]
         session[:booth_cost] = params["booth_cost"]
 
-        redirect_to '/vendors/services'
+        if session[:edit] == 1
+            redirect_to '/vendors/summary'
+        else
+            redirect_to '/vendors/services'
+        end
     end
     
     def enter_custom_booth_info
         # vendors have selected their custom booth space 
         #Vendor.find_by(vendor_id: session[:user_id]).update(booth_cost: params["booth_cost"])
         session[:booth_cost] = params["booth_cost"]
-        redirect_to '/vendors/services'
+        
+        if session[:edit] == 1
+            redirect_to '/vendors/summary'
+        else
+            redirect_to '/vendors/services'
+        end
     end
     
     def services
@@ -106,18 +119,17 @@ class VendorsController < ApplicationController
         #@vendor = session[:new_vendor]
     end
     
-    def edit 
-        # vendor id sent in with all current information
-        # this will have to be a form with all vendor editable data fields
-        #@user = User.find_by(id: session[:user_id])
-        #@vendor = Vendor.find_by(vendor_id: session[:user_id])
+    def summary_change
+        session[:edit] = 1
+        if params[:page] == "contact"
+            redirect_to "/vendors/registration"
+        elsif params[:page] == "booth"
+            redirect_to "/vendors/booth"
+        elsif params[:page] == "services"
+            redirect_to "/vendors/services"
+        end
     end
-    
-    def enter_edit
-        # the hash passed in from the edit view is parsed 
-        # !!!!!code!!!!!
-        # the vendor is redirected back to summary
-    end
+
     
     def confirmation 
         # the completed vendor profile should be eastablished by now
@@ -142,6 +154,7 @@ class VendorsController < ApplicationController
                         ext_tables: session[:ext_tables],
                         service_cost: session[:service_cost]
                         )
+        session.destroy
         # send email with registration information
     end
 end

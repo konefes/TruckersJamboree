@@ -13,7 +13,7 @@
    .navbar.navbar-default.navbar-static-top
     .container
      .navbar-collapse.collapse.navbar-responsive-collapse
-      %h1.title Truckers Jamboree
+      =image_tag "tj_logo.png"
      - if !@current_user					
       = link_to 'Sign Up/Login', login_path , method: :get, :id => 'login'
      - else
