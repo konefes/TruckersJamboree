@@ -10,10 +10,10 @@
   = csrf_meta_tags
 
   %body
-   .navbar.navbar-default.navbar-static-top
-    .container
-     .navbar-collapse.collapse.navbar-responsive-collapse
-      =image_tag "tj_logo.png"
+   .container
+    .center
+     =image_tag "tj_logo.png"
+     %br
      - if !@current_user					
       = link_to 'Sign Up/Login', login_path , method: :get, :id => 'login'
      - else
@@ -25,4 +25,4 @@
      - elsif flash[:warning]
       #warning.message= flash[:warning]
 
-    = yield
+   = yield

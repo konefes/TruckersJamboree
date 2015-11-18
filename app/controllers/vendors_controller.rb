@@ -7,7 +7,9 @@ class VendorsController < ApplicationController
     end
     
     def show
-      @vendors = Vendor.all 
+        @vendor = Vendor.find(params[:id])
+        render :partial=>'vendor', :object=>@vendor and return if request.xhr?
+      #@vendors = Vendor.all 
       #test view in index. Will remove later
     end
     

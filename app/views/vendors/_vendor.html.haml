@@ -1,0 +1,62 @@
+.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+    .panel.panel-info
+        .panel-heading 
+            %h4 Vendor Information
+        .panel-body
+            .form-group
+                %h2 Contact Information
+                Company Name: 
+                =@vendor.company_name
+                %br
+                Product: 
+                =@vendor.product
+                %br
+                Contact Name: 
+                =@vendor.contact_name
+                %br
+                Address: 
+                %br
+                =@vendor.address_street
+                =@vendor.address_city
+                =@vendor.address_state
+                =@vendor.address_zip
+                %br
+                Phone: 
+                =@vendor.phone
+                %br
+                Email:
+                
+            
+            .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                %h2 Booth Information
+                Indoor Booth/s: 
+                =@vendor.number_i_booth
+                %br
+                Outdoor Booths: 
+                =@vendor.number_o_booth
+                %br
+                Booth Cost: 
+                =@vendor.booth_cost
+            
+            .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                %h2 Services Requested
+                Electricity: 
+                =@vendor.electric
+                %br
+                Internet: 
+                =@vendor.internet
+                %br
+                Forklift: 
+                =@vendor.forklift
+                %br
+                Extra Chairs:
+                =@vendor.ext_chairs
+                %br
+                Extra Tables:
+                =@vendor.ext_tables
+                %br
+                Service Cost:
+                =@vendor.service_cost
+            .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                .col-md-offset-3.col-md-6
+                    %a#close_individual Close

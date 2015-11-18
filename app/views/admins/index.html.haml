@@ -1,0 +1,75 @@
+.container
+   #navigation
+      %ul.nav.nav-tabs
+         %li.active#nav_all_li{:role => "presentation"}
+            %a#nav_all{:href => "#"} All Vendors
+         %li#nav_booth_li{:role => "presentation"}
+            %a#nav_booth{:href => "#"} Booth Preference
+         %li#nav_services_li{:role => "presentation"}
+            %a#nav_services{:href => "#"} Services
+   %p
+   
+   #booth_search{:style=> "display: none;"}
+      .panel.panel-info
+         .panel-heading
+            Sort by booth preferences:
+         .panel-body
+            %table.table
+               %tbody
+                  %tr
+                     %td 
+                        %input#check_ext_chairs{:type => "checkbox"}
+                        Custom Booth
+                     %td 
+                        %input#check_ext_tables{:type => "checkbox"}
+                        a
+                     %td 
+                        %input#check_electric{:type => "checkbox"}
+                        b
+                     %td 
+                        %input#check_internet{:type => "checkbox"}
+                        c
+      
+   
+   #services_search{:style=> "display: none;"}
+      .panel.panel-info
+         .panel-heading
+            Sort by requested services:
+         .panel-body
+            %table.table
+               %tbody
+                  %tr
+                     %td 
+                        %input#check_ext_chairs{:type => "checkbox"}
+                        Extra Chairs
+                     %td 
+                        %input#check_ext_tables{:type => "checkbox"}
+                        Extra Tables
+                     %td 
+                        %input#check_electric{:type => "checkbox"}
+                        Electric
+                     %td 
+                        %input#check_internet{:type => "checkbox"}
+                        Internet
+   
+   .panel.panel-info
+      .panel-body
+         Click link for full details.
+         %table.table#Vendors
+            %thead
+               %tr
+                  %th Company Name
+                  %th Contact Person
+                  %th Product
+                  %th Contact Number
+            %tbody
+               - @vendors.each do |vendor|
+                  %tr
+                     %td 
+                        %a.vendor_link{:href => "#", :id => "#{vendor.id}"} #{vendor.company_name} 
+                     %td= vendor.contact_name
+                     %td= vendor.product
+                     %td= vendor.phone
+                     
+   
+   #individual{:style=> "display: none;"}
