@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20151029183526) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.string "email"
     t.string "role"
     t.string "session_token"
@@ -26,14 +26,19 @@ ActiveRecord::Schema.define(version: 20151029183526) do
 
   create_table "vendors", force: :cascade do |t|
     t.integer "number_i_booth"
+    t.integer "booth_i_cost"
     t.integer "number_o_booth"
+    t.integer "booth_o_cost"
     t.boolean "booth_pref"
+    t.integer "length"
+    t.integer "width"
     t.integer "booth_cost"
-    t.boolean "electric"
-    t.boolean "internet"
-    t.boolean "forklift"
+    t.integer "electric"
+    t.integer "electric_cost"
     t.integer "ext_chairs"
+    t.integer "chair_cost"
     t.integer "ext_tables"
+    t.integer "table_cost"
     t.integer "service_cost"
     t.string  "company_name"
     t.string  "product"
@@ -53,6 +58,7 @@ ActiveRecord::Schema.define(version: 20151029183526) do
     t.integer "vendor_id"
     t.boolean "session_state"
     t.boolean "admin"
+    t.string  "email"
   end
 
 end

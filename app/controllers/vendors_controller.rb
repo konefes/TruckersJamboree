@@ -42,7 +42,6 @@ class VendorsController < ApplicationController
         session[:address_state] = params["address_state"]
         session[:address_zip] = params["address_zip"]
         session[:phone] = params["phone"]
-        session[:fax] = params["fax"]
         session[:email] = params["email"] 
         
         if session[:edit] == 1
@@ -66,8 +65,11 @@ class VendorsController < ApplicationController
         #Vendor.find_by(vendor_id: session[:user_id]).update(number_i_booth: params["number_i_booth"],
         #                                                    number_o_booth: params["number_o_booth"],
         #                                                    booth_cost: params["booth_cost"])
+        session[:booth_pref] = false
         session[:number_i_booth] = params["number_i_booth"]
+        session[:booth_i_cost] = params["booth_i_cost"]
         session[:number_o_booth] = params["number_o_booth"]
+        session[:booth_o_cost] = params["booth_o_cost"]
         session[:booth_cost] = params["booth_cost"]
 
         if session[:edit] == 1
@@ -80,6 +82,9 @@ class VendorsController < ApplicationController
     def enter_custom_booth_info
         # vendors have selected their custom booth space 
         #Vendor.find_by(vendor_id: session[:user_id]).update(booth_cost: params["booth_cost"])
+        session[:booth_pref] = true
+        session[:width] = params["width"]
+        session[:length] = params["length"]
         session[:booth_cost] = params["booth_cost"]
         
         if session[:edit] == 1
@@ -103,10 +108,11 @@ class VendorsController < ApplicationController
         #                                                    service_cost: params["service_cost"])
         
         session[:electric] = params["electric"]
-        session[:internet] = params["internet"]
-        session[:forklift] = params["forklift"]
+        session[:electric_cost] = params["electric_cost"]
         session[:ext_chairs] = params["ext_chairs"]
+        session[:table_cost] = params["table_cost"]
         session[:ext_tables] = params["ext_tables"]
+        session[:chair_cost] = params["chair_cost"]
         session[:service_cost] = params["service_cost"]
         
         redirect_to '/vendors/summary'
@@ -143,15 +149,17 @@ class VendorsController < ApplicationController
                         address_state: session[:address_state],
                         address_zip: session[:address_zip],
                         phone: session[:phone],
-                        fax: session[:fax],
                         number_i_booth: session[:number_i_booth],
+                        booth_i_cost: session[:booth_i_cost],
                         number_o_booth: session[:number_o_booth],
+                        booth_o_cost: session[:booth_o_cost],
                         booth_cost: session[:booth_cost],
                         electric: session[:electric],
-                        internet: session[:internet],
-                        forklift: session[:forklift],
+                        electric_cost: session[:electric_cost],
                         ext_chairs: session[:ext_chairs],
+                        chair_cost: session[:chair_cost],
                         ext_tables: session[:ext_tables],
+                        table_cost: session[:table_cost],
                         service_cost: session[:service_cost]
                         )
         session.destroy

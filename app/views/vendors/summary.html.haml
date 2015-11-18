@@ -26,25 +26,41 @@
                         Phone: 
                         =session[:phone]
                         %br
-                        Fax: 
-                        =session[:fax]
-                        %br
                         Email:
                         =session[:email]
                         %br
                         =link_to "Edit Contact Info", vendors_summary_change_path(:page => "contact")
                     
                     .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
-                        %h2 Booth Information
-                        Indoor Booth/s: 
-                        =session[:number_i_booth]
-                        %br
-                        Outdoor Booths: 
-                        =session[:number_o_booth]
-                        %br
-                        Booth Cost: 
-                        =session[:booth_cost]
-                        %br
+                        - if(!session[:booth_pref])
+                            %h2 Booth Information
+                            Indoor Booth/s: 
+                            =session[:number_i_booth]
+                            %br
+                            Cost of Indoor Booths $
+                            =session[:booth_i_cost]
+                            %br
+                            Outdoor Booths: 
+                            =session[:number_o_booth]
+                            %br
+                            Cost of Outdoor Booths $
+                            =session[:booth_o_cost]
+                            %br
+                            Booth Cost $ 
+                            =session[:booth_cost]
+                            %br
+                        - else
+                            %h2 Custom Booth Information
+                            Length :
+                            =session[:length]
+                            %br
+                            Width :
+                            =session[:width]
+                            %br
+                            Booth Cost $ 
+                            =session[:booth_cost]
+                            %br
+                            
                         =link_to "Edit Booth Info", vendors_summary_change_path(:page => "booth")
                     
                     .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
@@ -52,19 +68,22 @@
                         Electricity: 
                         =session[:electric]
                         %br
-                        Internet: 
-                        =session[:internet]
-                        %br
-                        Forklift: 
-                        =session[:forklift]
+                        Electricity Cost $
+                        =session[:electric_cost]
                         %br
                         Extra Chairs:
                         =session[:ext_chairs]
                         %br
+                        Chair Cost $
+                        =session[:chair_cost]
+                        %br
                         Extra Tables:
                         =session[:ext_tables]
                         %br
-                        Service Cost:
+                        Table Cost $
+                        =session[:table_cost]
+                        %br
+                        Total Service Cost $
                         =session[:service_cost]
                         %br
                         =link_to "Edit Services Info", vendors_summary_change_path(:page => "services")
