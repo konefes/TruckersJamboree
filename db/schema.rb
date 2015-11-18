@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 20151029183526) do
     t.boolean "session_state"
     t.boolean "admin"
     t.string  "email"
+    t.string  "custom_description"
+    t.string  "service_description"
   end
 
 end

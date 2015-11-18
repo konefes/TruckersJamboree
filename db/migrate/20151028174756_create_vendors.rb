@@ -35,6 +35,8 @@ class CreateVendors < ActiveRecord::Migration
       t.boolean :session_state
       t.boolean :admin
       t.string :email
+      t.string :custom_description
+      t.string :service_description
     end
   end
 end

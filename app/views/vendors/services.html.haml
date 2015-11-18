@@ -11,12 +11,12 @@
             %label{:for => "electric", :class => "col-md-8 control-label"}
               Electric services ($50 per 20 amp circuit; 2400 watts max)
             .col-md-4
-              %input#electric.form-control{:max => "4", :min => "0", :name => "electric", :oninput => "calcService()", :required => "", :step => "1", :type => "number", :value => "0"}
+              %input#electric.form-control{:max => "4", :min => "0", :name => "electric", :oninput => "calcService()", :step => "1", :type => "number", :value => session[:electric]}
           
           .form-group  
             %label{:for => "electric_cost", :class => "col-md-8 control-label"} Total Cost of electricity $
             .col-md-4
-              %input#electric_cost.form-control{:name => "electric_cost", :required => "", :value => "0", :readonly => ""}
+              %input#electric_cost.form-control{:name => "electric_cost", :value => session[:electric_cost], :readonly => ""}
           
           
           .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
@@ -26,36 +26,36 @@
             %label{:for => "ext_chairs", :class => "col-md-8 control-label"}
               Folding chairs @ $4 each
             .col-md-4
-              %input#ext_chairs.form-control{:max => "20", :min => "0", :name => "ext_chairs", :oninput => "calcService()", :required => "", :step => "1", :type => "number", :value => "0"}
+              %input#ext_chairs.form-control{:max => "20", :min => "0", :name => "ext_chairs", :oninput => "calcService()", :step => "1", :type => "number", :value => session[:ext_chairs]}
           
           .form-group  
             %label{:for => "chair_cost", :class => "col-md-8 control-label"} Total Cost of chairs $
             .col-md-4
-              %input#chair_cost.form-control{:name => "chair_cost", :required => "", :value => "0", :readonly => ""}
+              %input#chair_cost.form-control{:name => "chair_cost", :value => session[:chair_cost], :readonly => ""}
           
           .form-group  
             %label{:for => "ext_tables", :class => "col-md-8 control-label"}
               8 ft. skirted table(s) @ $25 each
             .col-md-4
-              %input#ext_tables.form-control{:max => "10", :min => "0", :name => "ext_tables", :oninput => "calcService()", :required => "", :step => "1", :type => "number", :value => "0"}
+              %input#ext_tables.form-control{:max => "10", :min => "0", :name => "ext_tables", :oninput => "calcService()", :step => "1", :type => "number", :value => session[:ext_tables]}
           
           .form-group  
             %label{:for => "table_cost", :class => "col-md-8 control-label"} Total Cost of tables $
             .col-md-4
-              %input#table_cost.form-control{:name => "table_cost", :required => "", :value => "0", :readonly => ""}
+              %input#table_cost.form-control{:name => "table_cost", :value => session[:table_cost], :readonly => ""}
           
           .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
           
           .form-group  
             %label{:for => "service_cost", :class => "col-md-8 control-label"} Total Cost of Services $
             .col-md-4
-              %input#service_cost.form-control{:name => "service_cost", :required => "", :value => "0", :readonly => ""}
+              %input#service_cost.form-control{:name => "service_cost", :required => "", :value => session[:service_cost], :readonly => ""}
           
           .form-group    
             %label{:for => "service_description", :class => "col-md-6 control-label"}
               Short Description of Any Special Services Requested*
             .col-md-6
-              %textarea#service_description.form-control{:name => "service_description", :pattern =>"^[A-Za-z0-9]{15,250}$", :title => "Must contain 15 characters"}
+              %textarea#service_description.form-control{:name => "service_description", :pattern =>"^[A-Za-z0-9]{15,250}$", :title => "Must contain 15 characters", :value => session[:service_description]}
           
           .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
             .col-md-offset-3.col-md-6 

@@ -195,7 +195,7 @@
             %label{:for => "custom_description", :class => "col-md-6 control-label"}
               Short description of space and displays with dimensions*
             .col-md-6
-              %textarea#custom_description.form-control{:name => "custom_description", :pattern =>"^[A-Za-z0-9]{15,250}$", :title => "Must contain 15 characters", :required => ""}
+              %textarea#custom_description.form-control{:name => "custom_description", :pattern =>"^[A-Za-z0-9]{25,250}$", :title => "Must contain 15 characters",:value => session[:custom_description], :required => ""}
           
           .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
             .col-md-offset-3.col-md-6

@@ -49,8 +49,7 @@
               State
               %em *
             .col-md-9
-              %select#address_state{:name => "address_state", :value => session[:address_state], :class => "form-control", :required => ""}
-                %option{:style => "display:none;", :value => ""}
+              %select#address_state{:name => "address_state", :selected => session[:address_state], :class => "form-control", :required => ""}
                 %option{:disabled => ""} --United States--
                 %option{:value => "AL"} Alabama
                 %option{:value => "AK"} Alaska
@@ -120,7 +119,7 @@
               Zip code
               %em *
             .col-md-9
-              %input#address_zip{:name => "address_zip", :pattern => "^[0-9]{5}|[0-9a-zA-Z]{6}$",  :title => "Must contain 5 numbers", :type => "text", :class => "form-control", :required => ""}
+              %input#address_zip{:name => "address_zip", :pattern => "^[0-9]{5}|[0-9a-zA-Z]{6}$",  :title => "Must contain 5 numbers or 6 letters and numbers for Canada",:value => session[:address_zip], :type => "text", :class => "form-control", :required => ""}
             
           .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}
             %label{:for => "phone", :class => "col-md-3 control-label"} 

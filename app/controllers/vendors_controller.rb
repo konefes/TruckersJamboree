@@ -43,6 +43,26 @@ class VendorsController < ApplicationController
         session[:address_zip] = params["address_zip"]
         session[:phone] = params["phone"]
         session[:email] = params["email"] 
+        if session[:edit] != 1
+            session[:booth_pref] = true
+            session[:number_i_booth] = "0"
+            session[:booth_i_cost] = "0"
+            session[:number_o_booth] = "0"
+            session[:booth_o_cost] = "0"
+            session[:width] = "0"
+            session[:length] = "0"
+            session[:booth_cost] = "0"
+            session[:electric] = "0"
+            session[:electric_cost] = "0"
+            session[:ext_chairs] = "0"
+            session[:table_cost] = "0"
+            session[:ext_tables] = "0"
+            session[:chair_cost] = "0"
+            session[:service_cost] = "0"
+            session[:service_description] = "Need any additional services, request it here!"
+            session[:custom_description] = "Short description and dimensions of your display items"
+        else
+        end
         
         if session[:edit] == 1
             redirect_to '/vendors/summary'
@@ -66,6 +86,8 @@ class VendorsController < ApplicationController
         #                                                    number_o_booth: params["number_o_booth"],
         #                                                    booth_cost: params["booth_cost"])
         session[:booth_pref] = false
+        session[:length] = 0;
+        session[:width] = 0;
         session[:number_i_booth] = params["number_i_booth"]
         session[:booth_i_cost] = params["booth_i_cost"]
         session[:number_o_booth] = params["number_o_booth"]
@@ -83,9 +105,14 @@ class VendorsController < ApplicationController
         # vendors have selected their custom booth space 
         #Vendor.find_by(vendor_id: session[:user_id]).update(booth_cost: params["booth_cost"])
         session[:booth_pref] = true
+        session[:number_i_booth] = 0
+        session[:booth_i_cost] = 0
+        session[:number_o_booth] = 0
+        session[:booth_o_cost] = 0
         session[:width] = params["width"]
         session[:length] = params["length"]
         session[:booth_cost] = params["booth_cost"]
+        session[:custom_description] = params["custom_description"]
         
         if session[:edit] == 1
             redirect_to '/vendors/summary'
@@ -114,6 +141,7 @@ class VendorsController < ApplicationController
         session[:ext_tables] = params["ext_tables"]
         session[:chair_cost] = params["chair_cost"]
         session[:service_cost] = params["service_cost"]
+        session[:service_description] = params["service_description"]
         
         redirect_to '/vendors/summary'
     end
@@ -154,13 +182,15 @@ class VendorsController < ApplicationController
                         number_o_booth: session[:number_o_booth],
                         booth_o_cost: session[:booth_o_cost],
                         booth_cost: session[:booth_cost],
+                        custom_description: session[:custom_description],
                         electric: session[:electric],
                         electric_cost: session[:electric_cost],
                         ext_chairs: session[:ext_chairs],
                         chair_cost: session[:chair_cost],
                         ext_tables: session[:ext_tables],
                         table_cost: session[:table_cost],
-                        service_cost: session[:service_cost]
+                        service_cost: session[:service_cost],
+                        service_description: session[:service_description]
                         )
         session.destroy
         # send email with registration information

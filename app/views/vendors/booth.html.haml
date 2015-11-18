@@ -14,13 +14,13 @@
             %label{:for => "number_i_booth", :class => "col-md-6 control-label"}
               Indoor Booths
             .col-md-4
-              %input#number_i_booth{:max => "5", :min => "0", :name => "number_i_booth", :oninput => "calcIbooths()", :required => "", :placeholder =>"0", :step => "1", :type => "number", :class => "form-control"}
+              %input#number_i_booth{:max => "5", :min => "0", :name => "number_i_booth", :oninput => "calcIbooths()", :value => session[:number_i_booth], :step => "1", :type => "number", :class => "form-control"}
       
           .form-group
             %label{:for => "booth_i_cost", :class => "col-md-6 control-label"} 
               Cost $
             .col-md-4
-              %input#booth_i_cost{:name => "booth_i_cost", :onchange => "calcCost()", :required => "", :value => "0", :readonly => "", :class => "form-control"}
+              %input#booth_i_cost{:name => "booth_i_cost", :onchange => "calcCost()", :value => session[:booth_i_cost], :readonly => "", :class => "form-control"}
           
           .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}  
           .center
@@ -31,13 +31,13 @@
             %label{:for => "number_o_booth", :class => "col-md-6 control-label"} 
               Outside Booths
             .col-md-4
-              %input#number_o_booth{:max => "3", :min => "0", :name => "number_o_booth", :oninput => "calcObooths()", :required => "", :placeholder =>"0", :step => "1", :type => "number", :class => "form-control"}
+              %input#number_o_booth{:max => "3", :min => "0", :name => "number_o_booth", :oninput => "calcObooths()", :value => session[:number_o_booth], :step => "1", :type => "number", :class => "form-control"}
             
           .form-group
             %label{:for => "booth_o_cost", :class => "col-md-6 control-label"} 
               Cost $
             .col-md-4
-              %input#booth_o_cost{:name => "booth_o_cost", :onchange => "calcCost()", :required => "", :value => "0", :readonly => "", :class => "form-control"}
+              %input#booth_o_cost{:name => "booth_o_cost", :onchange => "calcCost()", :value => session[:booth_o_cost], :readonly => "", :class => "form-control"}
             
           .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}     
           .center
@@ -47,7 +47,7 @@
             %label{:for => "booth_cost", :class => "col-md-6 control-label"} 
               Total Booth Cost $
             .col-md-4
-              %input#booth_cost{:name => "booth_cost", :required => "", :value => "0", :readonly => "", :class => "form-control"}
+              %input#booth_cost{:name => "booth_cost", :required => "", :value => session[:booth_cost], :readonly => "", :class => "form-control"}
     
           .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
             .col-md-offset-3.col-md-6 

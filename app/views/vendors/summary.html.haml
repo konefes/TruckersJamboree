@@ -60,6 +60,9 @@
                             Booth Cost $ 
                             =session[:booth_cost]
                             %br
+                            Booth Description:
+                            =session[:custom_description]
+                            %br
                             
                         =link_to "Edit Booth Info", vendors_summary_change_path(:page => "booth")
                     
@@ -85,6 +88,9 @@
                         %br
                         Total Service Cost $
                         =session[:service_cost]
+                        %br
+                        Additional Services Requested:
+                        =session[:service_description]
                         %br
                         =link_to "Edit Services Info", vendors_summary_change_path(:page => "services")
                     .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
