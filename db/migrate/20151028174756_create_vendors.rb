@@ -2,14 +2,19 @@ class CreateVendors < ActiveRecord::Migration
   def change
     create_table :vendors do |t|
       t.integer :number_i_booth
+      t.integer :booth_i_cost
       t.integer :number_o_booth
+      t.integer :booth_o_cost
       t.boolean :booth_pref
+      t.integer :length
+      t.integer :width
       t.integer :booth_cost
-      t.boolean :electric
-      t.boolean :internet
-      t.boolean :forklift
+      t.integer :electric
+      t.integer :electric_cost
       t.integer :ext_chairs
+      t.integer :chair_cost
       t.integer :ext_tables
+      t.integer :table_cost
       t.integer :service_cost
       t.string :company_name
       t.string :product

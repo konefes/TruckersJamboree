@@ -128,13 +128,7 @@
               %em *
             .col-md-9
               %input#phone{:name => "phone", :pattern => "^[(]{0,1}[0-9]{3}[)]{0,1}[-\\s\\.]{0,1}[0-9]{3}[-\\s\\.]{0,1}[0-9]{4}$", :value => session[:phone], :placeholder => "(xxx) xxx-xxxx",  :title => "Phone number must contain 10 digits", :type => "text", :class => "form-control", :required => ""}
-            
-          .form-group
-            %label{:for => "fax", :class => "col-md-3 control-label"} 
-              Fax
-            .col-md-9
-              %input#fax{:name => "fax", :pattern => "^[(]{0,1}[0-9]{3}[)]{0,1}[-\\s\\.]{0,1}[0-9]{3}[-\\s\\.]{0,1}[0-9]{4}$", :value => session[:fax], :placeholder => "(xxx) xxx-xxxx", :title => "Phone number must contain 10 digits", :type => "text", :class => "form-control"}
-            
+           
           .form-group
             %label{:for => "email", :class => "col-md-3 control-label"}
               Email
