@@ -5,94 +5,132 @@
                 .panel-heading 
                     %h4 Summary of Registration
                 .panel-body
-                    .form-group
-                        %h2 Contact Information
-                        Company Name: 
-                        =session[:company_name]
-                        %br
-                        Product: 
-                        =session[:product]
-                        %br
-                        Contact Name: 
-                        =session[:contact_name]
-                        %br
-                        Address: 
-                        %br
-                        =session[:address_street]
-                        =session[:address_city]
-                        =session[:address_state]
-                        =session[:address_zip]
-                        %br
-                        Phone: 
-                        =session[:phone]
-                        %br
-                        Email:
-                        =session[:email]
-                        %br
-                        =link_to "Edit Contact Info", vendors_summary_change_path(:page => "contact")
+                    %div{:align =>"center"}
+                        .form-group
+                            %h2 Contact Information
+                            Company Name: 
+                            =session[:company_name]
+                            %br
+                            Product: 
+                            =session[:product]
+                            %br
+                            Contact Name: 
+                            =session[:contact_name]
+                            %br
+                            Contact Title:
+                            =session[:contact_title]
+                            %br
+                            Address: 
+                            %br
+                            =session[:address_street]
+                            =session[:address_city]
+                            ,
+                            =session[:address_state]
+                            =session[:address_zip]
+                            %br
+                            Phone: 
+                            =session[:phone]
+                            %br
+                            Email:
+                            =session[:email]
+                            %br
+                            =link_to "Edit Contact Info", vendors_summary_change_path(:page => "contact")
+                        
+                    %div{:align =>"center"}
+                        .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                            - if(!session[:booth_pref])
+                                %h2 Booth Information
+                                Indoor Booth/s: 
+                                =session[:number_i_booth]
+                                %br
+                                Cost of Indoor Booths $
+                                =session[:booth_i_cost]
+                                %br
+                                Outdoor Booths: 
+                                =session[:number_o_booth]
+                                %br
+                                Cost of Outdoor Booths $
+                                =session[:booth_o_cost]
+                                %br
+                                Booth Cost $ 
+                                =session[:booth_cost]
+                                %br
+                            - else
+                                %h2 Custom Booth Information
+                                Length :
+                                =session[:length]
+                                %br
+                                Width :
+                                =session[:width]
+                                %br
+                                Booth Cost $ 
+                                =session[:booth_cost]
+                                %br
+                                Booth Description:
+                                =session[:custom_description]
+                                %br
+                                
+                            =link_to "Edit Booth Info", vendors_summary_change_path(:page => "booth")
+                        
+                    %div{:align =>"center"}
+                        .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                            %h2 Services Requested
+                            Electricity: 
+                            =session[:electric]
+                            %br
+                            Electricity Cost $
+                            =session[:electric_cost]
+                            %br
+                            Extra Chairs:
+                            =session[:ext_chairs]
+                            %br
+                            Chair Cost $
+                            =session[:chair_cost]
+                            %br
+                            Extra Tables:
+                            =session[:ext_tables]
+                            %br
+                            Table Cost $
+                            =session[:table_cost]
+                            %br
+                            Total Service Cost $
+                            =session[:service_cost]
+                            %br
+                            Additional Services Requested:
+                            =session[:service_description]
+                            %br
+                            =link_to "Edit Services Info", vendors_summary_change_path(:page => "services")
+                        
+                    .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                    
+                        %h2{:align => "center"}Total Cost of All Options Selected 
+                        %div{:align => "center"}
+                            %font{:size => "6"} $
+                            %font{:size => "6"}=session[:total_cost]
                     
                     .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
-                        - if(!session[:booth_pref])
-                            %h2 Booth Information
-                            Indoor Booth/s: 
-                            =session[:number_i_booth]
-                            %br
-                            Cost of Indoor Booths $
-                            =session[:booth_i_cost]
-                            %br
-                            Outdoor Booths: 
-                            =session[:number_o_booth]
-                            %br
-                            Cost of Outdoor Booths $
-                            =session[:booth_o_cost]
-                            %br
-                            Booth Cost $ 
-                            =session[:booth_cost]
-                            %br
-                        - else
-                            %h2 Custom Booth Information
-                            Length :
-                            =session[:length]
-                            %br
-                            Width :
-                            =session[:width]
-                            %br
-                            Booth Cost $ 
-                            =session[:booth_cost]
-                            %br
-                            Booth Description:
-                            =session[:custom_description]
+                        %p{:align =>"center"}   On behalf of the company that I represent, 
+                        %p{:align =>"center"}   I (we) assume full legal, financial and insurable 
+                        %p{:align =>"center"}   responsibility for any products, trucks, and equipment. 
+                        %p{:align =>"center"}   I (we) fully release the TRUCKERS JAMBOREE and those 
+                        %p{:align =>"center"}   associated with it from any and all liability. 
+                        %br
+                        
+                        %div{:align => "center"}
+                            %input#authorize_sig{:name => "authorize_sig", :placeholder => session[:contact_name], :type => "text", :class => "form-control", :required => ""}
+                            Name
                             %br
                             
-                        =link_to "Edit Booth Info", vendors_summary_change_path(:page => "booth")
+                            %input#authorize_title{:name => "authorize_title", :placeholder => session[:contact_title], :type => "text", :class => "form-control", :required => ""}
+                            Title
+                            %br
+                            
+                            %input#authorize_date{:name => "authorize_date", :type => "date", :class => "form-control", :required => ""}
+                            Date
+                            %br
+          
                     
-                    .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
-                        %h2 Services Requested
-                        Electricity: 
-                        =session[:electric]
-                        %br
-                        Electricity Cost $
-                        =session[:electric_cost]
-                        %br
-                        Extra Chairs:
-                        =session[:ext_chairs]
-                        %br
-                        Chair Cost $
-                        =session[:chair_cost]
-                        %br
-                        Extra Tables:
-                        =session[:ext_tables]
-                        %br
-                        Table Cost $
-                        =session[:table_cost]
-                        %br
-                        Total Service Cost $
-                        =session[:service_cost]
-                        %br
-                        Additional Services Requested:
-                        =session[:service_description]
-                        %br
-                        =link_to "Edit Services Info", vendors_summary_change_path(:page => "services")
                     .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
                         .col-md-offset-3.col-md-6
                             %input#submit{:type => "submit", :value => "Approve Summary", :class => "btn btn-info btn-block"}
+                            
