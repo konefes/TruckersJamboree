@@ -37,6 +37,7 @@ class VendorsController < ApplicationController
         session[:company_name] = params["company_name"]
         session[:product] = params["product"]
         session[:contact_name] = params["contact_name"]
+        session[:contact_title] = params["contact_title"]
         session[:address_street] = params["address_street"]
         session[:address_city] = params["address_city"]
         session[:address_state] = params["address_state"]
@@ -95,6 +96,8 @@ class VendorsController < ApplicationController
         session[:booth_cost] = params["booth_cost"]
 
         if session[:edit] == 1
+            @total = Integer(session[:service_cost]) + Integer(session[:booth_cost])
+            session[:total_cost] = @total
             redirect_to '/vendors/summary'
         else
             redirect_to '/vendors/services'
@@ -115,6 +118,8 @@ class VendorsController < ApplicationController
         session[:custom_description] = params["custom_description"]
         
         if session[:edit] == 1
+            @total = Integer(session[:service_cost]) + Integer(session[:booth_cost])
+            session[:total_cost] = @total
             redirect_to '/vendors/summary'
         else
             redirect_to '/vendors/services'
@@ -142,6 +147,8 @@ class VendorsController < ApplicationController
         session[:chair_cost] = params["chair_cost"]
         session[:service_cost] = params["service_cost"]
         session[:service_description] = params["service_description"]
+        @total = Integer(params["service_cost"]) + Integer(session[:booth_cost])
+        session[:total_cost] = @total
         
         redirect_to '/vendors/summary'
     end
@@ -169,9 +176,13 @@ class VendorsController < ApplicationController
         # the completed vendor profile should be eastablished by now
         # print all the entered field for the vendor to see one last time
         # display a message in large text showing the vendor their submission has been recieved
+        session[:authorize_sig] = "authorize_sig"
+        session[:authorize_title] = "authorize_title"
+        session[:authorize_date] = "authorize_date"
         Vendor.create(company_name: session[:company_name],
                         product: session[:product],
                         contact_name: session[:contact_name],
+                        contact_title: session[:contact_title],
                         address_street: session[:address_street],
                         address_city: session[:address_city],
                         address_state: session[:address_state],
@@ -190,7 +201,11 @@ class VendorsController < ApplicationController
                         ext_tables: session[:ext_tables],
                         table_cost: session[:table_cost],
                         service_cost: session[:service_cost],
-                        service_description: session[:service_description]
+                        service_description: session[:service_description],
+                        total_cost: session[:total_cost],
+                        authorize_sig: session[:authorize_sig],
+                        authorize_title: session[:authorize_title],
+                        authorize_date: session[:authorize_date]
                         )
         session.destroy
         # send email with registration information

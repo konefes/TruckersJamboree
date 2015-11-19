@@ -16,9 +16,11 @@ class CreateVendors < ActiveRecord::Migration
       t.integer :ext_tables
       t.integer :table_cost
       t.integer :service_cost
+      t.integer :total_cost
       t.string :company_name
       t.string :product
       t.string :contact_name
+      t.string :contact_title
       t.string :address_street
       t.string :address_city
       t.string :address_state
