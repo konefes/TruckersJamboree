@@ -5,6 +5,8 @@
             %a#nav_all{:href => "#"} All Vendors
          %li#nav_booth_li{:role => "presentation"}
             %a#nav_booth{:href => "#"} Booth Preference
+         %li#nav_custom_booth_li{:role => "presentation"}
+            %a#nav_custom_booth{:href => "#"} Custom Booth
          %li#nav_services_li{:role => "presentation"}
             %a#nav_services{:href => "#"} Services
    %p
@@ -12,45 +14,39 @@
    #booth_search{:style=> "display: none;"}
       .panel.panel-info
          .panel-heading
-            Sort by booth preferences:
+            Filter by booth preferences:
          .panel-body
             %table.table
                %tbody
                   %tr
                      %td 
-                        %input#check_ext_chairs{:type => "checkbox"}
-                        Custom Booth
+                        %input#number_i_booth{:type => "checkbox"}
+                        Inside Booth
                      %td 
-                        %input#check_ext_tables{:type => "checkbox"}
-                        a
+                        %input#number_o_booth{:type => "checkbox"}
+                        Outside Booth
                      %td 
-                        %input#check_electric{:type => "checkbox"}
-                        b
-                     %td 
-                        %input#check_internet{:type => "checkbox"}
-                        c
+                        %input#custom{:type => "checkbox"}
+                        Custom
       
    
    #services_search{:style=> "display: none;"}
       .panel.panel-info
          .panel-heading
-            Sort by requested services:
+            Filter by requested services:
          .panel-body
             %table.table
                %tbody
                   %tr
                      %td 
-                        %input#check_ext_chairs{:type => "checkbox"}
+                        %input.filter_services1#ext_chairs{:type => "checkbox"}
                         Extra Chairs
                      %td 
-                        %input#check_ext_tables{:type => "checkbox"}
+                        %input.filter_services1#ext_tables{:type => "checkbox"}
                         Extra Tables
                      %td 
-                        %input#check_electric{:type => "checkbox"}
+                        %input.filter_services1#electric{:type => "checkbox"}
                         Electric
-                     %td 
-                        %input#check_internet{:type => "checkbox"}
-                        Internet
    
    .panel.panel-info
       .panel-body
@@ -60,16 +56,17 @@
                %tr
                   %th Company Name
                   %th Contact Person
-                  %th Product
                   %th Contact Number
             %tbody
                - @vendors.each do |vendor|
-                  %tr
+                  %tr{:id => "#{vendor.id}"}
                      %td 
                         %a.vendor_link{:href => "#", :id => "#{vendor.id}"} #{vendor.company_name} 
                      %td= vendor.contact_name
-                     %td= vendor.product
                      %td= vendor.phone
+                     %td{:hidden => 'true', :id => "ext_chairs"}
+                        =vendor.ext_chairs
+                     %td{:hidden => 'true', :id => "ext_tables"}
+                        =vendor.ext_tables
                      
-   
    #individual{:style=> "display: none;"}

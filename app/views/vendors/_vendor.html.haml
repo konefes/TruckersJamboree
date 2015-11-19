@@ -1,4 +1,4 @@
-.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+.center
     .panel.panel-info
         .panel-heading 
             %h4 Vendor Information
@@ -43,12 +43,6 @@
                 Electricity: 
                 =@vendor.electric
                 %br
-                Internet: 
-                =@vendor.internet
-                %br
-                Forklift: 
-                =@vendor.forklift
-                %br
                 Extra Chairs:
                 =@vendor.ext_chairs
                 %br
@@ -58,5 +52,5 @@
                 Service Cost:
                 =@vendor.service_cost
             .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
-                .col-md-offset-3.col-md-6
+                .center
                     %a#close_individual Close
