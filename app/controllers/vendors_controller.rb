@@ -181,7 +181,7 @@ class VendorsController < ApplicationController
         session[:authorize_sig] = "authorize_sig"
         session[:authorize_title] = "authorize_title"
         session[:authorize_date] = "authorize_date"
-        Vendor.create(company_name: session[:company_name],
+        @current = Vendor.create!(company_name: session[:company_name],
                         product: session[:product],
                         contact_name: session[:contact_name],
                         contact_title: session[:contact_title],

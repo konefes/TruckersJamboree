@@ -1,9 +1,140 @@
-.container
+
+.summary-container{:id => "top"}
     .mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
         .panel.panel-info
             .panel-heading 
-                %h4 Registration Successfull!
+                %b Registration Successfull!
             .panel-body
-                .form-group
-                    %p Your registration information has been saved, and a confirmation email has been sent.
+                Your registration information has been saved, and a confirmation email has been sent.
+
+    
+    .mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+        .panel.panel-info
+            .panel-heading 
+                %b Summary of Registration
+            .panel-body
+                %div{:align =>"center"}
+                    .form-group
+                        %b Contact Information
+                        %br
+                        Company Name: 
+                        = @current.company_name
+                        %br
+                        Product: 
+                        = @current.product
+                        %br
+                        Contact Name: 
+                        = @current.contact_name
+                        %br
+                        Contact Title:
+                        = @current.contact_title
+                        %br
+                        Address: 
+                        %br
+                        = @current.address_street
+                        = @current.address_city
+                        ,
+                        = @current.address_state
+                        = @current.address_zip
+                        %br
+                        Phone: 
+                        = @current.phone
+                        %br
+                        Email:
+                        = @current.email
                     
+                %div{:align =>"center"}
+                    .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                        - if(! @current.booth_pref)
+                            %b Booth Information
+                            %br
+                            Indoor Booth/s: 
+                            = @current.number_i_booth
+                            %br
+                            Cost of Indoor Booths $
+                            = @current.booth_i_cost
+                            %br
+                            Outdoor Booths: 
+                            = @current.number_o_booth
+                            %br
+                            Cost of Outdoor Booths $
+                            = @current.booth_o_cost
+                            %br
+                            Booth Cost $ 
+                            = @current.booth_cost
+                        - else
+                            %b Custom Booth Information
+                            %br
+                            Length :
+                            = @current.length
+                            %br
+                            Width :
+                            = @current.width
+                            %br
+                            Booth Cost $ 
+                            = @current.booth_cost
+                            %br
+                            Booth Description:
+                            = @current.custom_description
+                    
+                %div{:align =>"center"}
+                    .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                        %b Services Requested
+                        %br
+                        Electricity: 
+                        = @current.electric
+                        %br
+                        Electricity Cost $
+                        = @current.electric_cost
+                        %br
+                        Extra Chairs:
+                        = @current.ext_chairs
+                        %br
+                        Chair Cost $
+                        = @current.chair_cost
+                        %br
+                        Extra Tables:
+                        = @current.ext_tables
+                        %br
+                        Table Cost $
+                        = @current.table_cost
+                        %br
+                        Total Service Cost $
+                        = @current.service_cost
+                        %br
+                        Additional Services Requested:
+                        = @current.service_description
+                    
+                .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                
+                    %p{:align => "center"}Total Cost of All Options Selected 
+                    %div{:align => "center"}
+                        %font{:size => "4"} $
+                        %font{:size => "4"}= @current.total_cost
+                
+                %div{:align =>"center", :id => "printButton"}
+                    .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}        
+                        %button{:onclick => "printPage()"} Print This View
+                        :javascript
+                            function printPage() {
+                                var button = document.getElementById('printButton');
+                                button.style.visibility = 'hidden';
+                                if (document.getElementById('login')!=null)
+                                {
+                                    document.getElementById('login').style.visibility = 'hidden';
+                                }
+                                if (document.getElementById('logout')!=null)
+                                {
+                                    document.getElementById('logout').style.visibility = 'hidden';
+                                }
+                                window.print();
+                                button.style.visibility = 'visible';
+                                if (document.getElementById('login')!=null)
+                                {
+                                    document.getElementById('login').style.visibility = 'visible';
+                                }
+                                if (document.getElementById('logout')!=null)
+                                {
+                                    document.getElementById('logout').style.visibility = 'visible';
+                                }
+                            }
