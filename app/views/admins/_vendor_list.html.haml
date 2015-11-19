@@ -1,0 +1,7 @@
+- @vendors.each do |vendor|
+    %tr
+        %td 
+            %a.vendor_link{:href => "#", :id => "#{vendor.id}"} #{vendor.company_name} 
+        %td= vendor.contact_name
+        %td= vendor.product
+        %td= vendor.phone
