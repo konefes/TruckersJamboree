@@ -23,3 +23,20 @@ end
 When(/^I have visited Signup Page$/) do
   visit new_user_path
 end
+
+
+
+
+## Below part is for Login Test!
+
+When(/^I have visited Login Page$/) do
+  visit login_path
+end
+
+When(/^I have logged in with user name "(.*?)", password "(.*?)"$/) do |username, password|
+  fill_in 'user[username]', :with => username
+  fill_in 'user[password]', :with => password
+  click_button 'Login to my account'
+end
+
+
