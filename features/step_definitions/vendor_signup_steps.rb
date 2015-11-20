@@ -39,4 +39,8 @@ When(/^I have logged in with user name "(.*?)", password "(.*?)"$/) do |username
   click_button 'Login to my account'
 end
 
+Given(/^I have logged out from my account$/) do
+  click_link 'Logout'
+end
+
 
