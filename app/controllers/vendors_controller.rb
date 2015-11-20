@@ -178,9 +178,9 @@ class VendorsController < ApplicationController
         # the completed vendor profile should be eastablished by now
         # print all the entered field for the vendor to see one last time
         # display a message in large text showing the vendor their submission has been recieved
-        session[:authorize_sig] = "authorize_sig"
-        session[:authorize_title] = "authorize_title"
-        session[:authorize_date] = "authorize_date"
+        session[:authorize_sig] =  params["authorize_sig"]
+        session[:authorize_title] =  params["authorize_title"]
+        session[:authorize_date] =  params["authorize_date"]
         @current = Vendor.create!(company_name: session[:company_name],
                         product: session[:product],
                         contact_name: session[:contact_name],
@@ -190,10 +190,14 @@ class VendorsController < ApplicationController
                         address_state: session[:address_state],
                         address_zip: session[:address_zip],
                         phone: session[:phone],
+                        email: session[:email], 
+                        booth_pref: session[:booth_pref],
                         number_i_booth: session[:number_i_booth],
                         booth_i_cost: session[:booth_i_cost],
                         number_o_booth: session[:number_o_booth],
                         booth_o_cost: session[:booth_o_cost],
+                        length: session[:length],
+                        width: session[:width],
                         booth_cost: session[:booth_cost],
                         custom_description: session[:custom_description],
                         electric: session[:electric],
