@@ -12,6 +12,14 @@ And(/^I am on the Login page$/) do
   expect(page).to have_button("Login to my account")
 end
 
+And(/^I am on the Signup page$/) do
+  expect(page).to have_button("Create my account")
+end
+
 Then(/^I should see a message "(.*?)"$/) do |confirmationMessage|
   expect(page).to have_content(confirmationMessage)
+end
+
+When(/^I have visited Signup Page$/) do
+  visit new_user_path
 end
