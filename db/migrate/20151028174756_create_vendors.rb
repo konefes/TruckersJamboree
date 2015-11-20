@@ -24,12 +24,12 @@ class CreateVendors < ActiveRecord::Migration
       t.string :address_street
       t.string :address_city
       t.string :address_state
-      t.integer :address_zip
+      t.string :address_zip
       t.string :phone
       t.string :fax
-      t.boolean :authorize_sig
+      t.string  :authorize_sig
       t.string :authorize_title
-      t.date :authorize_date
+      t.string :authorize_date
       t.boolean :inovice_sent
       t.boolean :bill_paid
       t.boolean :confirmation_sent

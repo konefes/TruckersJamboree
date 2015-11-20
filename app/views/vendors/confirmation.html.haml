@@ -117,6 +117,7 @@
                         %button{:onclick => "printPage()"} Print This View
                         :javascript
                             function printPage() {
+                                alert(#{@current.authorize_sig});
                                 var button = document.getElementById('printButton');
                                 button.style.visibility = 'hidden';
                                 if (document.getElementById('login')!=null)
