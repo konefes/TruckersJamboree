@@ -20,7 +20,7 @@
                %tbody
                   %tr
                      %td 
-                        %input#number_i_booth{:type => "checkbox"}
+                        %input.sorter#number_i_booth{:type => "checkbox"}
                         Inside Booth
                      %td 
                         %input#number_o_booth{:type => "checkbox"}
@@ -39,14 +39,17 @@
                %tbody
                   %tr
                      %td 
-                        %input.filter_services1#ext_chairs{:type => "checkbox"}
+                        %input.sorter#filter_ext_chairs{:type => "checkbox"}
                         Extra Chairs
                      %td 
-                        %input.filter_services1#ext_tables{:type => "checkbox"}
+                        %input.sorter#filter_ext_tables{:type => "checkbox"}
                         Extra Tables
                      %td 
-                        %input.filter_services1#electric{:type => "checkbox"}
+                        %input.sorter#filter_electric{:type => "checkbox"}
                         Electric
+                     %td 
+                        %input.sorter#filter_service_description{:type => "checkbox"}
+                        Additional Services
    
    .panel.panel-info
       .panel-body
@@ -54,19 +57,43 @@
          %table.table#Vendors
             %thead
                %tr
-                  %th Company Name
-                  %th Contact Person
-                  %th Contact Number
+                  %th{:id => "company_name_heading"} Company Name
+                  %th{:id => "contact_name_heading"} Contact Person
+                  %th{:id => "phone_heading"} Contact Number
+                  
+                  %th{:hidden => 'true', :id => "ext_chairs_heading"} Extra Chairs
+                  %th{:hidden => 'true', :id => "chair_cost_heading"} Cost
+                  %th{:hidden => 'true', :id => "ext_tables_heading"} Extra Tables
+                  %th{:hidden => 'true', :id => "table_cost_heading"} Cost
+                  %th{:hidden => 'true', :id => "electric_heading"} Electric
+                  %th{:hidden => 'true', :id => "electric_cost_heading"} Cost
+                  %th{:hidden => 'true', :id => "service_description_heading"} Additional Services
+                  %th{:hidden => 'true', :id => "service_cost_heading"} Total Service Cost
             %tbody
                - @vendors.each do |vendor|
                   %tr{:id => "#{vendor.id}"}
                      %td 
                         %a.vendor_link{:href => "#", :id => "#{vendor.id}"} #{vendor.company_name} 
-                     %td= vendor.contact_name
-                     %td= vendor.phone
+                     %td{:id => "contact_name"}
+                        = vendor.contact_name
+                     %td{:id => "phone"}
+                        = vendor.phone
+                        
                      %td{:hidden => 'true', :id => "ext_chairs"}
-                        =vendor.ext_chairs
+                        = vendor.ext_chairs
+                     %td{:hidden => 'true', :id => "chair_cost"}
+                        = vendor.chair_cost
                      %td{:hidden => 'true', :id => "ext_tables"}
-                        =vendor.ext_tables
+                        = vendor.ext_tables
+                     %td{:hidden => 'true', :id => "table_cost"}
+                        = vendor.table_cost
+                     %td{:hidden => 'true', :id => "electric"}
+                        = vendor.electric
+                     %td{:hidden => 'true', :id => "electric_cost"}
+                        = vendor.electric_cost
+                     %td{:hidden => 'true', :id => "service_description"}
+                        = vendor.service_description
+                     %td{:hidden => 'true', :id => "service_cost"}
+                        = vendor.service_cost
                      
    #individual{:style=> "display: none;"}

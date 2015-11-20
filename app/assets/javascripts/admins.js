@@ -8,6 +8,20 @@ $(function() {
       $("#nav_booth_li").removeClass("active");
       $("#nav_services_li").removeClass("active");
       $("#Vendors tbody tr").each(function(){ $(this).show(); });
+      $("#contact_name_heading").show();
+      $("#phone_heading").show();
+      $("#contact_name").show();
+      $("#phone").show();
+      
+      $("#Vendors thead tr").find("#ext_chairs_heading").hide();
+      $("#Vendors tbody td").find("#ext_chairs").hide();
+      $("#Vendors thead tr").find("#chair_cost_heading").hide();
+      $("#Vendors tbody td").find("#chair_cost").hide();
+      
+      $("#Vendors thead tr").find("#ext_tables_heading").hide();
+      $("#Vendors tbody td").find("#ext_tables").hide();
+      $("#Vendors thead tr").find("#table_cost_heading").hide();
+      $("#Vendors tbody td").find("#table_cost").hide();
     });
     //clicking navigation button "Booth Preference"
     $( "#nav_booth" ).click(function() {
@@ -44,7 +58,7 @@ $(function() {
             }
         }); 
     });
-    //clicking outside of vendor popup
+    //clicking outside of vendor popup to close
     $(document).mouseup(function (e)
       {
           var container = $("#individual");
@@ -58,28 +72,109 @@ $(function() {
       
     //sorting functions/////////////////////////////////////////////////////////
     $(".sorter").change(function() {
-      $("#Vendors tbody tr").each(function(){ $(this).hide(); });
+      $("#contact_name_heading").hide();
+      $("#phone_heading").hide();
       
+      $("#Vendors tbody tr").each(function(){ 
+        $(this).hide(); 
+        $(this).find("#contact_name").hide();
+        $(this).find("#phone").hide();
+      });
+      
+      //checkbox in services tab clicked
+      if ($("#nav_services_li").hasClass("active")) {
+        $("#service_cost_heading").show();
+        $("#booth_cost_heading").show();
+        $("#Vendors tbody tr").each(function(){ 
+          $(this).find("#service_cost").show(); 
+          $(this).find("#booth_cost").hide();
+        });
+      }
+      
+      //iterate through all checkboxes
       $('.sorter').each(function() {
+        
         //filter by ext_chairs
-        if ($(this).attr("id") == "ext_chairs")
-          $("#Vendors thead tr").find("ext_chairs").show()
-          $("#Vendors thead tr").find("chair_cost").show()
-          $("#Vendors thead tr").find("service_cost").show()
-          
+        if ($(this).attr("id") == "filter_ext_chairs" && $(this).is(":checked")){
+          //alert("checked");
+          $("#ext_chairs_heading").show();
+          $("#chair_cost_heading").show();
           $("#Vendors tbody tr").each(function(){ 
+            $(this).find("#ext_chairs").show();
+            $(this).find("#chair_cost").show();
             if ($(this).find("#ext_chairs").html() != 0)
               $(this).show();
           });
+        }else if ($(this).attr("id") == "filter_ext_chairs" && !$(this).is(":checked")){
+          $("#ext_chairs_heading").hide();
+          $("#chair_cost_heading").hide();
+          $("#Vendors tbody tr").each(function(){ 
+            $(this).find("#ext_chairs").hide();
+            $(this).find("#chair_cost").hide();
+          });
+        }
+        //end ext_chairs
           
         //filter by ext_tables
-        if ($(this).attr("id") == "ext_tables")
+        if ($(this).attr("id") == "filter_ext_tables" && $(this).is(":checked")){
+          //alert("checked");
+          $("#ext_tables_heading").show();
+          $("#table_cost_heading").show();
           $("#Vendors tbody tr").each(function(){ 
+            $(this).find("#ext_tables").show();
+            $(this).find("#table_cost").show();
             if ($(this).find("#ext_tables").html() != 0)
               $(this).show();
           });
+        }else if ($(this).attr("id") == "filter_ext_tables" && !$(this).is(":checked")){
+          $("#ext_tables_heading").hide();
+          $("#table_cost_heading").hide();
+          $("#Vendors tbody tr").each(function(){ 
+            $(this).find("#ext_tables").hide();
+            $(this).find("#table_cost").hide();
+          });
+        }
+        //end ext_tables
+        
+        //filter by electric
+        if ($(this).attr("id") == "filter_electric" && $(this).is(":checked")){
+          //alert("checked");
+          $("#electric_heading").show();
+          $("#electric_cost_heading").show();
+          $("#Vendors tbody tr").each(function(){ 
+            $(this).find("#electric").show();
+            $(this).find("#electric_cost").show();
+            if ($(this).find("#electric").html() != 0)
+              $(this).show();
+          });
+        }else if ($(this).attr("id") == "filter_electric" && !$(this).is(":checked")){
+          $("#electric_heading").hide();
+          $("#electric_cost_heading").hide();
+          $("#Vendors tbody tr").each(function(){ 
+            $(this).find("#electric").hide();
+            $(this).find("#electric_cost").hide();
+          });
+        }
+        //end electric
+        
+        //filter by service_description
+        if ($(this).attr("id") == "filter_service_description" && $(this).is(":checked")){
+          //alert("checked");
+          $("#service_description_heading").show();;
+          $("#Vendors tbody tr").each(function(){ 
+            $(this).find("#service_description").show();
+            if ($(this).find("#service_description").html() != 0)
+              $(this).show();
+          });
+        }else if ($(this).attr("id") == "filter_service_description" && !$(this).is(":checked")){
+          $("#service_description_heading").hide();
+          $("#Vendors tbody tr").each(function(){ 
+            $(this).find("#service_description").hide();
+          });
+        }
+        //end service_description
           
-      });
+      });//end checkbox iterator
       
-    });
+    });//end checkbox change function
 });
