@@ -20,14 +20,11 @@
                %tbody
                   %tr
                      %td 
-                        %input.sorter#number_i_booth{:type => "checkbox"}
+                        %input.sorter#filter_number_i_booth{:type => "checkbox"}
                         Inside Booth
                      %td 
-                        %input#number_o_booth{:type => "checkbox"}
+                        %input.sorter#filter_number_o_booth{:type => "checkbox"}
                         Outside Booth
-                     %td 
-                        %input#custom{:type => "checkbox"}
-                        Custom
       
    
    #services_search{:style=> "display: none;"}
@@ -61,6 +58,12 @@
                   %th{:id => "contact_name_heading"} Contact Person
                   %th{:id => "phone_heading"} Contact Number
                   
+                  %th{:hidden => 'true', :id => "number_i_booth_heading"} Inside Booths
+                  %th{:hidden => 'true', :id => "booth_i_cost_heading"} Cost
+                  %th{:hidden => 'true', :id => "number_o_booth_heading"} Outside Booths
+                  %th{:hidden => 'true', :id => "booth_o_cost_heading"} Cost
+                  %th{:hidden => 'true', :id => "booth_cost_heading"} Total Booth Cost
+                  
                   %th{:hidden => 'true', :id => "ext_chairs_heading"} Extra Chairs
                   %th{:hidden => 'true', :id => "chair_cost_heading"} Cost
                   %th{:hidden => 'true', :id => "ext_tables_heading"} Extra Tables
@@ -78,6 +81,17 @@
                         = vendor.contact_name
                      %td{:id => "phone"}
                         = vendor.phone
+                     
+                     %td{:hidden => 'true', :id => "number_i_booth"}
+                        = vendor.number_i_booth
+                     %td{:hidden => 'true', :id => "booth_i_cost"}
+                        = vendor.booth_i_cost
+                     %td{:hidden => 'true', :id => "number_o_booth"}
+                        = vendor.number_o_booth
+                     %td{:hidden => 'true', :id => "booth_o_cost"}
+                        = vendor.booth_o_cost
+                     %td{:hidden => 'true', :id => "booth_cost"}
+                        = vendor.booth_cost
                         
                      %td{:hidden => 'true', :id => "ext_chairs"}
                         = vendor.ext_chairs
