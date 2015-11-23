@@ -39,6 +39,16 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   
+  config.action_mailer.delivery_method = :sendmail
+  # Defaults to:
+  # config.action_mailer.sendmail_settings = {
+  #   location: '/usr/sbin/sendmail',
+  #   arguments: '-i -t'
+  # }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = {from: 'no-reply@example.com'}
+  
   #tells ActionMailer that you want to use the SMTP server.
   config.action_mailer.delivery_method = :smtp 
 
@@ -52,5 +62,4 @@ Rails.application.configure do
    enable_starttls_auto: true  
   }
 
-  ActionMailer::Base.default_content_type = "text/html"
 end
