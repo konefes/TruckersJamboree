@@ -36,8 +36,9 @@ class UsersController < ApplicationController
       end
       
       
-      if message.empty?
+      if @user.save
         @user = User.create_user!(user_params)
+        UserMailer.welcome_email(@user).deliver_now
         flash[:notice] = "New user #{@user.username} was successfully created."
         redirect_to login_path
       else
