@@ -1,3 +1,4 @@
+$("#admins_index").ready(
 $(function() {  
     //nav functions/////////////////////////////////////////////////////////////
     //clicking navigation button "All Vendors"
@@ -275,4 +276,4 @@ $(function() {
       });//end checkbox iterator
       
     });//end checkbox change function
-});
+}));
