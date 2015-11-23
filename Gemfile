@@ -45,7 +45,7 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'rspec-rails'
-  gem "factory_girl_rails"
+  #gem "factory_girl_rails"
   gem 'simplecov', :require => false
 end
 

@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def new
     # default: render 'new' template
+    #@user=User.new(user_params)
+    @user=User.new
   end
 
   def create
@@ -38,26 +40,13 @@ class UsersController < ApplicationController
       
       if message.empty?
         @user = User.create_user!(user_params)
+        UserMailer.welcome_email(@user).deliver_now
         flash[:notice] = "New user #{@user.username} was successfully created."
         redirect_to login_path
       else
        flash[:notice] = message
        redirect_to new_user_path
       end
-      @user = User.new(params[:user])
- 
-    respond_to do |format|
-      if @user.save
-        # Tell the UserMailer to send a welcome email after save
-        UserMailer.welcome_email(@user).deliver_later
- 
-        format.html { redirect_to(@user, notice: 'User was successfully created.') }
-        format.json { render json: @user, status: :created, location: @user }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
 
@@ -75,6 +64,8 @@ class UsersController < ApplicationController
 
   def destroy
   end
-
+  
+  def errors
+  end
 
 end
