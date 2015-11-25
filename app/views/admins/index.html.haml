@@ -1,4 +1,24 @@
 .container
+   %div{:align => "center"}
+      %button{:onclick => "printwholeP()", :id => "printWButton", :align => "center"} Print This View
+      :javascript
+         function printwholeP() 
+         {
+            var click = document.getElementById('click');
+            click.style.visibility = 'hidden';
+            var table = document.getElementById('Vendors');
+            table.border = "1";
+            table.style.fontSize= "10px";
+            var win = $('.tester').html();
+            var w = window.open();
+            w.document.write('<html>' + win + '</html>')
+            w.print();
+            w.close();
+            click.style.visibility = 'visible';
+            table.border = "0";
+            table.style.fontSize = "14px";
+         }
+     
    #navigation
       %ul.nav.nav-tabs
          %li.active#nav_all_li{:role => "presentation"}
@@ -48,9 +68,9 @@
                         %input.sorter#filter_service_description{:type => "checkbox"}
                         Additional Services
    
-   .panel.panel-info
+   .panel.panel-info{:class => "tester"}
       .panel-body
-         Click link for full details.
+         %P{:id => "click"}Click link for full details.
          %table.table#Vendors
             %thead
                %tr
