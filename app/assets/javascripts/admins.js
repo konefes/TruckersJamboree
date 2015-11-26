@@ -59,14 +59,14 @@ $(function() {
     });
     //clicking outside of vendor popup to close
     $(document).mouseup(function (e)
+    {
+      var container = $("#individual");
+      if (!container.is(e.target) // if the target of the click isn't the container...
+          && container.has(e.target).length === 0) // ... nor a descendant of the container
       {
-          var container = $("#individual");
-          if (!container.is(e.target) // if the target of the click isn't the container...
-              && container.has(e.target).length === 0) // ... nor a descendant of the container
-          {
-              container.hide();
-          }
-      });
+          container.hide();
+      }
+    });
       
     //show all vendors
     function showAll() {
@@ -121,6 +121,24 @@ $(function() {
       $('#filter_services_description').removeAttr('checked').change();
     };
     
+    //filter by id tab passed as str-----------------------------------------
+    function filter_by(str, obj, arg) {
+      if ($(obj).attr("id") == "filter_" + str && $(obj).is(":checked")){
+        alert($(obj).attr("id"));
+        $("#" + str + "_heading").show();;
+        $("#Vendors tbody tr").each(function(){ 
+          $(obj).find("#" + str).show();
+          if ($(obj).find("#" + str).html() != arg)
+            $(obj).show();
+        });
+      }else if ($(obj).attr("id") == ("filter_" + str) && !$(obj).is(":checked")){
+        $("#" + str + "_heading").hide();
+        $("#Vendors tbody tr").each(function(){ 
+          $(obj).find("#" + str).hide();
+        });
+      };
+    };
+    
     //sorting functions/////////////////////////////////////////////////////////
     $(".sorter").change(function() {
       $("#contact_name_heading").hide();
@@ -149,14 +167,14 @@ $(function() {
           $(this).find("#service_cost").show(); 
           $(this).find("#booth_cost").hide();
         });
-      }
+      };
       
       
       //iterate through all checkboxes
       $('.sorter').each(function() {
         
-        
-        
+        filter_by("number_i_booth",this,0);
+        /*
         //filter by number_i_booth---------------------------------------------
         if ($(this).attr("id") == "filter_number_i_booth" && $(this).is(":checked")){
           $("#number_i_booth_heading").show();
@@ -271,9 +289,10 @@ $(function() {
             $(this).find("#service_description").hide();
           });
         }
-        //end service_description
+        //end service_description*/
           
       });//end checkbox iterator
       
     });//end checkbox change function
 }));
+
