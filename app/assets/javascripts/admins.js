@@ -117,7 +117,11 @@ $(function() {
       });
     };
     
+    
+    //show all vendor data
     function showWhole(){
+    var table = document.getElementById('Vendors');
+    table.style.fontSize = "8px";
     $("#product_heading").show();
     $("#contact_name_heading").show();
     $("#contact_title_heading").show();
@@ -169,6 +173,8 @@ $(function() {
     };
     
     function clearWhole(){
+    var table = document.getElementById('Vendors');
+    table.style.fontSize = "14px";
     $("#product_heading").hide();
     $("#contact_name_heading").hide();
     $("#contact_title_heading").hide();
