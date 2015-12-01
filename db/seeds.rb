@@ -296,3 +296,4 @@
  "authorize_title" => "Mrs.",
  "authorize_date" => "2015-11-19"
  })
+ AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
