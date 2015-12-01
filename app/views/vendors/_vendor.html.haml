@@ -1,110 +1,129 @@
-.center
-    .panel.panel-info
-        .panel-heading 
-            %h4 Vendor Information
-        .panel-body
-            .form-group
-                %h3 Contact Information
-                %b Company Name: 
-                =@vendor.company_name
-                %br
-                %b Product: 
-                =@vendor.product
-                %br
-                %b Contact Name: 
-                =@vendor.contact_name
-                %br
-                %b Contact Title: 
-                =@vendor.contact_title
-                %br
-                %b Address: 
-                %br
-                =@vendor.address_street
-                =@vendor.address_city
-                ,
-                =@vendor.address_state
-                =@vendor.address_zip
-                %br
-                %b Phone: 
-                =@vendor.phone
-                %br
-                %b Email:
-                =@vendor.email
-                %br
-            
-            
-            .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}    
-                - if (! @vendor.booth_pref)
-                    %h3 Booth Information
-                    %b Indoor Booth/s: 
-                    = @vendor.number_i_booth
+%div{:class => "contentPrint"}
+    .center
+        .panel.panel-info
+            .panel-heading 
+                %h4 Vendor Information
+            .panel-body
+                .form-group
+                    %h3 Contact Information
+                    %b Company Name: 
+                    =@vendor.company_name
                     %br
-                    %b Cost of Indoor Booths $
-                    = @vendor.booth_i_cost
+                    %b Product: 
+                    =@vendor.product
                     %br
-                    %b Outdoor Booths: 
-                    = @vendor.number_o_booth
+                    %b Contact Name: 
+                    =@vendor.contact_name
                     %br
-                    %b Cost of Outdoor Booths $
-                    = @vendor.booth_o_cost
+                    %b Contact Title: 
+                    =@vendor.contact_title
                     %br
-                    %b Booth Cost $ 
-                    = @vendor.booth_cost
+                    %b Address: 
                     %br
-                - else
-                    %h3 Booth Information  
-                    %b Length :
-                    = @vendor.length
+                    =@vendor.address_street
+                    =@vendor.address_city
+                    ,
+                    =@vendor.address_state
+                    =@vendor.address_zip
                     %br
-                    %b Width :
-                    = @vendor.width
+                    %b Phone: 
+                    =@vendor.phone
                     %br
-                    %b Booth Cost $ 
-                    = @vendor.booth_cost
-                    %br
-                    %b Booth Description:
-                    = @vendor.custom_description
+                    %b Email:
+                    =@vendor.email
                     %br
                 
-            
-            .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
-                %h3 Services Requested
-                %b Electricity: 
-                =@vendor.electric
-                %br
-                %b Electricity Cost $ 
-                =@vendor.electric_cost
-                %br
-                %b Extra Chairs:
-                =@vendor.ext_chairs
-                %br
-                %b Extra Chairs Cost $
-                =@vendor.chair_cost
-                %br
-                %b Extra Tables:
-                =@vendor.ext_tables
-                %br
-                %b Extra Tables Cost $
-                =@vendor.table_cost
-                %br
-                %b Service Cost:
-                =@vendor.service_cost
-                %br
-                -if (@vendor.service_description != "")
-                    %h3 *Addtion Service Requested*
-                    =@vendor.service_description
-            
-            .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
-                %h3 Authorization
-                %b Authorized By:
-                =@vendor.authorize_sig
-                %br
-                %b Authorized Title:
-                =@vendor.authorize_title
-                %br
-                %b Authorized Date:
-                =@vendor.authorize_date
                 
-            .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
-                .center
-                    %a#close_individual Close
+                .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}    
+                    - if (! @vendor.booth_pref)
+                        %h3 Booth Information
+                        %b Indoor Booth/s: 
+                        = @vendor.number_i_booth
+                        %br
+                        %b Cost of Indoor Booths $
+                        = @vendor.booth_i_cost
+                        %br
+                        %b Outdoor Booths: 
+                        = @vendor.number_o_booth
+                        %br
+                        %b Cost of Outdoor Booths $
+                        = @vendor.booth_o_cost
+                        %br
+                        %b Booth Cost $ 
+                        = @vendor.booth_cost
+                        %br
+                    - else
+                        %h3 Booth Information  
+                        %b Length :
+                        = @vendor.length
+                        %br
+                        %b Width :
+                        = @vendor.width
+                        %br
+                        %b Booth Cost $ 
+                        = @vendor.booth_cost
+                        %br
+                        %b Booth Description:
+                        = @vendor.custom_description
+                        %br
+                    
+                
+                .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                    %h3 Services Requested
+                    %b Electricity: 
+                    =@vendor.electric
+                    %br
+                    %b Electricity Cost $ 
+                    =@vendor.electric_cost
+                    %br
+                    %b Extra Chairs:
+                    =@vendor.ext_chairs
+                    %br
+                    %b Extra Chairs Cost $
+                    =@vendor.chair_cost
+                    %br
+                    %b Extra Tables:
+                    =@vendor.ext_tables
+                    %br
+                    %b Extra Tables Cost $
+                    =@vendor.table_cost
+                    %br
+                    %b Service Cost:
+                    =@vendor.service_cost
+                    %br
+                    -if (@vendor.service_description != "")
+                        %h3 *Addtion Service Requested*
+                        =@vendor.service_description
+                
+                .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                    %h3 Authorization
+                    %b Authorized By:
+                    =@vendor.authorize_sig
+                    %br
+                    %b Authorized Title:
+                    =@vendor.authorize_title
+                    %br
+                    %b Authorized Date:
+                    =@vendor.authorize_date
+                
+                
+                .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}        
+                    %button{:onclick => "printP()", :id => "printButton"} Print This View
+                    :javascript
+                        function printP() {
+                            var button = document.getElementById('printButton');
+                            var closeButton = document.getElementById('closeButton');
+                            button.style.visibility = 'hidden';
+                            closeButton.style.visibility = 'hidden';
+                            var win = $('.contentPrint').html();
+                            var w = window.open();
+                            w.document.write('<html>' + win + '</html>')
+                            w.print();
+                            w.close();
+                            button.style.visibility = 'visible';
+                            closeButton.style.visibility = 'visible';
+                        }
+                    
+                .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px", :id=>"closeButton"}
+                    .center
+                        %a#close_individual Close

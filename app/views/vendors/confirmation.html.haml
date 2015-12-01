@@ -114,10 +114,9 @@
                 
                 %div{:align =>"center", :id => "printButton"}
                     .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}        
-                        %button{:onclick => "printPage()"} Print This View
+                        %button{:onclick => "printP()"} Print This View
                         :javascript
-                            function printPage() {
-                                alert(#{@current.authorize_sig});
+                            function printP() {
                                 var button = document.getElementById('printButton');
                                 button.style.visibility = 'hidden';
                                 if (document.getElementById('login')!=null)
