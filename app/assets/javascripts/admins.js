@@ -81,7 +81,23 @@ $(function() {
       showAll();
     });
     
-    
+    $("#printWholePageButton").click(function(){
+      var click = document.getElementById('click');
+      var fontS;
+      click.style.visibility = 'hidden';
+      var table = document.getElementById('Vendors');
+      table.border = "1";
+      fontS = table.style.fontSize;
+      table.style.fontSize= "8px";
+      var win = $('.tester').html();
+      var w = window.open();
+      w.document.write('<html>' + win + '</html>')
+      w.print();
+      w.close();
+      click.style.visibility = 'visible';
+      table.border = "0";
+      table.style.fontSize = fontS;
+    });
     //vendor popup functions////////////////////////////////////////////////////
     //clicking on vendor link
     $(".vendor_link").click(function() {
