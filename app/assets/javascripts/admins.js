@@ -10,6 +10,9 @@ $(function() {
       $("#nav_services_li").removeClass("active");
       $("#nav_contact_li").removeClass("active");
       $("#nav_whole_li").removeClass("active");
+      $("#nav_add_li").removeClass("active");
+      $("#add_vendor").hide();
+      $("#vendor_table").show();
       clearBooth();
       clearServices();
       clearContact();
@@ -31,9 +34,16 @@ $(function() {
       $("#nav_services_li").removeClass("active");
       $("#nav_contact_li").removeClass("active");
       $("#nav_whole_li").removeClass("active");
+      $("#nav_add_li").removeClass("active");
+      $("#add_vendor").hide();
+      $("#vendor_table").show();
       clearServices();
       clearContact();
       clearWhole();
+      $("#booth_cost_heading").show();
+      $("#Vendors tbody tr").each(function(){ 
+        $(this).find("#booth_cost").show();
+      });
       showAll();
     });
     //clicking navigation button "Services"
@@ -45,9 +55,16 @@ $(function() {
       $("#nav_services_li").addClass("active");
       $("#nav_contact_li").removeClass("active");
       $("#nav_whole_li").removeClass("active");
+      $("#nav_add_li").removeClass("active");
+      $("#add_vendor").hide();
+      $("#vendor_table").show();
       clearBooth();
       clearContact();
       clearWhole();
+      $("#service_cost_heading").show();
+      $("#Vendors tbody tr").each(function(){ 
+        $(this).find("#service_cost").show();
+      });
       showAll();
     });
     //clicking contact button "Contact"
@@ -59,13 +76,16 @@ $(function() {
       $("#nav_services_li").removeClass("active");
       $("#nav_contact_li").addClass("active");
       $("#nav_whole_li").removeClass("active");
+      $("#nav_add_li").removeClass("active");
+      $("#add_vendor").hide();
+      $("#vendor_table").show();
       clearBooth();
       clearServices();
       clearWhole();
       showContact();
       showAll();
     });
-    //clicking contact button "Contact"
+    //clicking contact button "All entries"
     $( "#nav_whole" ).click(function() {
       $("#services_search").hide();
       $("#booth_search").hide();
@@ -74,10 +94,31 @@ $(function() {
       $("#nav_services_li").removeClass("active");
       $("#nav_contact_li").removeClass("active");
       $("#nav_whole_li").addClass("active");
+      $("#nav_add_li").removeClass("active");
+      $("#add_vendor").hide();
+      $("#vendor_table").show();
       clearBooth();
       clearServices();
       clearContact();
       showWhole();
+      showAll();
+    });
+    //clicking contact button "Add Vendors"
+    $( "#nav_add" ).click(function() {
+      $("#services_search").hide();
+      $("#booth_search").hide();
+      $("#nav_all_li").removeClass("active");
+      $("#nav_booth_li").removeClass("active");
+      $("#nav_services_li").removeClass("active");
+      $("#nav_contact_li").removeClass("active");
+      $("#nav_whole_li").removeClass("active");
+      $("#nav_add_li").addClass("active");
+      $("#add_vendor").show();
+      $("#vendor_table").hide();
+      clearBooth();
+      clearServices();
+      clearContact();
+      clearWhole();
       showAll();
     });
     
@@ -98,6 +139,7 @@ $(function() {
       table.border = "0";
       table.style.fontSize = fontS;
     });
+    
     //vendor popup functions////////////////////////////////////////////////////
     //clicking on vendor link
     $(".vendor_link").click(function() {

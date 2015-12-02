@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get "vendors/summary"
   post "vendors/confirmation"
   get "vendors/summary_change"
+  get "admins/change_vendor"
 
   post "vendors/enter_custom_booth_info"
   

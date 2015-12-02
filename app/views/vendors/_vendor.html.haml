@@ -33,6 +33,8 @@
                     =@vendor.email
                     %br
                 
+                    .link#contact_link
+                        = link_to "Edit Contact Info", admins_change_vendor_path(:vendor_id => @vendor.id,:page => "contact")
                 
                 .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}    
                     - if (! @vendor.booth_pref)
@@ -66,7 +68,9 @@
                         %b Booth Description:
                         = @vendor.custom_description
                         %br
-                    
+                        
+                    .link#booth_link
+                        = link_to "Edit Booth Info", admins_change_vendor_path(:vendor_id => @vendor.id,:page => "booth")
                 
                 .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
                     %h3 Services Requested
@@ -94,6 +98,8 @@
                     -if (@vendor.service_description != "")
                         %h3 *Addtion Service Requested*
                         =@vendor.service_description
+                    .link#service_link
+                        = link_to "Edit Services Info", admins_change_vendor_path(:vendor_id => @vendor.id,:page => "services")
                 
                 .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
                     %h3 Authorization
@@ -113,8 +119,14 @@
                         function printP() {
                             var button = document.getElementById('printButton');
                             var closeButton = document.getElementById('closeButton');
+                            var contact = document.getElementById("contact_link");
+                            var booth = document.getElementById("booth_link");
+                            var services = document.getElementById("service_link");
                             button.style.visibility = 'hidden';
                             closeButton.style.visibility = 'hidden';
+                            contact.style.visibility = 'hidden';
+                            booth.style.visibility = 'hidden';
+                            services.style.visibility = 'hidden';
                             var win = $('.contentPrint').html();
                             var w = window.open();
                             w.document.write('<html>' + win + '</html>')
@@ -122,6 +134,9 @@
                             w.close();
                             button.style.visibility = 'visible';
                             closeButton.style.visibility = 'visible';
+                            contact.style.visibility = 'visible';
+                            booth.style.visibility = 'visible';
+                            services.style.visibility = 'visible';
                         }
                     
                 .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px", :id=>"closeButton"}

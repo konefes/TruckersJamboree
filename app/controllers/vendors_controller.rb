@@ -66,8 +66,20 @@ class VendorsController < ApplicationController
             session[:custom_description] = "Short description and dimensions of your display items"
         else
         end
-        
-        if session[:edit] == 1
+        if session[:edit] == 1 && session[:admin] == 1
+            @admin_edit = Vendor.find_by_id(session[:vendor_id])
+            @admin_edit.update(company_name: session[:company_name],
+                        product: session[:product],
+                        contact_name: session[:contact_name],
+                        contact_title: session[:contact_title],
+                        address_street: session[:address_street],
+                        address_city: session[:address_city],
+                        address_state: session[:address_state],
+                        address_zip: session[:address_zip],
+                        phone: session[:phone],
+                        email: session[:email])
+            redirect_to '/admins'
+        elsif session[:edit] == 1
             redirect_to '/vendors/summary'
         else
             redirect_to '/vendors/booth'
@@ -89,18 +101,36 @@ class VendorsController < ApplicationController
         #                                                    number_o_booth: params["number_o_booth"],
         #                                                    booth_cost: params["booth_cost"])
         session[:booth_pref] = false
-        session[:length] = 0;
-        session[:width] = 0;
+        session[:length] = 0
+        session[:width] = 0
+        session[:custom_description] = ""
         session[:number_i_booth] = params["number_i_booth"]
         session[:booth_i_cost] = params["booth_i_cost"]
         session[:number_o_booth] = params["number_o_booth"]
         session[:booth_o_cost] = params["booth_o_cost"]
         session[:booth_cost] = params["booth_cost"]
+        
+        
+        if session[:edit] == 1 && session[:admin] == 1
+            @total = Integer(session[:service_cost]) + Integer(session[:booth_cost])
+            session[:total_cost] = @total
+            @admin_edit = Vendor.find_by_id(session[:vendor_id])
+            @admin_edit.update(booth_pref: session[:booth_pref],
+                    number_i_booth: session[:number_i_booth],
+                    booth_i_cost: session[:booth_i_cost],
+                    number_o_booth: session[:number_o_booth],
+                    booth_o_cost: session[:booth_o_cost],
+                    length: session[:length],
+                    width: session[:width],
+                    booth_cost: session[:booth_cost],
+                    custom_description: session[:custom_description])
+            redirect_to '/admins'
 
-        if session[:edit] == 1
+        elsif session[:edit] == 1 
             @total = Integer(session[:service_cost]) + Integer(session[:booth_cost])
             session[:total_cost] = @total
             redirect_to '/vendors/summary'
+            
         else
             redirect_to '/vendors/services'
         end
@@ -119,10 +149,26 @@ class VendorsController < ApplicationController
         session[:booth_cost] = params["booth_cost"]
         session[:custom_description] = params["custom_description"]
         
-        if session[:edit] == 1
+        if session[:edit] == 1 && session[:admin] == 1
+            @total = Integer(session[:service_cost]) + Integer(session[:booth_cost])
+            session[:total_cost] = @total
+            @admin_edit = Vendor.find_by_id(session[:vendor_id])
+            @admin_edit.update(booth_pref: session[:booth_pref],
+                    number_i_booth: session[:number_i_booth],
+                    booth_i_cost: session[:booth_i_cost],
+                    number_o_booth: session[:number_o_booth],
+                    booth_o_cost: session[:booth_o_cost],
+                    length: session[:length],
+                    width: session[:width],
+                    booth_cost: session[:booth_cost],
+                    custom_description: session[:custom_description])
+            redirect_to '/admins'
+
+        elsif session[:edit] == 1 
             @total = Integer(session[:service_cost]) + Integer(session[:booth_cost])
             session[:total_cost] = @total
             redirect_to '/vendors/summary'
+            
         else
             redirect_to '/vendors/services'
         end
@@ -151,8 +197,21 @@ class VendorsController < ApplicationController
         session[:service_description] = params["service_description"]
         @total = Integer(params["service_cost"]) + Integer(session[:booth_cost])
         session[:total_cost] = @total
-        
-        redirect_to '/vendors/summary'
+        if session[:edit] == 1 && session[:admin] == 1
+            @admin_edit = Vendor.find_by_id(session[:vendor_id])
+            @admin_edit.update(electric: session[:electric],
+                        electric_cost: session[:electric_cost],
+                        ext_chairs: session[:ext_chairs],
+                        chair_cost: session[:chair_cost],
+                        ext_tables: session[:ext_tables],
+                        table_cost: session[:table_cost],
+                        service_cost: session[:service_cost],
+                        service_description: session[:service_description],
+                        total_cost: session[:total_cost])
+            redirect_to '/admins'
+        else
+            redirect_to '/vendors/summary'
+        end
     end
     
     def summary
