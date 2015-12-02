@@ -285,7 +285,6 @@ class VendorsController < ApplicationController
     end
     def session_reset
         session[:admin] = 0
-        session[:admin_add] = 0
         session[:edit] = 0
         session[:company_name] = ""
         session[:product] = ""
