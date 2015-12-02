@@ -55,8 +55,9 @@
             %label{:for => "service_description", :class => "col-md-6 control-label"}
               Short Description of Any Special Services Requested*
             .col-md-6
-              %textarea#service_description.form-control{:name => "service_description", :pattern =>"^[A-Za-z0-9]{15,250}$", :title => "Must contain 15 characters", :value => session[:service_description]}
-          
+              %textarea#service_description.form-control{:name => "service_description", :pattern =>"^[A-Za-z0-9]{15,250}$", :title => "Must contain 15 characters"}
+                :preserve
+                  #{session[:service_description]}
           .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
             .col-md-offset-3.col-md-6 
               %input#submit{:type => "submit", :value => "Submit Service Information", :class => "btn btn-info btn-block"}

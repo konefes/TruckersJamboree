@@ -20,6 +20,9 @@ class VendorsController < ApplicationController
     end
     
     def registration
+        if session[:admin] != 1 || session[:edit] != 1
+            session_reset
+        end
         # called when a user identifies they want to register for a spot
     end
     
@@ -78,6 +81,7 @@ class VendorsController < ApplicationController
                         address_zip: session[:address_zip],
                         phone: session[:phone],
                         email: session[:email])
+            session_reset
             redirect_to '/admins'
         elsif session[:edit] == 1
             redirect_to '/vendors/summary'
@@ -124,6 +128,7 @@ class VendorsController < ApplicationController
                     width: session[:width],
                     booth_cost: session[:booth_cost],
                     custom_description: session[:custom_description])
+            session_reset
             redirect_to '/admins'
 
         elsif session[:edit] == 1 
@@ -162,6 +167,7 @@ class VendorsController < ApplicationController
                     width: session[:width],
                     booth_cost: session[:booth_cost],
                     custom_description: session[:custom_description])
+            session_reset
             redirect_to '/admins'
 
         elsif session[:edit] == 1 
@@ -208,6 +214,7 @@ class VendorsController < ApplicationController
                         service_cost: session[:service_cost],
                         service_description: session[:service_description],
                         total_cost: session[:total_cost])
+            session_reset
             redirect_to '/admins'
         else
             redirect_to '/vendors/summary'
@@ -272,7 +279,44 @@ class VendorsController < ApplicationController
                         authorize_title: session[:authorize_title],
                         authorize_date: session[:authorize_date]
                         )
-        session.destroy
+        session_reset
+        
         # send email with registration information
+    end
+    def session_reset
+        session[:admin] = 0
+        session[:admin_add] = 0
+        session[:edit] = 0
+        session[:company_name] = ""
+        session[:product] = ""
+        session[:contact_name] = ""
+        session[:contact_title] = ""
+        session[:address_street] = ""
+        session[:address_city] = ""
+        session[:address_state] = ""
+        session[:address_zip] = ""
+        session[:phone] = ""
+        session[:email] = ""
+        session[:booth_pref] = false
+        session[:number_i_booth] = 0
+        session[:booth_i_cost] = 0
+        session[:number_o_booth] = 0
+        session[:booth_o_cost] = 0
+        session[:length] = 0
+        session[:width] = 0
+        session[:booth_cost] = 0
+        session[:custom_description] = ""
+        session[:electric] = 0
+        session[:electric_cost] = 0
+        session[:ext_chairs] = 0
+        session[:chair_cost] = 0
+        session[:ext_tables] = 0
+        session[:table_cost] = 0
+        session[:service_cost] = 0
+        session[:service_description] = ""
+        session[:total_cost] = 0
+        session[:authorize_sig] = ""
+        session[:authorize_title] = ""
+        session[:authorize_date] = ""
     end
 end
