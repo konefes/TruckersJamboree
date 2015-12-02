@@ -65,8 +65,8 @@ class VendorsController < ApplicationController
             session[:ext_tables] = "0"
             session[:chair_cost] = "0"
             session[:service_cost] = "0"
-            session[:service_description] = "Need any additional services, request it here!"
-            session[:custom_description] = "Short description and dimensions of your display items"
+            session[:service_description] = ""
+            session[:custom_description] = ""
         else
         end
         if session[:edit] == 1 && session[:admin] == 1
