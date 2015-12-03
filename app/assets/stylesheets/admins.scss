@@ -3,12 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-  .header {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    .logo {
-        width: 100px;
-        margin-right: 10px;
-    }
+.header {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  .logo {
+      width: 100px;
+      margin-right: 10px;
+  }
 }
+
+.table-responsive {
+  overflow-y: auto;
+  overflow-x: auto;
+  min-height: 400px;
+  height: 1000px;
+  //height: 50%;
+  //display: block;
+}
+
+
+

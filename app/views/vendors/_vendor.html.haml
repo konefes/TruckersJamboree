@@ -34,7 +34,7 @@
                     %br
                 
                 
-                .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}    
+                .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}    
                     - if (! @vendor.booth_pref)
                         %h3 Booth Information
                         %b Indoor Booth/s: 
@@ -68,7 +68,7 @@
                         %br
                     
                 
-                .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}
                     %h3 Services Requested
                     %b Electricity: 
                     =@vendor.electric
@@ -95,7 +95,7 @@
                         %h3 *Addtion Service Requested*
                         =@vendor.service_description
                 
-                .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}
                     %h3 Authorization
                     %b Authorized By:
                     =@vendor.authorize_sig
@@ -107,7 +107,7 @@
                     =@vendor.authorize_date
                 
                 
-                .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}        
+                .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}        
                     %button{:onclick => "printP()", :id => "printButton"} Print This View
                     :javascript
                         function printP() {
@@ -124,6 +124,6 @@
                             closeButton.style.visibility = 'visible';
                         }
                     
-                .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px", :id=>"closeButton"}
+                .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px", :id=>"closeButton"}
                     .center
                         %a#close_individual Close
