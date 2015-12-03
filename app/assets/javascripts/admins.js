@@ -152,6 +152,8 @@ $(function() {
       clearContact();
       clearWhole();
       $("#phone_heading").show();
+      $("#product_heading").show();
+      $("#contact_name_heading").show();
       $("#Vendors tbody tr").each(function(){ 
         $(this).find("#product").show();
         $(this).find("#contact_name").show();
