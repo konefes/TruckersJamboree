@@ -18,6 +18,8 @@
             %a#nav_whole{:href => "#"} All Entries
          %li#nav_add_li{:role => "presentation"}
             %a#nav_add{:href => "#"} Add Vendor
+         %li#nav_remove_li{:role => "presentation"}
+            %a#nav_remove{:href => "#"} Remove Vendors
    %p
    
    #booth_search{:style=> "display: none;"}
@@ -148,4 +150,26 @@
    #add_vendor{:style=> "display: none;"}
       %div{:width => "100%", :height => "800px"}
          %iframe{:src => 'vendors/registration', :width => "100%", :height => "800px"}
+   #vendor_remove_table{:style=> "display: none;"}
+      .panel.panel-info{:class => "tester"}
+         .panel-body
+            %P{:id => "click"}Click link to remove a Vendor.
+            %table.table#Vendors
+               %thead
+                  %tr
+                     %th{:id => "company_name_heading"} Company Name
+                     %th{:id => "product_heading"} Product
+                     %th{:id => "contact_name_heading"} Contact Person
+                     %th{:id => "phone_heading"} Phone
+               %tbody
+                  - @vendors.each do |vendor|
+                     %tr{:id => "#{vendor.id}"}
+                        %td 
+                           %a.vendor_remove_link{:href => "#", :id => "#{vendor.id}"} #{vendor.company_name} 
+                        %td{:id => "product"}
+                           = vendor.product
+                        %td{:id => "contact_name"}
+                           = vendor.contact_name
+                        %td{:id => "phone"}
+                           = vendor.phone
    #individual{:style=> "display: none;"}

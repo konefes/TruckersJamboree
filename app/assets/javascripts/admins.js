@@ -11,8 +11,10 @@ $(function() {
       $("#nav_contact_li").removeClass("active");
       $("#nav_whole_li").removeClass("active");
       $("#nav_add_li").removeClass("active");
+      $("#nav_remove_li").removeClass("active");
       $("#add_vendor").hide();
       $("#vendor_table").show();
+      $("#vendor_remove_table").hide();
       clearBooth();
       clearServices();
       clearContact();
@@ -35,8 +37,10 @@ $(function() {
       $("#nav_contact_li").removeClass("active");
       $("#nav_whole_li").removeClass("active");
       $("#nav_add_li").removeClass("active");
+      $("#nav_remove_li").removeClass("active");
       $("#add_vendor").hide();
       $("#vendor_table").show();
+      $("#vendor_remove_table").hide();
       clearServices();
       clearContact();
       clearWhole();
@@ -56,8 +60,10 @@ $(function() {
       $("#nav_contact_li").removeClass("active");
       $("#nav_whole_li").removeClass("active");
       $("#nav_add_li").removeClass("active");
+      $("#nav_remove_li").removeClass("active");
       $("#add_vendor").hide();
       $("#vendor_table").show();
+      $("#vendor_remove_table").hide();
       clearBooth();
       clearContact();
       clearWhole();
@@ -77,8 +83,10 @@ $(function() {
       $("#nav_contact_li").addClass("active");
       $("#nav_whole_li").removeClass("active");
       $("#nav_add_li").removeClass("active");
+      $("#nav_remove_li").removeClass("active");
       $("#add_vendor").hide();
       $("#vendor_table").show();
+      $("#vendor_remove_table").hide();
       clearBooth();
       clearServices();
       clearWhole();
@@ -95,8 +103,10 @@ $(function() {
       $("#nav_contact_li").removeClass("active");
       $("#nav_whole_li").addClass("active");
       $("#nav_add_li").removeClass("active");
+      $("#nav_remove_li").removeClass("active");
       $("#add_vendor").hide();
       $("#vendor_table").show();
+      $("#vendor_remove_table").hide();
       clearBooth();
       clearServices();
       clearContact();
@@ -113,12 +123,40 @@ $(function() {
       $("#nav_contact_li").removeClass("active");
       $("#nav_whole_li").removeClass("active");
       $("#nav_add_li").addClass("active");
+      $("#nav_remove_li").removeClass("active");
       $("#add_vendor").show();
       $("#vendor_table").hide();
+      $("#vendor_remove_table").hide();
       clearBooth();
       clearServices();
       clearContact();
       clearWhole();
+      showAll();
+    });
+    //clicking contact button "Remove Vendors"
+    $( "#nav_remove" ).click(function() {
+      $("#services_search").hide();
+      $("#booth_search").hide();
+      $("#nav_all_li").removeClass("active");
+      $("#nav_booth_li").removeClass("active");
+      $("#nav_services_li").removeClass("active");
+      $("#nav_contact_li").removeClass("active");
+      $("#nav_whole_li").removeClass("active");
+      $("#nav_add_li").removeClass("active");
+      $("#nav_remove_li").addClass("active");
+      $("#add_vendor").hide();
+      $("#vendor_table").hide();
+      $("#vendor_remove_table").show();
+      clearBooth();
+      clearServices();
+      clearContact();
+      clearWhole();
+      $("#phone_heading").show();
+      $("#Vendors tbody tr").each(function(){ 
+        $(this).find("#product").show();
+        $(this).find("#contact_name").show();
+        $(this).find("#phone").show();
+      });
       showAll();
     });
     
@@ -129,7 +167,7 @@ $(function() {
       var table = document.getElementById('Vendors');
       table.border = "1";
       fontS = table.style.fontSize;
-      table.style.fontSize= "8px";
+      table.style.fontSize= "10px";
       var win = $('.tester').html();
       var w = window.open();
       w.document.write('<html>' + win + '</html>')
@@ -157,6 +195,24 @@ $(function() {
             }
         }); 
     });
+    
+    //clicking on vendor remove link
+    $(".vendor_remove_link").click(function() {
+      var retVal = confirm("Do you want to remove this vendor?");
+      if( retVal == true ){
+        $.ajax({
+            type: "GET",
+            url: "/vendors/r"+ $(this).attr("id"),
+        }); 
+        setTimeout(function(){location.reload();},250); 
+        return true;
+      }
+      else{
+        return false;
+      }
+    });
+    
+    
     //clicking outside of vendor popup to close
     $(document).mouseup(function (e)
       {

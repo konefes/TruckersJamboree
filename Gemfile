@@ -9,7 +9,6 @@ gem 'rails', '4.2.1'
 gem 'activeadmin', github: 'activeadmin'
 # Admin Authentication
 gem 'devise'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -45,7 +44,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
- gem 'sqlite3'
+  gem 'sqlite3'
   gem 'byebug'
   gem 'database_cleaner'
   gem 'capybara'

@@ -6,9 +6,22 @@ class VendorsController < ApplicationController
       #test view in index. Will remove later
     end
     
+    def remove_vendor(vendor_id)
+        @vendor_id_to_remove = Vendor.find(vendor_id)
+        @vendor_id_to_remove.destroy
+        redirect_to 'admins'
+    end
+    
     def show
-        @vendor = Vendor.find(params[:id])
-        render :partial=>'vendor', :object=>@vendor and return if request.xhr?
+        @first = params[:id]
+        if @first[0] == "r"
+            @first.slice!(0)
+            puts @first
+            remove_vendor(@first)
+        else
+            @vendor = Vendor.find(params[:id])
+            render :partial=>'vendor', :object=>@vendor and return if request.xhr?
+        end
       #@vendors = Vendor.all 
       #test view in index. Will remove later
     end
