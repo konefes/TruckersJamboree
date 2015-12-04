@@ -12,7 +12,10 @@
 #
 src_files:
   - assets/application.js
-
+  - assets/admins.js
+  - assets/javascripts/admins.js
+  - assets/javascripts/bootbox.min.js
+  - assets/javascripts/active_admin.js.coffee
 # stylesheets
 #
 # Return an array of stylesheet filepaths relative to src_dir to include before jasmine specs.
@@ -123,3 +126,4 @@ boot_files:
 #   server: 'thin'
 rack_options:
   Host: '0.0.0.0'
+

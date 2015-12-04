@@ -3,8 +3,9 @@
 #This file is loaded *after* jasmine.yml is interpreted.
 #
 #Example: using a different boot file.
-#Jasmine.configure do |config|
-#   config.boot_dir = '/absolute/path/to/boot_dir'
+Jasmine.configure do |config|
+   config.server_port = 8080
+end
 #   config.boot_files = lambda { ['/absolute/path/to/boot_dir/file.js'] }
 #end
 #

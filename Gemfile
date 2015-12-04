@@ -28,6 +28,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'nokogiri', '~> 1.6.6.4'
+
 gem 'bootstrap-sass', '~> 3.3.5'
 
 gem 'jquery-datatables-rails', '~> 1.12.2'
@@ -52,13 +54,14 @@ group :development, :test do
   gem 'rspec-rails'
   gem "factory_girl_rails"
   gem 'simplecov', :require => false
-  gem 'jasmine'
+  gem 'jasmine', '~> 2.0.0'
   gem 'jasmine-jquery-rails'
 end
 
 group :test do
   gem 'rspec-expectations'
   gem 'cucumber-rails', :require => false
+  
 end
 
 group :production do
