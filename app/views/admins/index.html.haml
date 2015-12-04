@@ -2,7 +2,7 @@
 
 .container#admins_index
    #navigation
-      %ul.nav.nav-tabs
+      %ul.nav.nav-tabs.nav-custom
          %li.active#nav_all_li{:role => "presentation"}
             %a#nav_all{:href => "#"} All Vendors
          %li#nav_booth_li{:role => "presentation"}
@@ -20,6 +20,8 @@
          %div{:align => "right"}
             %button.btn.btn-info{ :id => "printWholePageButton", :float=> "right"} Print This View
    
+   #spacer
+      %p
    
    #booth_search{:style=> "display: none;"}
       .panel.panel-info
