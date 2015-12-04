@@ -1,10 +1,6 @@
 //= javascript_include_tag 'admins', 'data-turbolinks-track' => true
 
 .container#admins_index
-   %div{:align => "center"}
-      %button{ :id => "printWholePageButton", :align => "center"} Print This View
-   %br
-   
    #navigation
       %ul.nav.nav-tabs
          %li.active#nav_all_li{:role => "presentation"}
@@ -21,7 +17,9 @@
             %a#nav_add{:href => "#"} Add Vendor
          %li#nav_remove_li{:role => "presentation"}
             %a#nav_remove{:href => "#"} Remove Vendors
-   %br
+         %div{:align => "right"}
+            %button.btn.btn-info{ :id => "printWholePageButton", :float=> "right"} Print This View
+   
    
    #booth_search{:style=> "display: none;"}
       .panel.panel-info
@@ -66,88 +64,89 @@
       .panel.panel-info{:class => "tester"}
          .panel-body
             %P{:id => "click"}Click link for full details.
-            %table.table#Vendors
-               %thead
-                  %tr
-                     %th{:id => "company_name_heading"} Company Name
-                     %th{:hidden => 'true',:id => "product_heading"} Product
-                     %th{:id => "contact_name_heading"} Contact Person
-                     %th{:hidden => 'true',:id => "contact_title_heading"} Title
-                     %th{:hidden => 'true',:id => "address_street_heading"} Address Street
-                     %th{:hidden => 'true',:id => "address_city_heading"} Address City
-                     %th{:hidden => 'true',:id => "address_state_heading"} Address State
-                     %th{:hidden => 'true',:id => "address_zip_heading"} Address Zip
-                     %th{:id => "phone_heading"} Contact Number
-                     
-                     %th{:hidden => 'true', :id => "number_i_booth_heading"} Inside Booths
-                     %th{:hidden => 'true', :id => "booth_i_cost_heading"} Cost
-                     %th{:hidden => 'true', :id => "number_o_booth_heading"} Outside Booths
-                     %th{:hidden => 'true', :id => "booth_o_cost_heading"} Cost
-                     %th{:hidden => 'true', :id => "width_heading"}Width (ft.)
-                     %th{:hidden => 'true', :id => "length_heading"}Length (ft.)
-                     %th{:hidden => 'true', :id => "booth_cost_heading"} Total Booth Cost
-                     
-                     %th{:hidden => 'true', :id => "ext_chairs_heading"} Extra Chairs
-                     %th{:hidden => 'true', :id => "chair_cost_heading"} Cost
-                     %th{:hidden => 'true', :id => "ext_tables_heading"} Extra Tables
-                     %th{:hidden => 'true', :id => "table_cost_heading"} Cost
-                     %th{:hidden => 'true', :id => "electric_heading"} Electric
-                     %th{:hidden => 'true', :id => "electric_cost_heading"} Cost
-                     %th{:hidden => 'true', :id => "service_description_heading"} Additional Services
-                     %th{:hidden => 'true', :id => "service_cost_heading"} Total Service Cost
-               %tbody
-                  - @vendors.each do |vendor|
-                     %tr{:id => "#{vendor.id}"}
-                        %td 
-                           %a.vendor_link{:href => "#", :id => "#{vendor.id}"} #{vendor.company_name} 
-                        %td{:hidden => 'true',:id => "product"}
-                           = vendor.product
-                        %td{:id => "contact_name"}
-                           = vendor.contact_name
-                        %td{:hidden => 'true',:id => "contact_title"}
-                           = vendor.contact_title
-                        %td{:hidden => 'true',:id => "address_street"}
-                           = vendor.address_street
-                        %td{:hidden => 'true',:id => "address_city"}
-                           = vendor.address_city
-                        %td{:hidden => 'true',:id => "address_state"}
-                           = vendor.address_state
-                        %td{:hidden => 'true',:id => "address_zip"}
-                           = vendor.address_zip
-                        %td{:id => "phone"}
-                           = vendor.phone
+            .container#scroller{:style => "overflow: auto; and overflow-y: hidden; and overflow-x: hidden;height: 28em;width: 100%;"}
+               %table.table#Vendors
+                  %thead
+                     %tr
+                        %th{:id => "company_name_heading"} Company Name
+                        %th{:hidden => 'true',:id => "product_heading"} Product
+                        %th{:id => "contact_name_heading"} Contact Person
+                        %th{:hidden => 'true',:id => "contact_title_heading"} Title
+                        %th{:hidden => 'true',:id => "address_street_heading"} Address Street
+                        %th{:hidden => 'true',:id => "address_city_heading"} Address City
+                        %th{:hidden => 'true',:id => "address_state_heading"} Address State
+                        %th{:hidden => 'true',:id => "address_zip_heading"} Address Zip
+                        %th{:id => "phone_heading"} Contact Number
                         
-                        %td{:hidden => 'true', :id => "number_i_booth"}
-                           = vendor.number_i_booth
-                        %td{:hidden => 'true', :id => "booth_i_cost"}
-                           = vendor.booth_i_cost
-                        %td{:hidden => 'true', :id => "number_o_booth"}
-                           = vendor.number_o_booth
-                        %td{:hidden => 'true', :id => "booth_o_cost"}
-                           = vendor.booth_o_cost
-                        %td{:hidden => 'true', :id => "width"}
-                           = vendor.width
-                        %td{:hidden => 'true', :id => "length"}
-                           = vendor.length
-                        %td{:hidden => 'true', :id => "booth_cost"}
-                           = vendor.booth_cost
+                        %th{:hidden => 'true', :id => "number_i_booth_heading"} Inside Booths
+                        %th{:hidden => 'true', :id => "booth_i_cost_heading"} Cost
+                        %th{:hidden => 'true', :id => "number_o_booth_heading"} Outside Booths
+                        %th{:hidden => 'true', :id => "booth_o_cost_heading"} Cost
+                        %th{:hidden => 'true', :id => "width_heading"}Width (ft.)
+                        %th{:hidden => 'true', :id => "length_heading"}Length (ft.)
+                        %th{:hidden => 'true', :id => "booth_cost_heading"} Total Booth Cost
+                        
+                        %th{:hidden => 'true', :id => "ext_chairs_heading"} Extra Chairs
+                        %th{:hidden => 'true', :id => "chair_cost_heading"} Cost
+                        %th{:hidden => 'true', :id => "ext_tables_heading"} Extra Tables
+                        %th{:hidden => 'true', :id => "table_cost_heading"} Cost
+                        %th{:hidden => 'true', :id => "electric_heading"} Electric
+                        %th{:hidden => 'true', :id => "electric_cost_heading"} Cost
+                        %th{:hidden => 'true', :id => "service_description_heading"} Additional Services
+                        %th{:hidden => 'true', :id => "service_cost_heading"} Total Service Cost
+                  %tbody
+                     - @vendors.each do |vendor|
+                        %tr{:id => "#{vendor.id}"}
+                           %td 
+                              %a.vendor_link{:href => "#", :id => "#{vendor.id}"} #{vendor.company_name} 
+                           %td{:hidden => 'true',:id => "product"}
+                              = vendor.product
+                           %td{:id => "contact_name"}
+                              = vendor.contact_name
+                           %td{:hidden => 'true',:id => "contact_title"}
+                              = vendor.contact_title
+                           %td{:hidden => 'true',:id => "address_street"}
+                              = vendor.address_street
+                           %td{:hidden => 'true',:id => "address_city"}
+                              = vendor.address_city
+                           %td{:hidden => 'true',:id => "address_state"}
+                              = vendor.address_state
+                           %td{:hidden => 'true',:id => "address_zip"}
+                              = vendor.address_zip
+                           %td{:id => "phone"}
+                              = vendor.phone
                            
-                        %td{:hidden => 'true', :id => "ext_chairs"}
-                           = vendor.ext_chairs
-                        %td{:hidden => 'true', :id => "chair_cost"}
-                           = vendor.chair_cost
-                        %td{:hidden => 'true', :id => "ext_tables"}
-                           = vendor.ext_tables
-                        %td{:hidden => 'true', :id => "table_cost"}
-                           = vendor.table_cost
-                        %td{:hidden => 'true', :id => "electric"}
-                           = vendor.electric
-                        %td{:hidden => 'true', :id => "electric_cost"}
-                           = vendor.electric_cost
-                        %td{:hidden => 'true', :id => "service_description"}
-                           = vendor.service_description
-                        %td{:hidden => 'true', :id => "service_cost"}
-                           = vendor.service_cost
+                           %td{:hidden => 'true', :id => "number_i_booth"}
+                              = vendor.number_i_booth
+                           %td{:hidden => 'true', :id => "booth_i_cost"}
+                              = vendor.booth_i_cost
+                           %td{:hidden => 'true', :id => "number_o_booth"}
+                              = vendor.number_o_booth
+                           %td{:hidden => 'true', :id => "booth_o_cost"}
+                              = vendor.booth_o_cost
+                           %td{:hidden => 'true', :id => "width"}
+                              = vendor.width
+                           %td{:hidden => 'true', :id => "length"}
+                              = vendor.length
+                           %td{:hidden => 'true', :id => "booth_cost"}
+                              = vendor.booth_cost
+                              
+                           %td{:hidden => 'true', :id => "ext_chairs"}
+                              = vendor.ext_chairs
+                           %td{:hidden => 'true', :id => "chair_cost"}
+                              = vendor.chair_cost
+                           %td{:hidden => 'true', :id => "ext_tables"}
+                              = vendor.ext_tables
+                           %td{:hidden => 'true', :id => "table_cost"}
+                              = vendor.table_cost
+                           %td{:hidden => 'true', :id => "electric"}
+                              = vendor.electric
+                           %td{:hidden => 'true', :id => "electric_cost"}
+                              = vendor.electric_cost
+                           %td{:hidden => 'true', :id => "service_description"}
+                              = vendor.service_description
+                           %td{:hidden => 'true', :id => "service_cost"}
+                              = vendor.service_cost
    #add_vendor{:style=> "display: none;"}
       %div{:width => "100%", :height => "800px"}
          %iframe{:src => 'vendors/registration', :width => "100%", :height => "800px"}
@@ -155,22 +154,23 @@
       .panel.panel-info{:class => "tester"}
          .panel-body
             %P{:id => "click"}Click link to remove a Vendor.
-            %table.table#Vendors
-               %thead
-                  %tr
-                     %th{:id => "company_name_heading"} Company Name
-                     %th{:id => "product_heading"} Product
-                     %th{:id => "contact_name_heading"} Contact Person
-                     %th{:id => "phone_heading"} Phone
-               %tbody
-                  - @vendors.each do |vendor|
-                     %tr{:id => "#{vendor.id}"}
-                        %td 
-                           %a.vendor_remove_link{:href => "#", :id => "#{vendor.id}"} #{vendor.company_name} 
-                        %td{:id => "product"}
-                           = vendor.product
-                        %td{:id => "contact_name"}
-                           = vendor.contact_name
-                        %td{:id => "phone"}
-                           = vendor.phone
+            .container#scroller{:style => "overflow: auto; and overflow-y: hidden; and overflow-x: hidden;height: 28em;width: 95%;"}
+               %table.table#Vendors
+                  %thead
+                     %tr
+                        %th{:id => "company_name_heading"} Company Name
+                        %th{:id => "product_heading"} Product
+                        %th{:id => "contact_name_heading"} Contact Person
+                        %th{:id => "phone_heading"} Phone
+                  %tbody
+                     - @vendors.each do |vendor|
+                        %tr{:id => "#{vendor.id}"}
+                           %td 
+                              %a.vendor_remove_link{:href => "#", :id => "#{vendor.id}"} #{vendor.company_name} 
+                           %td{:id => "product"}
+                              = vendor.product
+                           %td{:id => "contact_name"}
+                              = vendor.contact_name
+                           %td{:id => "phone"}
+                              = vendor.phone
    #individual{:style=> "display: none;"}
