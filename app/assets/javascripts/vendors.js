@@ -1,5 +1,4 @@
-/*= require dataTables/jquery.dataTables
-*/
+/*= require dataTables/jquery.dataTables*/
 
 $('[data-toggle="collapse"]').on('click', function() {
     var $this = $(this),
