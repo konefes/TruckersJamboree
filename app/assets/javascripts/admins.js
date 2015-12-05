@@ -164,6 +164,8 @@ $(function() {
     
     $("#printWholePageButton").click(function(){
       var click = document.getElementById('click');
+      var overflow = document.getElementById('scroller');
+      overflow.style.overflow = 'visible';
       var fontS;
       click.style.visibility = 'hidden';
       var table = document.getElementById('Vendors');
@@ -175,6 +177,7 @@ $(function() {
       w.document.write('<html>' + win + '</html>')
       w.print();
       w.close();
+      overflow.style.overflow = 'auto';
       click.style.visibility = 'visible';
       table.border = "0";
       table.style.fontSize = fontS;
@@ -200,6 +203,7 @@ $(function() {
     
     //clicking on vendor remove link
     $(".vendor_remove_link").click(function() {
+      //$(this).confirmation('show')
       var retVal = confirm("Do you want to remove this vendor?");
       if( retVal == true ){
         $.ajax({
@@ -236,8 +240,6 @@ $(function() {
     
     //show all vendor data
     function showWhole(){
-      var table = document.getElementById('Vendors');
-      table.style.fontSize = "8px";
       $("#product_heading").show();
       $("#contact_name_heading").show();
       $("#contact_title_heading").show();
