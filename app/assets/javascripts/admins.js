@@ -27,6 +27,8 @@ $(function() {
       });
       showAll();
     });
+
+    
     //clicking navigation button "Booth Preference"
     $( "#nav_booth" ).click(function() {
       $("#booth_search").show("normal");
@@ -614,4 +616,115 @@ $(function() {
       });//end checkbox iterator
       
     });//end checkbox change function
+    
+    
+    // Below is for the Vendor Home Page
+    
+        
+    $( "#nav_myregistration" ).click(function() {
+      $("#services_search1").hide();
+      $("#booth_search1").hide();
+      $("#nav_myregistration_li").addClass("active");
+      $("#nav_newregistration_li").removeClass("active");
+      $("#nav_myprofile_li").removeClass("active");
+      $("#nav_contact_li").removeClass("active");
+      $("#nav_add_li").removeClass("active");
+      $("#nav_remove_li").removeClass("active");
+      $("#add_vendor1").hide();
+      $("#vendor_table1").show();
+      $("#vendor_remove_table1").hide();
+      clearBooth();
+      clearServices();
+      clearContact();
+      showMyRegistration();
+      showAll();
+    });
+    
+    //clicking contact button "Add Vendors"
+    $( "#nav_newregistration" ).click(function() {
+      $("#services_search1").hide();
+      $("#booth_search1").hide();
+      $("#nav_myregistration_li").removeClass("active");
+      $("#nav_newregistration_li").addClass("active");
+      $("#nav_myprofile_li").removeClass("active");
+      $("#nav_contact_li").removeClass("active");
+      $("#nav_whole_li").removeClass("active");
+      $("#nav_add_li").removeClass("active");
+      $("#nav_remove_li").removeClass("active");
+      $("#add_vendor1").show();
+      $("#vendor_table1").hide();
+      $("#vendor_remove_table1").hide();
+      clearBooth();
+      clearServices();
+      clearContact();
+      clearWhole();
+      showAll();
+    });
+    
+    $( "#nav_myprofile" ).click(function() {
+      $("#services_search1").hide();
+      $("#booth_search1").hide();
+      $("#nav_myregistration_li").removeClass("active");
+      $("#nav_newregistration_li").removeClass("active");
+      $("#nav_myprofile_li").addClass("active");
+      $("#nav_contact_li").removeClass("active");
+      $("#nav_whole_li").removeClass("active");
+      $("#nav_add_li").removeClass("active");
+      $("#nav_remove_li").removeClass("active");
+      $("#add_vendor1").hide();
+      $("#vendor_table1").show();
+      $("#vendor_remove_table1").hide();
+      clearBooth();
+      clearServices();
+      clearWhole();
+      showContact();
+      showOnlyOne();
+    });
+    
+    //show all vendors
+    function showOnlyOne() {
+      $("#Vendors tbody tr").first().show();
+    };
+    
+    
+    //show all registration data of a vendor
+    function showMyRegistration(){
+      var table = document.getElementById('Vendors');
+      //table.style.fontSize = "8px";
+      $("#product_heading").show();
+      $("#number_i_booth_heading").show();
+      $("#booth_i_cost_heading").show();
+      $("#number_o_booth_heading").show();
+      $("#booth_o_cost_heading").show();
+      $("#width_heading").show();
+      $("#length_heading").show();
+      $("#booth_cost_heading").show();
+      $("#ext_chairs_heading").show();
+      $("#chair_cost_heading").show();
+      $("#ext_tables_heading").show();
+      $("#table_cost_heading").show();
+      $("#electric_heading").show();
+      $("#electric_cost_heading").show();
+      $("#service_description_heading").show();
+      $("#service_cost_heading").show();
+      $("#Vendors tbody tr").each(function(){ 
+        $(this).find('#product').show();
+        $(this).find("#number_i_booth").show();
+        $(this).find("#booth_i_cost").show();
+        $(this).find("#number_o_booth").show();
+        $(this).find("#booth_o_cost").show();
+        $(this).find("#booth_cost").show();
+        $(this).find('#width').show();
+        $(this).find('#length').show();
+        $(this).find("#ext_chairs").show();
+        $(this).find("#chair_cost").show();
+        $(this).find("#ext_tables").show();
+        $(this).find("#table_cost").show();
+        $(this).find("#electric").show();
+        $(this).find("#electric_cost").show();
+        $(this).find("#service_description").show();
+        $(this).find("#service_cost").show();
+        });  
+    };
+    
 }));

@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 		if	user	&&	user.authenticate(login_params[:password])	
 				session[:session_token]=	user.session_token
 				@current_user	=	user	
-				redirect_to	vendors_registration_path	
+				redirect_to	home_path	
 		else	
 				flash[:notice]	=	'Invalid username/password combination'	
 				redirect_to	login_path	
