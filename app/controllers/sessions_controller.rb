@@ -37,7 +37,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-  	session[:session_token]=nil		
+  	session[:session_token]=nil	
+  	session[:vendorNewRegistration] = 0
+  	#VendorsController.session_reset()
   	@current_user=nil
 		flash[:notice]=	'You have logged out'
     redirect_to login_path

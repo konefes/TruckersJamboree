@@ -34,7 +34,6 @@ class VendorsController < ApplicationController
     
     def registration
         if session[:vendorNewRegistration] == 1
-            
         elsif session[:admin] != 1 || session[:edit] != 1
             session_reset
         end
