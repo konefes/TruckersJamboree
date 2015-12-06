@@ -152,6 +152,29 @@
                               = vendor.service_description
                            %td{:id => "service_cost"}
                               = vendor.service_cost
+                              
+   #vendor_contactus1{:style=> "display: none;"}
+      .panel.panel-info{:class => "tester"}
+         .panel-body
+            .center
+               = image_tag '180front.jpg'
+               %p Iowa 80 Truckstop
+               %p 755 W. Iowa 80 Rd. 
+               %p I-80, Exit 284 
+               %p Walcott, IA 52773 
+               %p Phone: 563-284-6961
+               %p Fax: 563-468-5520 
+               %br  
+               %br  
+               .form-group    
+                  %label{:for => "contact_us_box", :class => "col-md-3 control-label"}
+                     How can we help you?
+                  .col-md-4
+                     %textarea#service_description.form-control{:name => "contact_us_box", :pattern =>"^[A-Za-z0-9]{15,250}$", :title => "Must contain 15 characters"}
+               .form-group
+                  .col-md-offset-0.col-md-2
+                     %input#submit{:type => "submit", :value => "Submit", :class => "btn btn-info btn-block"}
+                                     
    #add_vendor1{:style=> "display: none;"}
       %div{:width => "100%", :height => "800px"}
          %iframe{:src => "#{vendor_homepage_add_registration_with_defaults_path}", :width => "100%", :height => "800px"}
