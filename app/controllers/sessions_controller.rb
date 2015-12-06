@@ -16,7 +16,11 @@ class SessionsController < ApplicationController
 		if	user	&&	user.authenticate(login_params[:password])	
 				session[:session_token]=	user.session_token
 				@current_user	=	user	
-				redirect_to	home_path	
+				if @current_user.username == 'admin@example.com'
+				  redirect_to admins_path
+				else
+				  redirect_to	home_path	
+				end
 		else	
 				flash[:notice]	=	'Invalid username/password combination'	
 				redirect_to	login_path	

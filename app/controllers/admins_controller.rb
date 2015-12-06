@@ -2,7 +2,15 @@ class AdminsController < ApplicationController
     before_filter :set_current_user
     
     def index
-      @vendors = Vendor.order(:company_name)
+      @current_user	||=	session[:session_token]	&& User.find_by_session_token(session[:session_token])	
+      #vendorEmail = Vendor.where(id: params[:id])
+      if !@current_user
+        redirect_to login_path
+      elsif @current_user.username != 'admin@example.com'
+        redirect_to home_path
+      else
+        @vendors = Vendor.order(:company_name)
+      end
       #test view in index. Will remove later
     end
     

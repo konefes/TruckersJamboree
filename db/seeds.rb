@@ -396,4 +396,13 @@
  "authorize_date" => "2015-11-19"
  })
  
+ 
+ users = User.create_user!({
+ "username"=>"admin@example.com",
+ "password"=>"password",
+ "email"=>"admin@example.com",
+ "role"=>"admin",
+ })
+ 
+ 
   AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

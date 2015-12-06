@@ -6,6 +6,8 @@ class VendorHomepageController < ApplicationController
       #vendorEmail = Vendor.where(id: params[:id])
       if !@current_user
         redirect_to login_path
+      elsif @current_user.username == 'admin@example.com'
+        redirect_to admins_path
       else
         @vendors = Vendor.where(email: @current_user.email)
       end
