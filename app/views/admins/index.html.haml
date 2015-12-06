@@ -67,17 +67,17 @@
          .panel-body
             %P{:id => "click"}Click link for full details.
             .container#scroller{:style => "overflow: auto; and overflow-y: hidden; and overflow-x: hidden;height: 28em;width: 100%;"}
-               %table.table#Vendors
+               %table.table.table-striped#Vendors
                   %thead
                      %tr
                         %th{:id => "company_name_heading"} Company Name
                         %th{:hidden => 'true',:id => "product_heading"} Product
-                        %th{:id => "contact_name_heading"} Contact Person
+                        %th{:id => "contact_name_heading"} Contact Name
                         %th{:hidden => 'true',:id => "contact_title_heading"} Title
-                        %th{:hidden => 'true',:id => "address_street_heading"} Address Street
-                        %th{:hidden => 'true',:id => "address_city_heading"} Address City
-                        %th{:hidden => 'true',:id => "address_state_heading"} Address State
-                        %th{:hidden => 'true',:id => "address_zip_heading"} Address Zip
+                        %th{:hidden => 'true',:id => "address_street_heading"}Street
+                        %th{:hidden => 'true',:id => "address_city_heading"}City
+                        %th{:hidden => 'true',:id => "address_state_heading"}State
+                        %th{:hidden => 'true',:id => "address_zip_heading"}Zip
                         %th{:id => "phone_heading"} Contact Number
                         
                         %th{:hidden => 'true', :id => "number_i_booth_heading"} Inside Booths
