@@ -761,7 +761,7 @@ $(function() {
               $("#individual1").html(result).
               css({'left': oneFourth, 'top': "100px", 'width': oneFourth*2, 'position': 'absolute'}).
               show();
-              $('#close_individual1').click(function() {
+              $('#close_individual').click(function() {
                 $("#individual1").hide();
               })
             }
