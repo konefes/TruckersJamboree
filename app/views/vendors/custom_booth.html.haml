@@ -1,6 +1,6 @@
 .container  
   %form#custom_vendor_booth{:action => "enter_custom_booth_info", :method => "post", :class => "form-horizontal"}
-    .mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+    .mainbox.col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
       .panel.panel-info
         .panel-heading 
           %h4 Custom Booth Information
@@ -19,7 +19,7 @@
                 %option{:value => "TT"} Tractor only w/ table and two chairs 20x40
                 %option{:value => "TTw"} Tractor Trailer w/ table and two chairs 20x80
                 
-          .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"} 
+          .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"} 
             %label{:for => "booth_tractor_cost", :class => "col-md-7 control-label"} 
               Cost of Tractor/Tractor-Trailer Booths $
             .col-md-4
@@ -66,8 +66,10 @@
                 calcTot();
               }
               
-          .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
-            %h2 Need a Custom Spot? Complete this section.
+          .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}
+            
+          %h2 Need a Custom Spot? Complete this section.
+          .form-group
             .center
               %p
                 100-200 sq. ft.	 	$3.75 per sq. ft.
@@ -77,7 +79,6 @@
                 400 sq. ft. and up	 	$3.25 per sq. ft.
               
           .form-group
-            
             .col-md-4
               %input#widthT.form-control{:name => "widthT", :oninput => "calcSquare()", :required => "", :value => "0", :placeholder => "0"}
             %label.col-md-2.control-label{:for => "widthT"}ft. x
@@ -89,7 +90,7 @@
               %input#square.form-control{:name => "square", :required => "", :value => "0", :readonly => ""}
             %label.col-md-2.control-label{:for => "square"}sq. ft.
           
-          .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}    
+          .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}    
             %label{:for => "custom_cost", :class => "col-md-6 control-label"} 
               Cost of Custom Space $
             .col-md-4
@@ -141,16 +142,16 @@
               calcTot();
             }
             
-          .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
-            %h2 Total Custom Booth Costs
+          .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}
+          %h2 Total Custom Booth Costs
             
           .form-group
-            %label{:for => "length", :class => "col-md-offset-3 col-md-1 control-label"} Booth length
+            %label{:for => "length", :class => "col-md-offset-1 col-md-3 control-label"} Booth length
             .col-md-6
               %input#length.form-control{:name => "length", :required => "", :value => "0", :readonly => ""}
           
           .form-group
-            %label{:for => "width", :class => "col-md-offset-3 col-md-1 control-label"} Booth width
+            %label{:for => "width", :class => "col-md-offset-1 col-md-3 control-label"} Booth width
             .col-md-6
               %input#width.form-control{:name => "width", :required => "", :value => "0", :readonly => ""}
           
@@ -195,8 +196,11 @@
             %label{:for => "custom_description", :class => "col-md-6 control-label"}
               Short description of space and displays with dimensions*
             .col-md-6
-              %textarea#custom_description.form-control{:name => "custom_description", :pattern =>"^[A-Za-z0-9]{25,250}$", :title => "Must contain 15 characters",:value => session[:custom_description], :required => ""}
-          
-          .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+              %textarea#custom_description.form-control{:name => "custom_description", :pattern =>"^[A-Za-z0-9]{25,250}$", :title => "Must contain 15 characters", :required => ""}
+                :preserve
+                  #{session[:custom_description]}
+          .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}
             .col-md-offset-3.col-md-6
               %input#submit{:type => "submit", :value => "Submit Booth Information", :class => "btn btn-info btn-block"}
+          .center
+            = link_to 'Back to Regular Booth', vendors_booth_path

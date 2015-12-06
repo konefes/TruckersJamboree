@@ -7,12 +7,13 @@
   = stylesheet_link_tag 'application', 'media' => 'all'
   = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = javascript_include_tag 'https://raw.githubusercontent.com/ethaizone/Bootstrap-Confirmation/master/bootstrap-confirmation.js'
   = csrf_meta_tags
 
   %body
    .container
     .center
-     =image_tag "tj_logo.png"
+     = link_to image_tag('tj_logo.png'), home_path
      %br
      - if !@current_user					
       = link_to 'Sign Up/Login', login_path , method: :get, :id => 'login'

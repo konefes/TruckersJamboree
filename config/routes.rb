@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -28,6 +30,7 @@ Rails.application.routes.draw do
   get "vendors/summary"
   post "vendors/confirmation"
   get "vendors/summary_change"
+  get "admins/change_vendor"
 
   post "vendors/enter_custom_booth_info"
   
@@ -40,7 +43,9 @@ Rails.application.routes.draw do
   
   resources :users
 
-  
+  match '/home', to: 'vendor_homepage#index', via: :get
+  get "vendor_homepage/add_registration_with_defaults"
+
   match '/login', to: 'sessions#new', via: :get
   match '/login_create', to: 'sessions#create', via: :post  
   match '/logout', to: 'sessions#destroy', via: :delete

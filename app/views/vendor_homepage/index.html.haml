@@ -1,0 +1,206 @@
+//= javascript_include_tag 'vendor_homepage', 'data-turbolinks-track' => true
+//%script(src="/js/vendor_homepage.js")
+
+.container#vendor_homepage_index
+   %p I will continue to work on several features tomorrow-Yusuf
+   .row.row-offcanvas.row-offcanvas-right
+      .col-xs-12.col-sm-12
+         %p.pull-right.visible-xs
+            %button.btn.btn-primary.btn-xs{"data-toggle" => "offcanvas", :type => "button"} Toggle nav
+         .jumbotron
+            %h1 #{@current_user.username}, Welcome to Trucker's Jamboree!
+            %p Below, you can make new reservations, view and edit existing reservations, and manage your profile.
+   #navigation1
+      %ul.nav.nav-tabs
+         %li.active#nav_myregistration_li{:role => "presentation"}
+            %a#nav_myregistration{:href => "#"} #{@current_user.username}'s Registrations
+         %li#nav_newregistration_li{:role => "presentation"}
+            %a#nav_newregistration{:href => "#"} Make New Registration
+         %li#nav_myprofile_li{:role => "presentation"}
+            %a#nav_myprofile{:href => "#"} My Profile
+         %li#nav_contact1_li{:role => "presentation"}
+            %a#nav_contact1{:href => "#"} Contact Us
+         %div{:align => "right"}
+            %button.btn.btn-info{ :id => "printWholePageButton", :float=> "right"} Print This View
+   
+   
+   #booth_search1{:style=> "display: none;"}
+      .panel.panel-info
+         .panel-heading
+            Filter by booth preferences:
+         .panel-body
+            %table.table
+               %tbody
+                  %tr
+                     %td 
+                        %input.sorter#filter_number_i_booth{:type => "checkbox"}
+                        Inside Booth
+                     %td 
+                        %input.sorter#filter_number_o_booth{:type => "checkbox"}
+                        Outside Booth
+                     %td 
+                        %input.sorter#filter_custom_booth{:type => "checkbox"}
+                        Custom Booth
+   
+   #services_search1{:style=> "display: none;"}
+      .panel.panel-info
+         .panel-heading
+            Filter by requested services:
+         .panel-body
+            %table.table
+               %tbody
+                  %tr
+                     %td 
+                        %input.sorter#filter_ext_chairs{:type => "checkbox"}
+                        Extra Chairs
+                     %td 
+                        %input.sorter#filter_ext_tables{:type => "checkbox"}
+                        Extra Tables
+                     %td 
+                        %input.sorter#filter_electric{:type => "checkbox"}
+                        Electric
+                     %td 
+                        %input.sorter#filter_service_description{:type => "checkbox"}
+                        Additional Services
+   
+   #vendor_table1
+      .panel.panel-info{:class => "tester"}
+         .panel-body
+            - if @vendors.empty?
+               %P{:id => "empty"}You have no registrations or profile! Please select "Make New Reservation" option from te navigation bar and follow the instructions.
+            - else
+               %P{:id => "click"}Click link for full details.
+               %table.table#Vendors
+                  %thead
+                     %tr
+                        %th{:id => "company_name_heading"} Company Name
+                        %th{:id => "product_heading"} Product
+                        %th{:hidden => 'true',:id => "contact_name_heading"} Contact Person
+                        %th{:hidden => 'true',:id => "contact_title_heading"} Title
+                        %th{:hidden => 'true',:id => "address_street_heading"} Address Street
+                        %th{:hidden => 'true',:id => "address_city_heading"} Address City
+                        %th{:hidden => 'true',:id => "address_state_heading"} Address State
+                        %th{:hidden => 'true',:id => "address_zip_heading"} Address Zip
+                        %th{:hidden => 'true',:id => "phone_heading"} Contact Number
+                        
+                        %th{:id => "number_i_booth_heading"} Inside Booths
+                        %th{:id => "booth_i_cost_heading"} Cost
+                        %th{:id => "number_o_booth_heading"} Outside Booths
+                        %th{:id => "booth_o_cost_heading"} Cost
+                        %th{:id => "width_heading"}Width (ft.)
+                        %th{:id => "length_heading"}Length (ft.)
+                        %th{:id => "booth_cost_heading"} Total Booth Cost
+                        
+                        %th{:id => "ext_chairs_heading"} Extra Chairs
+                        %th{:id => "chair_cost_heading"} Cost
+                        %th{:id => "ext_tables_heading"} Extra Tables
+                        %th{:id => "table_cost_heading"} Cost
+                        %th{:id => "electric_heading"} Electric
+                        %th{:id => "electric_cost_heading"} Cost
+                        %th{:id => "service_description_heading"} Additional Services
+                        %th{:id => "service_cost_heading"} Total Service Cost
+                  %tbody
+                     - @vendors.each do |vendor|
+                        %tr{:id => "#{vendor.id}"}
+                           %td 
+                              %a.vendor_link1{:href => "#", :id => "#{vendor.id}"} #{vendor.company_name} 
+                           %td{:id => "product"}
+                              = vendor.product
+                           %td{:hidden => 'true',:id => "contact_name"}
+                              = vendor.contact_name
+                           %td{:hidden => 'true',:id => "contact_title"}
+                              = vendor.contact_title
+                           %td{:hidden => 'true',:id => "address_street"}
+                              = vendor.address_street
+                           %td{:hidden => 'true',:id => "address_city"}
+                              = vendor.address_city
+                           %td{:hidden => 'true',:id => "address_state"}
+                              = vendor.address_state
+                           %td{:hidden => 'true',:id => "address_zip"}
+                              = vendor.address_zip
+                           %td{:hidden => 'true',:id => "phone"}
+                              = vendor.phone
+                           
+                           %td{:id => "number_i_booth"}
+                              = vendor.number_i_booth
+                           %td{:id => "booth_i_cost"}
+                              = vendor.booth_i_cost
+                           %td{:id => "number_o_booth"}
+                              = vendor.number_o_booth
+                           %td{:id => "booth_o_cost"}
+                              = vendor.booth_o_cost
+                           %td{:id => "width"}
+                              = vendor.width
+                           %td{:id => "length"}
+                              = vendor.length
+                           %td{:id => "booth_cost"}
+                              = vendor.booth_cost
+                              
+                           %td{:id => "ext_chairs"}
+                              = vendor.ext_chairs
+                           %td{:id => "chair_cost"}
+                              = vendor.chair_cost
+                           %td{:id => "ext_tables"}
+                              = vendor.ext_tables
+                           %td{:id => "table_cost"}
+                              = vendor.table_cost
+                           %td{:id => "electric"}
+                              = vendor.electric
+                           %td{:id => "electric_cost"}
+                              = vendor.electric_cost
+                           %td{:id => "service_description"}
+                              = vendor.service_description
+                           %td{:id => "service_cost"}
+                              = vendor.service_cost
+                              
+   #vendor_contactus1{:style=> "display: none;"}
+      .panel.panel-info{:class => "tester"}
+         .panel-body
+            .center
+               = image_tag '180front.jpg'
+               %p Iowa 80 Truckstop
+               %p 755 W. Iowa 80 Rd. 
+               %p I-80, Exit 284 
+               %p Walcott, IA 52773 
+               %p Phone: 563-284-6961
+               %p Fax: 563-468-5520 
+               %br  
+               %br  
+               .form-group    
+                  %label{:for => "contact_us_box", :class => "col-md-3 control-label"}
+                     How can we help you?
+                  .col-md-4
+                     %textarea#service_description.form-control{:name => "contact_us_box", :pattern =>"^[A-Za-z0-9]{15,250}$", :title => "Must contain 15 characters"}
+               .form-group
+                  .col-md-offset-0.col-md-2
+                     %input#submit{:type => "submit", :value => "Submit", :class => "btn btn-info btn-block"}
+                                     
+   #add_vendor1{:style=> "display: none;"}
+      %div{:width => "100%", :height => "800px"}
+         %iframe{:src => "#{vendor_homepage_add_registration_with_defaults_path}", :width => "100%", :height => "800px"}
+   #vendor_remove_table1{:style=> "display: none;"}
+      .panel.panel-info{:class => "tester"}
+         .panel-body
+            %P{:id => "click"}Click link to remove a Vendor.
+            %table.table#Vendors
+               %thead
+                  %tr
+                     %th{:id => "company_name_heading"} Company Name
+                     %th{:id => "product_heading"} Product
+                     %th{:id => "contact_name_heading"} Contact Person
+                     %th{:id => "phone_heading"} Phone
+               %tbody
+                  - @vendors.each do |vendor|
+                     %tr{:id => "#{vendor.id}"}
+                        %td 
+                           %a.vendor_remove_link{:href => "#", :id => "#{vendor.id}"} #{vendor.company_name} 
+                        %td{:id => "product"}
+                           = vendor.product
+                        %td{:id => "contact_name"}
+                           = vendor.contact_name
+                        %td{:id => "phone"}
+                           = vendor.phone
+   #individual1{:style=> "display: none;"}
+   %footer
+      %p © Iowa80 2015
+/ /.container

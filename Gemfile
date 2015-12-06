@@ -4,6 +4,11 @@ ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
+
+# Admin View
+gem 'activeadmin', github: 'activeadmin'
+# Admin Authentication
+gem 'devise'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -23,6 +28,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'nokogiri', '~> 1.6.6.4'
+
 gem 'bootstrap-sass', '~> 3.3.5'
 
 gem 'jquery-datatables-rails', '~> 1.12.2'
@@ -39,7 +46,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
- gem 'sqlite3'
+  gem 'sqlite3'
   gem 'byebug'
   gem 'database_cleaner'
   gem 'capybara'
@@ -47,11 +54,14 @@ group :development, :test do
   gem 'rspec-rails'
   gem "factory_girl_rails"
   gem 'simplecov', :require => false
+  gem 'jasmine', '~> 2.0.0'
+  gem 'jasmine-jquery-rails'
 end
 
 group :test do
   gem 'rspec-expectations'
   gem 'cucumber-rails', :require => false
+  
 end
 
 group :production do
