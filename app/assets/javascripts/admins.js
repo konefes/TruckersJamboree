@@ -727,4 +727,32 @@ $(function() {
         });  
     };
     
+    //clicking on vendor link - Reused code
+    $(".vendor_link1").click(function() {
+        $.ajax({
+            type: "GET",
+            url: "/vendors/"+$(this).attr("id"),
+            success: function(result) {
+              var oneFourth = Math.ceil($(window).width()/4);
+              $("#individual1").html(result).
+              css({'left': oneFourth, 'top': "100px", 'width': oneFourth*2, 'position': 'absolute'}).
+              show();
+              $('#close_individual1').click(function() {
+                $("#individual1").hide();
+              })
+            }
+        }); 
+    });
+    
+    //clicking outside of vendor popup to close - Reused code
+    $(document).mouseup(function (e)
+      {
+          var container = $("#individual1");
+          if (!container.is(e.target) // if the target of the click isn't the container...
+              && container.has(e.target).length === 0) // ... nor a descendant of the container
+          {
+              container.hide();
+          }
+      });
+    
 }));

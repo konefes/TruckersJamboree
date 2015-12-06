@@ -10,6 +10,7 @@ class VendorHomepageController < ApplicationController
         @vendors = Vendor.where(email: @current_user.email)
       end
     end
+
     
     def add_registration_with_defaults
       @current_user	||=	session[:session_token]	&& User.find_by_session_token(session[:session_token])	
