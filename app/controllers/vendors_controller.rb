@@ -33,7 +33,9 @@ class VendorsController < ApplicationController
     end
     
     def registration
-        if session[:admin] != 1 || session[:edit] != 1
+        if session[:vendorNewRegistration] == 1
+            
+        elsif session[:admin] != 1 || session[:edit] != 1
             session_reset
         end
         # called when a user identifies they want to register for a spot
@@ -299,6 +301,7 @@ class VendorsController < ApplicationController
     def session_reset
         session[:admin] = 0
         session[:edit] = 0
+        session[:vendorNewRegistration] = 0
         session[:company_name] = ""
         session[:product] = ""
         session[:contact_name] = ""

@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   resources :users
 
   match '/home', to: 'vendor_homepage#index', via: :get
+  get "vendor_homepage/add_registration_with_defaults"
 
   match '/login', to: 'sessions#new', via: :get
   match '/login_create', to: 'sessions#create', via: :post  
