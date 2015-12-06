@@ -13,7 +13,7 @@
   %body
    .container
     .center
-     =image_tag "tj_logo.png"
+     = link_to image_tag('tj_logo.png'), home_path
      %br
      - if !@current_user					
       = link_to 'Sign Up/Login', login_path , method: :get, :id => 'login'
