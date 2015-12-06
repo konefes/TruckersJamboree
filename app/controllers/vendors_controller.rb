@@ -6,9 +6,22 @@ class VendorsController < ApplicationController
       #test view in index. Will remove later
     end
     
+    def remove_vendor(vendor_id)
+        @vendor_id_to_remove = Vendor.find(vendor_id)
+        @vendor_id_to_remove.destroy
+        redirect_to 'admins'
+    end
+    
     def show
-        @vendor = Vendor.find(params[:id])
-        render :partial=>'vendor', :object=>@vendor and return if request.xhr?
+        @first = params[:id]
+        if @first[0] == "r"
+            @first.slice!(0)
+            puts @first
+            remove_vendor(@first)
+        else
+            @vendor = Vendor.find(params[:id])
+            render :partial=>'vendor', :object=>@vendor and return if request.xhr?
+        end
       #@vendors = Vendor.all 
       #test view in index. Will remove later
     end
@@ -20,6 +33,10 @@ class VendorsController < ApplicationController
     end
     
     def registration
+        if session[:vendorNewRegistration] == 1
+        elsif session[:admin] != 1 || session[:edit] != 1
+            session_reset
+        end
         # called when a user identifies they want to register for a spot
     end
     
@@ -62,12 +79,25 @@ class VendorsController < ApplicationController
             session[:ext_tables] = "0"
             session[:chair_cost] = "0"
             session[:service_cost] = "0"
-            session[:service_description] = "Need any additional services, request it here!"
-            session[:custom_description] = "Short description and dimensions of your display items"
+            session[:service_description] = ""
+            session[:custom_description] = ""
         else
         end
-        
-        if session[:edit] == 1
+        if session[:edit] == 1 && session[:admin] == 1
+            @admin_edit = Vendor.find_by_id(session[:vendor_id])
+            @admin_edit.update(company_name: session[:company_name],
+                        product: session[:product],
+                        contact_name: session[:contact_name],
+                        contact_title: session[:contact_title],
+                        address_street: session[:address_street],
+                        address_city: session[:address_city],
+                        address_state: session[:address_state],
+                        address_zip: session[:address_zip],
+                        phone: session[:phone],
+                        email: session[:email])
+            session_reset
+            redirect_to '/admins'
+        elsif session[:edit] == 1
             redirect_to '/vendors/summary'
         else
             redirect_to '/vendors/booth'
@@ -89,18 +119,37 @@ class VendorsController < ApplicationController
         #                                                    number_o_booth: params["number_o_booth"],
         #                                                    booth_cost: params["booth_cost"])
         session[:booth_pref] = false
-        session[:length] = 0;
-        session[:width] = 0;
+        session[:length] = 0
+        session[:width] = 0
+        session[:custom_description] = ""
         session[:number_i_booth] = params["number_i_booth"]
         session[:booth_i_cost] = params["booth_i_cost"]
         session[:number_o_booth] = params["number_o_booth"]
         session[:booth_o_cost] = params["booth_o_cost"]
         session[:booth_cost] = params["booth_cost"]
+        
+        
+        if session[:edit] == 1 && session[:admin] == 1
+            @total = Integer(session[:service_cost]) + Integer(session[:booth_cost])
+            session[:total_cost] = @total
+            @admin_edit = Vendor.find_by_id(session[:vendor_id])
+            @admin_edit.update(booth_pref: session[:booth_pref],
+                    number_i_booth: session[:number_i_booth],
+                    booth_i_cost: session[:booth_i_cost],
+                    number_o_booth: session[:number_o_booth],
+                    booth_o_cost: session[:booth_o_cost],
+                    length: session[:length],
+                    width: session[:width],
+                    booth_cost: session[:booth_cost],
+                    custom_description: session[:custom_description])
+            session_reset
+            redirect_to '/admins'
 
-        if session[:edit] == 1
+        elsif session[:edit] == 1 
             @total = Integer(session[:service_cost]) + Integer(session[:booth_cost])
             session[:total_cost] = @total
             redirect_to '/vendors/summary'
+            
         else
             redirect_to '/vendors/services'
         end
@@ -119,10 +168,27 @@ class VendorsController < ApplicationController
         session[:booth_cost] = params["booth_cost"]
         session[:custom_description] = params["custom_description"]
         
-        if session[:edit] == 1
+        if session[:edit] == 1 && session[:admin] == 1
+            @total = Integer(session[:service_cost]) + Integer(session[:booth_cost])
+            session[:total_cost] = @total
+            @admin_edit = Vendor.find_by_id(session[:vendor_id])
+            @admin_edit.update(booth_pref: session[:booth_pref],
+                    number_i_booth: session[:number_i_booth],
+                    booth_i_cost: session[:booth_i_cost],
+                    number_o_booth: session[:number_o_booth],
+                    booth_o_cost: session[:booth_o_cost],
+                    length: session[:length],
+                    width: session[:width],
+                    booth_cost: session[:booth_cost],
+                    custom_description: session[:custom_description])
+            session_reset
+            redirect_to '/admins'
+
+        elsif session[:edit] == 1 
             @total = Integer(session[:service_cost]) + Integer(session[:booth_cost])
             session[:total_cost] = @total
             redirect_to '/vendors/summary'
+            
         else
             redirect_to '/vendors/services'
         end
@@ -151,8 +217,22 @@ class VendorsController < ApplicationController
         session[:service_description] = params["service_description"]
         @total = Integer(params["service_cost"]) + Integer(session[:booth_cost])
         session[:total_cost] = @total
-        
-        redirect_to '/vendors/summary'
+        if session[:edit] == 1 && session[:admin] == 1
+            @admin_edit = Vendor.find_by_id(session[:vendor_id])
+            @admin_edit.update(electric: session[:electric],
+                        electric_cost: session[:electric_cost],
+                        ext_chairs: session[:ext_chairs],
+                        chair_cost: session[:chair_cost],
+                        ext_tables: session[:ext_tables],
+                        table_cost: session[:table_cost],
+                        service_cost: session[:service_cost],
+                        service_description: session[:service_description],
+                        total_cost: session[:total_cost])
+            session_reset
+            redirect_to '/admins'
+        else
+            redirect_to '/vendors/summary'
+        end
     end
     
     def summary
@@ -213,7 +293,44 @@ class VendorsController < ApplicationController
                         authorize_title: session[:authorize_title],
                         authorize_date: session[:authorize_date]
                         )
-        session.destroy
+        session_reset
+        
         # send email with registration information
+    end
+    def session_reset
+        session[:admin] = 0
+        session[:edit] = 0
+        session[:vendorNewRegistration] = 0
+        session[:company_name] = ""
+        session[:product] = ""
+        session[:contact_name] = ""
+        session[:contact_title] = ""
+        session[:address_street] = ""
+        session[:address_city] = ""
+        session[:address_state] = ""
+        session[:address_zip] = ""
+        session[:phone] = ""
+        session[:email] = ""
+        session[:booth_pref] = false
+        session[:number_i_booth] = 0
+        session[:booth_i_cost] = 0
+        session[:number_o_booth] = 0
+        session[:booth_o_cost] = 0
+        session[:length] = 0
+        session[:width] = 0
+        session[:booth_cost] = 0
+        session[:custom_description] = ""
+        session[:electric] = 0
+        session[:electric_cost] = 0
+        session[:ext_chairs] = 0
+        session[:chair_cost] = 0
+        session[:ext_tables] = 0
+        session[:table_cost] = 0
+        session[:service_cost] = 0
+        session[:service_description] = ""
+        session[:total_cost] = 0
+        session[:authorize_sig] = ""
+        session[:authorize_title] = ""
+        session[:authorize_date] = ""
     end
 end

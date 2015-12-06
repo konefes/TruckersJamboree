@@ -37,7 +37,7 @@
                             =link_to "Edit Contact Info", vendors_summary_change_path(:page => "contact")
                         
                     %div{:align =>"center"}
-                        .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                        .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}
                             - if(!session[:booth_pref])
                                 %h2 Booth Information
                                 Indoor Booth/s: 
@@ -73,7 +73,7 @@
                             =link_to "Edit Booth Info", vendors_summary_change_path(:page => "booth")
                         
                     %div{:align =>"center"}
-                        .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                        .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}
                             %h2 Services Requested
                             Electricity: 
                             =session[:electric]
@@ -101,14 +101,14 @@
                             %br
                             =link_to "Edit Services Info", vendors_summary_change_path(:page => "services")
                         
-                    .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                    .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}
                     
                         %h2{:align => "center"}Total Cost of All Options Selected 
                         %div{:align => "center"}
                             %font{:size => "6"} $
                             %font{:size => "6"}=session[:total_cost]
                     
-                    .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                    .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}
                         %p{:align =>"center"}   On behalf of the company that I represent, 
                         %p{:align =>"center"}   I (we) assume full legal, financial and insurable 
                         %p{:align =>"center"}   responsibility for any products, trucks, and equipment. 
@@ -130,7 +130,7 @@
                             %br
           
                     
-                    .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                    .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}
                         .col-md-offset-3.col-md-6
                             %input#submit{:type => "submit", :value => "Approve Summary", :class => "btn btn-info btn-block"}
                             

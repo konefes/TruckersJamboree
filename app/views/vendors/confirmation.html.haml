@@ -44,7 +44,7 @@
                         = @current.email
                     
                 %div{:align =>"center"}
-                    .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                    .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}
                         - if(! @current.booth_pref)
                             %b Booth Information
                             %br
@@ -78,7 +78,7 @@
                             = @current.custom_description
                     
                 %div{:align =>"center"}
-                    .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                    .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}
                         %b Services Requested
                         %br
                         Electricity: 
@@ -105,7 +105,7 @@
                         Additional Services Requested:
                         = @current.service_description
                     
-                .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}
+                .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}
                 
                     %p{:align => "center"}Total Cost of All Options Selected 
                     %div{:align => "center"}
@@ -113,11 +113,10 @@
                         %font{:size => "4"}= @current.total_cost
                 
                 %div{:align =>"center", :id => "printButton"}
-                    .form-group{:style => "border-top: 1px solid #5bc0de; padding-top:20px"}        
-                        %button{:onclick => "printPage()"} Print This View
+                    .form-group{:style => "border-top: 1px solid #BB182D; padding-top:20px"}        
+                        %button{:onclick => "printP()"} Print This View
                         :javascript
-                            function printPage() {
-                                alert(#{@current.authorize_sig});
+                            function printP() {
                                 var button = document.getElementById('printButton');
                                 button.style.visibility = 'hidden';
                                 if (document.getElementById('login')!=null)

@@ -1,0 +1,2 @@
+module VendorHomepageHelper
+end
