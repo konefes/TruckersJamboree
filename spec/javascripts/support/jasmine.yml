@@ -11,11 +11,17 @@
 #   - dist/**/*.js
 #
 src_files:
+  
   - assets/application.js
   - assets/admins.js
   - assets/javascripts/admins.js
   - assets/javascripts/bootbox.min.js
   - assets/javascripts/active_admin.js.coffee
+  - views/services.html.haml
+  - views/custom_booth.html.haml
+  - views/confirmation.html.haml
+  - views/booth.html.haml
+  
 # stylesheets
 #
 # Return an array of stylesheet filepaths relative to src_dir to include before jasmine specs.
