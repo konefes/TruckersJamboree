@@ -134,6 +134,17 @@ describe('Script in admin index for clicking outside of vendor popup to close', 
   });
 });
 
+describe('Script in admin index for clicking outside of vendor popup to close', function() {   /*duplicate for next holder*/
+ beforeEach(function(){
+  var container = $("#individual1");
+  });
+  it('closes the Vendor pop up window', function() {
+   expect( $('#individual1').is(':visible')).toBe(false);
+   /*expect($('#Vendors').('tbody').('tr').is(':visible')).toBe(true);*/
+  });
+});
+
+
 function hide() {
     $("p").hide();
     $( ".div2" ).text("Hide button clicked");
