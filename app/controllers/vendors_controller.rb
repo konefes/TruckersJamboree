@@ -299,10 +299,10 @@ class VendorsController < ApplicationController
                         )
         session_reset
         
-        if @current.save
+        #if @current.save
         # send email with registration information
-        UserMailer.vendor_email(@current).deliver_now
-        end
+        #UserMailer.vendor_email(@current).deliver_now
+        #end
     end
     def session_reset
         session[:admin] = 0
