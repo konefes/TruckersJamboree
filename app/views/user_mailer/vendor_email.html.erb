@@ -4,13 +4,37 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Your Vendor Registration Receipt, <%= @current.contact_name %></h1>
+    <h2>Your Vendor Registration Receipt, <%= @current.contact_name %></h2>
     <p>
-      You have successfully registered at Truckers Jamboree!<br>
+      <br>
     </p>
     <p>
-      To login to the site, just follow this link: <%= @url %>.
+      <font face="Lucida Console">
+       Company Name: <%= @current.company_name %><br>
+       Product: <%= @current.product %><br>
+       Name: <%= @current.contact_name %><br>
+       Title: <%= @current.contact_title %><br>
+       Address L1: <%= @current.address_street %><br>
+       Address L2: <%= @current.address_city %>, <%= @current.address_state %>, <%= @current.address_zip %><br>
+       Telephone: <%= @current.phone %><br>
+       Email: <%= @current.email %><br>
+       ==========================<br>
+       Summary of Bill:<br>
+       ==========================<br>
+       Indoor Booth x <%= @current.number_i_booth %> ................................................. <%= @current.booth_i_cost %>  USD<br>
+       Outdoor Booth x <%= @current.number_o_booth %> ................................................ <%= @current.booth_o_cost %>  USD<br>
+       Electricity (20 Amp Circuit) x <%= @current.electric %> ................................. <%= @current.electric_cost %>  USD<br>
+       Extra Chairs x <%= @current.ext_chairs %> ................................................. <%= @current.chair_cost %>  USD<br>
+       Extra Tables x <%= @current.ext_tables %> ................................................. <%= @current.table_cost %>  USD<br>
+       Additional Services Requested: <%= @current.service_description%><br><br>
+       Total Cost: ...................................................... <%= @current.total_cost %>  USD<br>
+      </font>
     </p>
-    <p>Thanks for registering and have a great day!</p>
+    <p>
+      <br>
+    </p>
+    <p>Thanks for registering and see you soon!</p>
+    
+    <img src="http://i.imgur.com/jwvOiSA.png">
   </body>
 </html>

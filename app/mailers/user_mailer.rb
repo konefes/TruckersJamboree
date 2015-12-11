@@ -10,6 +10,6 @@ class UserMailer < ApplicationMailer
   def vendor_email(current)
     @current = current
     @url  = 'http://example.com/login'
-    mail(to: @current.email, subject: 'Vendor Registration Receipt!')
+    mail(to: @current.email, subject: 'Truckers Jamboree: Vendor Registration Receipt')
   end
 end
