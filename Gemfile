@@ -6,9 +6,9 @@ ruby '2.2.2'
 gem 'rails', '4.2.1'
 
 # Admin View
-gem 'activeadmin', github: 'activeadmin'
+#gem 'activeadmin', github: 'activeadmin'
 # Admin Authentication
-gem 'devise'
+#gem 'devise'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.3'
 # Use Uglifier as compressor for JavaScript assets
