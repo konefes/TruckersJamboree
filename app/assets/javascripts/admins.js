@@ -164,6 +164,7 @@ $(function() {
       showAll();
     });
     
+    //print button pressed
     $("#printWholePageButton").click(function(){
       var click = document.getElementById('click');
       var overflow = document.getElementById('scroller');
@@ -292,6 +293,7 @@ $(function() {
         });  
     };
     
+    //clears all headings and columns
     function clearWhole(){
       var table = document.getElementById('Vendors');
       table.style.fontSize = "14px";
@@ -345,6 +347,7 @@ $(function() {
         });  
     };
     
+    //shows the contact headings and columns
     function showContact(){
     $("#product_heading").show();
     $("#contact_name_heading").show();
@@ -366,6 +369,7 @@ $(function() {
       });  
     };
     
+    //clears the contact headings and columns
     function clearContact(){
     $("#product_heading").hide();
     $("#contact_name_heading").hide();
@@ -388,6 +392,7 @@ $(function() {
       
     };
     
+    //clears the booth headings and columns
     function clearBooth() {
       $("#number_i_booth_heading").hide();
       $("#booth_i_cost_heading").hide();
@@ -412,6 +417,7 @@ $(function() {
       $('#filter_custom_booth').removeAttr('checked').change();
     };
     
+    //clears the services headings and columns
     function clearServices() {
       $("#ext_chairs_heading").hide();
       $("#chair_cost_heading").hide();
@@ -618,7 +624,7 @@ $(function() {
     });//end checkbox change function
     
     
-    // Below is for the Vendor Home Page
+    // Below is for the Vendor Home Page//////////////////////////////////////
     
         
     $( "#nav_myregistration" ).click(function() {
