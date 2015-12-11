@@ -32,7 +32,10 @@ class VendorsController < ApplicationController
         #will remove depending on option jquery
     end
     
+    
+    
     def registration
+        session[:admin_add_vendor] = nil
         if session[:vendorNewRegistration] == 1
         elsif session[:admin] != 1 || session[:edit] != 1
             session_reset
@@ -107,6 +110,7 @@ class VendorsController < ApplicationController
     
     def booth 
         # on this screen a vendor can select to enter custom booth information
+        
     end
     
     def custom_booth 

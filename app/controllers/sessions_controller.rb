@@ -41,6 +41,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session[:admin_add_vendor] = nil
   	session[:session_token]=nil	
   	session[:vendorNewRegistration] = 0
   	#VendorsController.session_reset()
