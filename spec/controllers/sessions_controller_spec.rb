@@ -8,5 +8,8 @@ RSpec.describe SessionsController, type: :controller do
         it "should call model method that finds User by User Id" do
             post :create, :user => { :username => "testing123" }
         end
+        it "should call model method that finds User by User Id" do
+            post :destroy
+        end
     end
 end
