@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def create
 
-      message = ''
+      message = "User did not save"
     
       @user=User.new(user_params)
       @user.valid?
