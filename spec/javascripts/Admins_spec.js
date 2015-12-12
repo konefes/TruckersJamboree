@@ -134,13 +134,89 @@ describe('Script in admin index for clicking outside of vendor popup to close', 
   });
 });
 
-describe('Script in admin index for clicking outside of vendor popup to close', function() {   /*duplicate for next holder*/
+describe('Script in admin index for clicking navigation button "All Vendors" ', function() {   /*duplicate for next holder*/
+ 
  beforeEach(function(){
-  var container = $("#individual1");
+  setFixtures('<table id="Vendors">'
+    + '<thead>'
+    +   '<tr>'
+    +        '<th id= "Foo">test1</th>'
+    +        '<th id= "Foo2">test2</th>'
+    +        '<th id= "Foo3">test3</th>'
+    +    '</tr>'
+    + '</thead>'
+    + '<tbody>'
+    +    '<tr>'
+    +        '<td>test4</td>'
+    +        '<td>test5</td>'
+    +        '<td>test6</td>'
+    +    '</tr>'
+    +    '<tr>'
+    +        '<td>Hillary</td>'
+    +        '<td>Bernie</td>'
+    +        '<td>Ben</td>'
+    +    '</tr>'
+    + '</tbody>'
+    + '<button id="nav_all" type="button" </button>'
+    + '<button id="nav_hide" type="button" </button>'
+ + '</table>');    
+   $('#Foo3').hide(); /*fixture for hiding th header*/
   });
-  it('closes the Vendor pop up window', function() {
-   expect( $('#individual1').is(':visible')).toBe(false);
-   /*expect($('#Vendors').('tbody').('tr').is(':visible')).toBe(true);*/
+  it('triggers button nav_all click', function() {
+   
+   var spyEvent = spyOnEvent('#nav_all', 'click');
+   $('#nav_all').trigger('click');
+   expect('click').toHaveBeenTriggeredOn('#nav_all');
+   /*expect('spyEvent').toHaveBeenTriggered();*/
+   /*expect( $('#nav_all')).toHaveBeenTriggered();*/
+  });
+  it('shows "Foo" table header when nav_all button is clicked', function() {
+   var spyEvent = spyOnEvent('#nav_all', 'click');
+   $('#nav_all').trigger('click');
+   expect('click').toHaveBeenTriggeredOn('#nav_all');
+   expect('#Foo').toBeVisible();
+  });
+   it('hides "Foo3" table header when hide button is clicked', function() {
+   var spyEvent = spyOnEvent('#nav_hide', 'click');
+   $('#nav_hide').trigger('click');
+   expect('click').toHaveBeenTriggeredOn('#nav_hide');
+   expect('#Foo3').toBeHidden();
+  });
+});
+
+describe('Script in admin index for clearBooth', function() {
+ beforeEach(function(){
+  setFixtures('<table id="Vendors">'
+    + '<thead>'
+    +   '<tr>'
+    +        '<th id= "Foo">booth1</th>'
+    +        '<th id= "Foo2">booth2</th>'
+    +        '<th id= "Foo3">booth3</th>'
+    +    '</tr>'
+    + '</thead>'
+    + '<tbody class= "bodyclass">'
+    +    '<tr class= "trclass">'
+    +        '<td>booth4</td>'
+    +        '<td>booth5</td>'
+    +        '<td>booth6</td>'
+    +    '</tr>'
+    +    '<tr>'
+    +        '<td>Hillary</td>'
+    +        '<td>Bernie</td>'
+    +        '<td>Ben</td>'
+    +    '</tr>'
+    + '</tbody>'
+    + '<input type="checkbox" name="box1" /><br />'
+    + '<input type="checkbox" name="box2" />'
+ + '</table>'); 
+  $('#Foo').hide(); /*fixture for hiding th header*/
+  $('.trclass').hide();
+  $('#box1').prop('checked', false).change();
+  });
+  it('hides the heading, table row and clears the checkbox ', function() {
+   expect($('#Foo')).toBeHidden();
+   expect($('.trclass')).toBeHidden();
+   expect($('#box1')).not.toBeChecked();
   });
 });
 
